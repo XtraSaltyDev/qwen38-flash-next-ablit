@@ -6,8 +6,8 @@
   "files": [
     {
       "path": "third_party/model/NOTICE.txt",
-      "source": "https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated/raw/51f24153ae9b27653a823074c631dfa941fdb536/NOTICE",
-      "sha256": "259fd763bd6e7fa6cb081a26d9d92771ba38fac751eefa8ca87c5020a2fd72f3"
+      "source": "https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated/raw/3f93e1cb07c9efd127e2ad235f63d78ad52dfbbf/NOTICE",
+      "sha256": "d7a8c2635dd08dd707c75c6c697608a54a7142e8644483097279279b15957f0d"
     },
     {
       "path": "third_party/licenses/QWEN-COMMUNITY-LICENSE-1.0.txt",
@@ -29,5 +29,7 @@
       "source": "https://raw.githubusercontent.com/eugr/spark-vllm-docker/0bdc9c94cd89843e1c8f7d7b33df2d5bc746c03d/recipes/qwen3.8-flash-next-nvfp4-cluster.yaml",
       "sha256": "ebbf961c46b1d252051d62432b1b9accdb6cd419206d35d2fc33ae7d1df2d016"
     }
-  ]
+  ],
+  "canonical_model": "DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated",
+  "documentation_revision_checked": "3f93e1cb07c9efd127e2ad235f63d78ad52dfbbf"
 }

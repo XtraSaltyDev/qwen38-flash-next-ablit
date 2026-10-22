@@ -6,10 +6,10 @@
 | --- | --- | --- |
 | Qwen | Original Qwen3.8-Flash-Next architecture and model | [Model card](https://huggingface.co/Qwen/Qwen3.8-Flash-Next) |
 | NVIDIA | ModelOpt/QAD mixed-precision FP4-Local checkpoint and reference serving guidance | [Pinned quantized base](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local/tree/b9ce18a6887e18c089fdea8509a33e63429a3300) |
-| DevelopingDad | Trial117 refusal-direction intervention, baked checkpoint, MXFP8 re-encode, validation, and Spark launcher | [Pinned community checkpoint](https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated/tree/51f24153ae9b27653a823074c631dfa941fdb536) |
+| DevelopingDad | Refusal-direction intervention, baked checkpoint, MXFP8 re-encode, validation, and Spark launcher | [DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated](https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated) |
 | XtraSaltyDev | TP=2 serving comparison, quality fixtures, BF16-KV/16-slot qualification, deployment verification, and packaging | [This repository](https://github.com/XtraSaltyDev/qwen38-flash-next-ablit) |
 
-The upstream release uses a trial117/Heretic-style refusal-direction intervention. We neither repeated the abliteration search nor claim authorship of that intervention, the bake, or the re-encode. See the pinned [model card](https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated/blob/51f24153ae9b27653a823074c631dfa941fdb536/README.md), [notice](../third_party/model/NOTICE.txt), and [provenance](../third_party/model/provenance.json).
+The upstream release uses a Heretic-style refusal-direction intervention. We neither repeated the abliteration search nor claim authorship of that intervention, the bake, or the re-encode. See the current [model card](https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated), [notice](../third_party/model/NOTICE.txt), and [provenance](../third_party/model/provenance.json).
 
 ## Serving and kernel foundation
 

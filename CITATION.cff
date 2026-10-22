@@ -9,7 +9,7 @@ version: tp2-v2
 date-released: 2026-10-22
 url: https://github.com/XtraSaltyDev/qwen38-flash-next-ablit
 repository-code: https://github.com/XtraSaltyDev/qwen38-flash-next-ablit
-abstract: "Reproducible serving and bounded evaluation of DevelopingDad's pinned trial117-mxfp8 checkpoint across two DGX Sparks, with 16 active slots, BF16 KV, MTP4, and 262K context. No new model weights are distributed."
+abstract: "Reproducible serving and bounded evaluation of DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated at the measured checkpoint revision across two DGX Sparks, with 16 active slots, BF16 KV, MTP4, and 262K context. No new model weights are distributed."
 keywords:
   - Qwen3.8-Flash-Next
   - DGX Spark

@@ -1,6 +1,6 @@
 # Operations and reproduction
 
-The qualified configuration is in `../serve-tp2.sh`; measurements are in `../evidence/`. Original defaults were qualified on two GB10 DGX Sparks on October 22, 2026. Repository publication made the network/container names configurable while preserving the default Docker invocation. Other topology or performance settings require their own qualification.
+The qualified configuration is in `../serve-tp2.sh`; measurements are in `../evidence/`. The model is `DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated`; commit hashes identify the measured artifact without relying on a release tag. Original defaults were qualified on two GB10 DGX Sparks on October 22, 2026. Repository publication made the network/container names configurable while preserving the default Docker invocation. Other topology or performance settings require their own qualification.
 
 ## Prerequisites
 

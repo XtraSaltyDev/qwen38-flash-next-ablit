@@ -2,7 +2,7 @@
 
 _by [XtraSaltyDev](https://github.com/XtraSaltyDev)_
 
-Serve [DevelopingDad's Qwen3.8-Flash-Next-FP4-Local-Abliterated](https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated/tree/51f24153ae9b27653a823074c631dfa941fdb536), **`trial117-mxfp8`**, across two DGX Sparks using vLLM and the B12X kernel stack.
+Serve [DevelopingDad's Qwen3.8-Flash-Next-FP4-Local-Abliterated](https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated) across two DGX Sparks using vLLM and the B12X kernel stack.
 
 **TP=2 · 262K context · 16 active sequences · BF16 KV · MTP4 · disk PLE**
 
@@ -32,7 +32,7 @@ Single-stream coding stayed close to the reference; **serial prose decode was ab
 
 ## Quick start
 
-On **both Sparks**, clone the repo, download the pinned weights, and pull the runtime:
+On **both Sparks**, clone the repo, download the weights pinned to the measured commit, and pull the runtime:
 
 ```bash
 git clone https://github.com/XtraSaltyDev/qwen38-flash-next-ablit.git
@@ -40,7 +40,7 @@ cd qwen38-flash-next-ablit
 
 hf download DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated \
   --revision 51f24153ae9b27653a823074c631dfa941fdb536 \
-  --local-dir "$HOME/models/qwen-trial117-mxfp8"
+  --local-dir "$HOME/models/qwen38-flash-next-ablit"
 
 docker pull eugr/spark-vllm-b12x@sha256:03a956544e9f9b4b7ba91690469fbe7848bdbef29a7d2e0f5788368467bb3595
 ```
@@ -51,7 +51,7 @@ The example uses head `10.100.225.2` and worker `10.100.225.1`. Adjust `MASTER_A
 
 ```bash
 RANK=1 NODE_IP=10.100.225.1 MASTER_ADDR=10.100.225.2 \
-  bash serve-tp2.sh "$HOME/models/qwen-trial117-mxfp8"
+  bash serve-tp2.sh "$HOME/models/qwen38-flash-next-ablit"
 docker start qwen-flash-next-tp2-v2
 ```
 
@@ -59,7 +59,7 @@ docker start qwen-flash-next-tp2-v2
 
 ```bash
 RANK=0 NODE_IP=10.100.225.2 MASTER_ADDR=10.100.225.2 \
-  bash serve-tp2.sh "$HOME/models/qwen-trial117-mxfp8"
+  bash serve-tp2.sh "$HOME/models/qwen38-flash-next-ablit"
 docker start qwen-flash-next-tp2-v2
 docker logs --follow qwen-flash-next-tp2-v2
 ```
@@ -122,7 +122,7 @@ shasum -a 256 -c SHA256SUMS
 
 ## Credits and license
 
-**[DevelopingDad](https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated)** created the trial117 abliteration and MXFP8 re-encode, derived from **[NVIDIA's quantized checkpoint](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local)** and **[Qwen's original model](https://huggingface.co/Qwen/Qwen3.8-Flash-Next)**. **[eugr / Eugene Rakhmatulin](https://github.com/eugr/spark-vllm-docker)** provides the Spark container and cluster-recipe foundation, with inference work from **[local-inference-lab](https://github.com/local-inference-lab)**, **[FlashInfer](https://github.com/flashinfer-ai/flashinfer)**, and **[vLLM](https://github.com/vllm-project/vllm)**. This repo contributes the TP=2 serving study, harnesses, and deployment recipe.
+**[DevelopingDad](https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated)** created the abliteration and MXFP8 re-encode, derived from **[NVIDIA's quantized checkpoint](https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local)** and **[Qwen's original model](https://huggingface.co/Qwen/Qwen3.8-Flash-Next)**. **[eugr / Eugene Rakhmatulin](https://github.com/eugr/spark-vllm-docker)** provides the Spark container and cluster-recipe foundation, with inference work from **[local-inference-lab](https://github.com/local-inference-lab)**, **[FlashInfer](https://github.com/flashinfer-ai/flashinfer)**, and **[vLLM](https://github.com/vllm-project/vllm)**. This repo contributes the TP=2 serving study, harnesses, and deployment recipe.
 
 README organization takes inspiration from [MiaAI-Lab's Spark recipes](docs/ATTRIBUTION.md#recipe-presentation-references). Full source credits and retained notices are in [attribution](docs/ATTRIBUTION.md) and [NOTICE](NOTICE).
 

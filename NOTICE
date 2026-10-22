@@ -6,7 +6,7 @@ MODEL LINEAGE
 Qwen/Qwen3.8-Flash-Next: Qwen and its contributors.
 nvidia/Qwen3.8-Flash-Next-FP4-Local: NVIDIA quantized release.
 DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated:
-  DevelopingDad's trial117 community derivative and MXFP8 re-encode.
+  DevelopingDad's abliteration and MXFP8 re-encode.
 The checkpoint is used unchanged at revision
 51f24153ae9b27653a823074c631dfa941fdb536.
 No model weights are distributed in this repository.

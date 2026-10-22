@@ -1,17 +1,46 @@
-Qwen3.8 Flash Next FP4 Local — Abliterated Trial 117
-Community derivative published by DevelopingDad, October 20, 2026.
+Qwen3.8-Flash-Next FP4-Local — Abliterated
+Community derivative published by DevelopingDad (https://huggingface.co/DevelopingDad).
+Release of October 22, 2026.
 
-Derived from nvidia/Qwen3.8-Flash-Next-FP4-Local at revision
-b9ce18a6887e18c089fdea8509a33e63429a3300, itself derived from
-Qwen/Qwen3.8-Flash-Next. Copyright and upstream license notices remain
+Licensed by NVIDIA Corporation under the NVIDIA Open Model Agreement.
+
+This repository contains a modified version of nvidia/Qwen3.8-Flash-Next-FP4-Local
+(revision b9ce18a6887e18c089fdea8509a33e63429a3300), which NVIDIA Corporation
+derived from Qwen/Qwen3.8-Flash-Next. It is not made, endorsed or validated
+by NVIDIA Corporation or by Qwen.
+
+Licenses
+- NVIDIA Open Model Agreement: LICENSE (copy of the agreement) and
+  https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-agreement/
+- Qwen Community License 1.0, Copyright (c) 2026 Qwen: upstream/QWEN-LICENSE
+- NVIDIA's original model card: upstream/NVIDIA-README.md
+The base weights are not relicensed. Copyright and upstream notices remain
 with their respective owners.
 
-Governing NVIDIA download terms:
-https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-agreement/
-The upstream NVIDIA model card and Qwen Community License 1.0 are
-preserved under upstream/.
+Modifications
+Refusal-direction ablation (trial 117 of a Heretic-style search) was baked
+into the 48 attention output projections and the routed and shared expert
+down projections. All modified tensors keep the base checkpoint's formats:
+NVFP4 routed experts, and MXFP8 attention output projections and shared
+experts. Other weights, the configuration, tokenizer, chat template and the
+built-in MTP layer are NVIDIA's. Details are in README.md and provenance.json.
 
-This release modifies attention output projections and routed/shared
-expert down projections using accepted trial 117 continuation directions.
-It is an approximate standalone bake, with measured results and
-qualification limits documented in README.md and validation-results.json.
+Third-party work this release builds on
+- Qwen3.8-Flash-Next by Qwen (Qwen Community License 1.0).
+- Qwen3.8-Flash-Next-FP4-Local by NVIDIA Corporation, quantized with NVIDIA
+  Model Optimizer (NVIDIA Open Model Agreement).
+- Method: "Refusal in Language Models Is Mediated by a Single Direction",
+  Arditi et al., 2024 (arXiv:2406.11717); and Heretic by Philipp Emanuel
+  Weidmann and contributors (https://github.com/p-e-w/heretic, AGPL-3.0),
+  whose parameterization this release reimplemented. No Heretic code is
+  included in this repository.
+- Prompt sets used to compute directions and measure refusals:
+  mlabonne/harmful_behaviors (revision 01cead01398926d81f7c52bdb790ee8cf77ebba7),
+  derived from AdvBench (llm-attacks, MIT); and mlabonne/harmless_alpaca
+  (revision 02c6a92cfcf11bb0c387334f8146d149d65b587f), derived from
+  tatsu-lab/alpaca (CC BY-NC 4.0). Neither prompt set is redistributed here.
+- Software used to build and serve it: vLLM (Apache-2.0), FlashInfer and the
+  B12X kernels by Local Inference Lab (Apache-2.0), Optuna (MIT), PyTorch
+  (BSD-3-Clause), safetensors (Apache-2.0), and the
+  eugr/spark-vllm-b12x container built from eugr/spark-vllm-docker (MIT).
+  None of these is redistributed here; each keeps its own license.

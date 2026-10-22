@@ -305,8 +305,8 @@
     {
       "path": "evidence/profile.json",
       "original_sha256": "edb399f47d414f5e0d8c5a352d089cc93672aca6ecaa7a36ff81d3743983bb10",
-      "published_sha256": "12b15b08674906fd9ce1bccc936ddcb36c9830cb85f777d210cff943af8fdd5d",
-      "transform": "historical status wording and relocated documentation paths; qualified configuration and original recipe hash retained; original qualified recipe hash preserved and published recipe hash added"
+      "published_sha256": "56d49611a97da2d69dceb2936a6d7952bfae56ed846c8b60510e1d1073479ca3",
+      "transform": "historical status wording and relocated documentation paths; qualified configuration and original recipe hash retained; original qualified recipe hash preserved and published recipe hash added; obsolete release-tag field removed; historical installation launcher identifier omitted where present; measured revision and numerical results retained"
     },
     {
       "path": "evidence/checkpoint-review.json.gz",
@@ -329,8 +329,8 @@
     {
       "path": "evidence/integrity/initial-deployment.json",
       "original_sha256": "c70928c5cb0979340925b9ff2d60f8d3bf64103fd21094c47fef9d95f0475f33",
-      "published_sha256": "1298808c62ddc89441e2f940cbd215a30d9db3801ff6b3e0551b4bfa0d80857c",
-      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+      "published_sha256": "5021a3c99bc94c28090c23d24ff31b68493e6b4f7d96465f91f8de79b2d1e30c",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged; obsolete release-tag field removed; historical installation launcher identifier omitted where present; measured revision and numerical results retained"
     }
   ]
 }

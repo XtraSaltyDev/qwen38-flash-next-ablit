@@ -8,7 +8,7 @@
 #
 # Usage: bash serve-spark.sh /absolute/path/to/downloaded/checkpoint
 # Env:   PORT (default 8000), HOST (default 127.0.0.1), MTP_TOKENS (default 4; 0 disables),
-#        CACHE_DIR (compile/autotune caches, default ~/.cache/qwen-trial117)
+#        CACHE_DIR (compile/autotune caches, default ~/.cache/qwen-flash-next-tp2)
 # The container is capped at 104 GiB of the Spark's 128 GB unified memory; run one large model at a time.
 set -euo pipefail
 model_dir="${1:?Usage: bash serve-spark.sh /absolute/path/to/downloaded/checkpoint}"

@@ -4,7 +4,6 @@
   "model_name": "Qwen3.8-Flash-Next",
   "checkpoint": {
     "repository": "DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated",
-    "tag": "trial117-mxfp8",
     "revision": "51f24153ae9b27653a823074c631dfa941fdb536",
     "weights_changed": false
   },
