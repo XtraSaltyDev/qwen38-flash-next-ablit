@@ -1,0 +1,15 @@
+{
+  "attention_outputs_mxfp8": 48,
+  "attention_outputs_total": 48,
+  "num_kv_heads": 2,
+  "num_attention_heads": 24,
+  "linear_key_heads": 16,
+  "linear_value_heads": 48,
+  "expert_intermediate": 640,
+  "routed_experts": 512,
+  "mtp_preserved_in_bf16": true,
+  "tensor_bytes": 102138950916,
+  "ple_table_gib": 26.822218898683786,
+  "expected_ple_gib_per_rank": 13.411109449341893,
+  "quant_layers": 545
+}

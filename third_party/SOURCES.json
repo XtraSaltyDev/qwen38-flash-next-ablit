@@ -1,0 +1,33 @@
+{
+  "retrieved_on": "2026-10-22",
+  "model_revision": "51f24153ae9b27653a823074c631dfa941fdb536",
+  "eugr_attribution_snapshot_revision": "0bdc9c94cd89843e1c8f7d7b33df2d5bc746c03d",
+  "note": "The eugr source snapshot documents attribution and recipe context; it is not asserted to be the build commit of the pinned runtime image.",
+  "files": [
+    {
+      "path": "third_party/model/NOTICE.txt",
+      "source": "https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated/raw/51f24153ae9b27653a823074c631dfa941fdb536/NOTICE",
+      "sha256": "259fd763bd6e7fa6cb081a26d9d92771ba38fac751eefa8ca87c5020a2fd72f3"
+    },
+    {
+      "path": "third_party/licenses/QWEN-COMMUNITY-LICENSE-1.0.txt",
+      "source": "https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated/raw/51f24153ae9b27653a823074c631dfa941fdb536/upstream/QWEN-LICENSE",
+      "sha256": "a0dc422560841fd68e06d974907f8b4c709bca44a67daad2b528437bdf676c08"
+    },
+    {
+      "path": "third_party/model/provenance.json",
+      "source": "https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated/raw/51f24153ae9b27653a823074c631dfa941fdb536/provenance.json",
+      "sha256": "bb5c83dee37fe2f28e858cdecb7a0a9e1458625db3854d0fba20a1015d15e7b6"
+    },
+    {
+      "path": "third_party/licenses/EUGR-MIT.txt",
+      "source": "https://raw.githubusercontent.com/eugr/spark-vllm-docker/0bdc9c94cd89843e1c8f7d7b33df2d5bc746c03d/LICENSE",
+      "sha256": "2bbd5f7fe8719e5de6b8376f277f9f6db7f9b9582fd9d364cc94178f81b6d279"
+    },
+    {
+      "path": "third_party/eugr-cluster-recipe.yaml",
+      "source": "https://raw.githubusercontent.com/eugr/spark-vllm-docker/0bdc9c94cd89843e1c8f7d7b33df2d5bc746c03d/recipes/qwen3.8-flash-next-nvfp4-cluster.yaml",
+      "sha256": "ebbf961c46b1d252051d62432b1b9accdb6cd419206d35d2fc33ae7d1df2d016"
+    }
+  ]
+}

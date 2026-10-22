@@ -1,0 +1,97 @@
+{
+  "status": "pending final candidate and quality controls",
+  "rows": [
+    {
+      "concurrency": 1,
+      "baseline": {
+        "clean_waves": 4,
+        "aggregate_tokens_per_second_median": 67.1714718778466,
+        "per_stream_decode_median": 70.36846258355291,
+        "ttft_p50_seconds": 0.17997185099739,
+        "ttft_p95_seconds": 0.18647115700150607,
+        "e2e_p95_seconds": 4.7601894959952915,
+        "preemptions": 0.0
+      },
+      "shared_seq16": {
+        "clean_waves": 4,
+        "aggregate_tokens_per_second_median": 67.6145497754803,
+        "per_stream_decode_median": 70.46287044130816,
+        "ttft_p50_seconds": 0.16501321049872786,
+        "ttft_p95_seconds": 0.16986510700371582,
+        "e2e_p95_seconds": 4.735839560999011,
+        "preemptions": 0.0
+      },
+      "aggregate_gain_percent": 0.6596221360750443,
+      "ttft_p95_change_percent": -8.905425517178578
+    },
+    {
+      "concurrency": 4,
+      "baseline": {
+        "clean_waves": 4,
+        "aggregate_tokens_per_second_median": 150.1603596789792,
+        "per_stream_decode_median": 42.66862890061743,
+        "ttft_p50_seconds": 0.5214216029962699,
+        "ttft_p95_seconds": 0.5399421740003163,
+        "e2e_p95_seconds": 8.232649376004701,
+        "preemptions": 0.0
+      },
+      "shared_seq16": {
+        "clean_waves": 4,
+        "aggregate_tokens_per_second_median": 158.30984003736657,
+        "per_stream_decode_median": 44.1481409525198,
+        "ttft_p50_seconds": 0.4897275075018115,
+        "ttft_p95_seconds": 0.5088957690022653,
+        "e2e_p95_seconds": 8.09672193699953,
+        "preemptions": 0.0
+      },
+      "aggregate_gain_percent": 5.427184894741699,
+      "ttft_p95_change_percent": -5.749949993354808
+    },
+    {
+      "concurrency": 8,
+      "baseline": {
+        "clean_waves": 4,
+        "aggregate_tokens_per_second_median": 228.47807875007794,
+        "per_stream_decode_median": 31.635792025013956,
+        "ttft_p50_seconds": 0.5661942314982298,
+        "ttft_p95_seconds": 0.5766571490021306,
+        "e2e_p95_seconds": 10.54564633800328,
+        "preemptions": 0.0
+      },
+      "shared_seq16": {
+        "clean_waves": 4,
+        "aggregate_tokens_per_second_median": 240.76563560438666,
+        "per_stream_decode_median": 33.72421171313211,
+        "ttft_p50_seconds": 0.5196504179984913,
+        "ttft_p95_seconds": 0.5303708960054792,
+        "e2e_p95_seconds": 10.647195616002136,
+        "preemptions": 0.0
+      },
+      "aggregate_gain_percent": 5.378002529402193,
+      "ttft_p95_change_percent": -8.026650337509377
+    },
+    {
+      "concurrency": 16,
+      "baseline": {
+        "clean_waves": 4,
+        "aggregate_tokens_per_second_median": 212.29808216872732,
+        "per_stream_decode_median": 28.744837229258824,
+        "ttft_p50_seconds": 3.996839685998566,
+        "ttft_p95_seconds": 12.50823045099969,
+        "e2e_p95_seconds": 22.441155831998913,
+        "preemptions": 0.0
+      },
+      "shared_seq16": {
+        "clean_waves": 4,
+        "aggregate_tokens_per_second_median": 335.953010370976,
+        "per_stream_decode_median": 23.501897979180747,
+        "ttft_p50_seconds": 0.7072694809976383,
+        "ttft_p95_seconds": 0.7199717999974382,
+        "e2e_p95_seconds": 14.62906600000133,
+        "preemptions": 0.0
+      },
+      "aggregate_gain_percent": 58.24589979290153,
+      "ttft_p95_change_percent": -94.24401554785956
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "repo_id": "DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated",
+  "release_date": "2026-10-20",
+  "artifact": "Standalone baked checkpoint; no runtime adapter required",
+  "base_model": "nvidia/Qwen3.8-Flash-Next-FP4-Local",
+  "base_revision": "b9ce18a6887e18c089fdea8509a33e63429a3300",
+  "qwen_license_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "trial": 117,
+  "directions_variant": "accepted continuation recalibration",
+  "frozen_inputs": {
+    "frozen-directions.json": "66e2bbc6ab9b2d1e653547dea8ae162867aa10f988e7101d9bd004169740415d",
+    "frozen-row-norms.json": "c1b2e5087dee8c81e4b257a8cdbe494b723325b869a8476d696ec94685bf90db",
+    "bake-selection.json": "29c6e2fa476e29bedaa0269b0aae43dc019d0f2946be22a7fedb9634b0165352"
+  },
+  "historical_adapter": {
+    "repo_id": "DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-trial117-adapter",
+    "revision": "680125520c996ef43e3a002d364d11dfb8e1b0f0",
+    "note": "Historical identifier; not required or currently downloadable at that identifier. Frozen inputs are included here."
+  },
+  "export": {
+    "attention_output_projections": "BF16 projected weights",
+    "routed_expert_down_projections": "NVFP4 constrained rounding with scale encodings unchanged",
+    "shared_expert_down_projections": "MXFP8 constrained rounding with scale encodings unchanged",
+    "numerically_exact_runtime_adapter_equivalence": false,
+    "configuration_preserved": true,
+    "configuration_note": "The original config contains the ambiguous label accepted (study). Frozen-file hashes and validation identify the accepted continuation directions; original study search scores are not the baked-model scores."
+  },
+  "runtime": {
+    "image": "eugr/spark-vllm-b12x@sha256:03a956544e9f9b4b7ba91690469fbe7848bdbef29a7d2e0f5788368467bb3595",
+    "tp1_smoke_passed": 5,
+    "tp1_smoke_total": 5,
+    "tp1_context_tokens": 4096,
+    "tp1_max_num_seqs": 1,
+    "adapter_required": false,
+    "worker_extension_required": false
+  },
+  "attention_mxfp8_reencode": {
+    "date": "2026-10-22",
+    "source_revision": "57f88b00e153fedbc10843ba0cd6284d4c2b5c6c",
+    "source_tag": "trial117-baked",
+    "changed_tensors": "48 attention output projection weights (BF16 -> MXFP8) plus their 48 weight_scale tensors; all in tensors/model-00001-of-00021.safetensors",
+    "method": "scale exponent ceil(log2(amax/448)) per 32 inputs (base rule); each element rounds to one of its two nearest E4M3 neighbours; greedy flips cancel the error along the layer removed direction (left singular vector of bake minus base) with minimal added squared error",
+    "fidelity": "error along removed direction <= 0.002% of the intervention; relative weight error 1.47-1.93%; removed fraction within 0.00002 of the BF16 bake",
+    "script": "reencode/mxfp8_reencode.py",
+    "report": "reencode/reencode-report.json",
+    "post_processing": "The published config.json names the script marker \"attention_mxfp8_reencode\" (the script writes \"qwen50_reencode\"), and model.safetensors.index.json metadata.total_size was recomputed from the new tensor sizes; tensor data is exactly as the script wrote it."
+  },
+  "previous_repo_id": "DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated-trial117"
+}

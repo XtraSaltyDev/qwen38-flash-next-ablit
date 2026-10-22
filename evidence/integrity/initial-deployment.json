@@ -1,0 +1,77 @@
+{
+  "target": "worker-spark",
+  "repository": "DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated",
+  "requested_tag": "trial117-mxfp8",
+  "revision": "51f24153ae9b27653a823074c631dfa941fdb536",
+  "image": "eugr/spark-vllm-b12x@sha256:03a956544e9f9b4b7ba91690469fbe7848bdbef29a7d2e0f5788368467bb3595",
+  "preflight": {
+    "active_model": null,
+    "active_container": null,
+    "available_memory_gib": 117,
+    "available_disk_tb": 3.3
+  },
+  "host": "127.0.0.1",
+  "port": 8888,
+  "model_id": "qwen-trial117",
+  "upstream_recipe_sha256": "a233bafff0a8392301028ed32b2cc47aef2cab881b5bbfded1d661acc185ca17",
+  "launcher_adaptation": {
+    "from": "--gpus all",
+    "to": "--device nvidia.com/gpu=all",
+    "reason": "Docker has native CDI and toolkit-generated NVIDIA devices; nvidia runtime is not registered."
+  },
+  "checkpoint_integrity": {
+    "passed": true,
+    "verified_sha256_files": 45,
+    "manifest_files": 44,
+    "manifest_total_bytes": 102271529002
+  },
+  "image_id": "sha256:a7f76ae9f18c7701c9cde5f72c606393d9a21ca94dd8e53b27589935f64fcbe2",
+  "image_source": "Exact pinned image cached on Spark 2BEF; streamed using existing CX7 SSH; digest re-resolved against registry.",
+  "cuda_smoke": {
+    "passed": true,
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "device": "NVIDIA GB10"
+  },
+  "started_at_utc": "2026-10-22T10:34:27.179321+00:00",
+  "launcher_id": "qwen3-8-flash-next-trial117-mxfp8-4b3468",
+  "profile": {
+    "max_model_len": 262144,
+    "max_num_seqs": 8,
+    "max_num_batched_tokens": 4096,
+    "kv_cache_dtype": "fp8",
+    "mtp_tokens": 4,
+    "prefix_caching": true,
+    "container_memory_gib": 104
+  },
+  "status": "serving",
+  "ready_verified_at_utc": "2026-10-22T10:57:53.531441+00:00",
+  "smoke_checks_passed": [
+    "health",
+    "model_identity_and_262144_context",
+    "arithmetic",
+    "forced_tool_call",
+    "streaming_with_usage",
+    "vision_color"
+  ],
+  "mtp_observed": {
+    "draft_tokens": 297.0,
+    "accepted_tokens": 209.0
+  },
+  "kv_cache_capacity_tokens": 937882,
+  "container_started_at": "2026-10-22T10:33:33.948423684Z",
+  "container_oom_killed": false,
+  "smoke_stream_probe": {
+    "usage": {
+      "prompt_tokens": 34,
+      "total_tokens": 290,
+      "completion_tokens": 256,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "ttft_seconds": 0.263043730003119,
+    "elapsed_seconds": 4.663486083998578,
+    "decode_tokens_per_second": 57.94871958008228
+  }
+}

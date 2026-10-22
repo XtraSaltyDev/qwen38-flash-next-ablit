@@ -1,0 +1,169 @@
+{
+  "version": 1,
+  "objective": "Fastest responses while retaining high throughput at high concurrency, quality, and reliability",
+  "public_model_name": "Qwen3.8-Flash-Next",
+  "checkpoint_revision": "51f24153ae9b27653a823074c631dfa941fdb536",
+  "image_digest": "eugr/spark-vllm-b12x@sha256:03a956544e9f9b4b7ba91690469fbe7848bdbef29a7d2e0f5788368467bb3595",
+  "fixed": {
+    "tensor_parallel_size": 2,
+    "context_tokens": 262144,
+    "checkpoint_weights": "unchanged",
+    "kv_dtype": "fp8",
+    "mtp_tokens": 4,
+    "batched_tokens": 4096,
+    "request_temperature": 0,
+    "request_thinking": false,
+    "request_seed": 3741
+  },
+  "treatments": [
+    {
+      "id": "baseline",
+      "ple": "disk",
+      "kv_cache": "profiled 53.18 GiB",
+      "max_sequences": 8
+    },
+    {
+      "id": "shared-seq8",
+      "ple": "shared",
+      "kv_cache_bytes": 34359738368,
+      "max_sequences": 8,
+      "meaningful_change": "Move the 13.41 GiB per-rank PLE table into host memory, reserving its memory by capping previously unused KV capacity"
+    },
+    {
+      "id": "shared-seq16",
+      "ple": "shared",
+      "kv_cache_bytes": 34359738368,
+      "max_sequences": 16,
+      "meaningful_change": "Raise active sequence capacity from 8 to 16 with identical memory placement"
+    },
+    {
+      "id": "shared-seq16-dynamic",
+      "ple": "shared",
+      "kv_cache_bytes": 34359738368,
+      "max_sequences": 16,
+      "meaningful_change": "Adaptive MTP count by active batch size: 6 at one sequence, 4 at two to four, 2 at five to eight, zero at nine to sixteen. Compare only after fixed-MTP seq16 treatment.",
+      "speculative_config": {
+        "method": "mtp",
+        "num_speculative_tokens": 6,
+        "draft_tensor_parallel_size": 2,
+        "num_speculative_tokens_per_batch_size": [
+          [
+            1,
+            1,
+            6
+          ],
+          [
+            2,
+            4,
+            4
+          ],
+          [
+            5,
+            8,
+            2
+          ],
+          [
+            9,
+            16,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "disk-seq16",
+      "ple": "disk",
+      "kv_cache": "original utilization=0.8 auto-profile",
+      "max_sequences": 16,
+      "mtp_tokens": 4,
+      "meaningful_change": "Only active sequence limit changes from baseline. Isolate confirmed long-context formatting regression from shared-memory/manual-KV treatment."
+    },
+    {
+      "id": "bf16kv-seq16",
+      "ple": "disk",
+      "gpu_memory_utilization": 0.8,
+      "kv_dtype": "auto, resolves to bfloat16 model dtype",
+      "max_sequences": 16,
+      "mtp_tokens": 4,
+      "meaningful_change": "Only KV precision changes relative to disk-seq16; test whether removing FP8 KV rounding preserves the strict-format floor at 16 slots. Verify >=8 full-context capacity from live startup."
+    }
+  ],
+  "performance": {
+    "concurrencies": [
+      1,
+      4,
+      8,
+      16
+    ],
+    "fixtures": [
+      "code",
+      "prose"
+    ],
+    "repeats": 2,
+    "generated_tokens": 256,
+    "warmups_per_fixture": 1,
+    "measurements": [
+      "TTFT",
+      "end-to-end latency",
+      "per-stream decode",
+      "aggregate throughput",
+      "preemptions",
+      "external completions"
+    ],
+    "cache": "unique wave prefixes; equal prompt bytes across treatments",
+    "contaminated_waves": "retain evidence but exclude from score"
+  },
+  "promotion_gates": {
+    "single_stream_latency": "No material regression: median decode >=95% baseline and median TTFT <=110% baseline",
+    "concurrent_throughput": "C8/C16 aggregate throughput >=95% baseline; seek >=10% improvement",
+    "concurrent_latency": "C16 TTFT and E2E must improve; inspect all samples and fixture differences",
+    "quality": "No baseline-passing deterministic, tool, code, OCR, or retrieval checks may regress",
+    "memory": "Both ranks healthy, no OOM, no unexpected restart, no benchmark preemption; at least 8 GiB host MemAvailable after warmup; KV supports >=8 full 262K contexts",
+    "route": "Canonical model name, 262K context, existing API routes and ordinary client inference pass after final selection"
+  },
+  "limits": [
+    "This is a controlled small-sample serving comparison, not a general model capability or production SLO benchmark.",
+    "Weights are kept fixed during serving optimization; a new quantized weight artifact requires a separately justified hypothesis and quality comparison.",
+    "Keep the baseline containers, launch configuration, and caches available for rollback."
+  ],
+  "startup_guard_correction": {
+    "gpu_memory_utilization": 0.7,
+    "kv_bytes_remain": 34359738368,
+    "reason": "Persisted 13.41 GiB shared PLE table reduces cudaMemGetInfo startup free memory. The old 0.8 guard rejected a warm launch even with manual KV size. Lower guard does not resize explicit KV allocation.",
+    "failed_attempt": "shared-seq16-startup.json",
+    "qualification": "Startup failure is unscored for performance; failed containers and logs retained."
+  },
+  "repeat_control": {
+    "case": "instruction_in_data",
+    "repeats_per_configuration": 6,
+    "cache_salt": "repeat-control-0 through repeat-control-5",
+    "seed": 3741,
+    "temperature": 0,
+    "reason": "The case varies within one running treatment. Compare the original configuration again before assigning causality.",
+    "decision": "Preserve all initial failures. Do not declare a quality regression resolved solely from a favorable rerun."
+  },
+  "long_prefill_comparison": {
+    "context_records": 300,
+    "expected_size": "approximately 8K input tokens; actual API token counts retained per stream",
+    "concurrency": [
+      1,
+      4,
+      16
+    ],
+    "repeats": 1,
+    "output_tokens": 128,
+    "treatments": "Baseline A/B/A control and selected candidate",
+    "gates": "Compare TTFT, per-stream E2E and aggregate throughput under long prefills; inspect material regressions before promotion",
+    "fixture": "Fixed synthetic record document, unique stream prefix prevents shared-prefix reuse across requests"
+  },
+  "shared_memory_decision": {
+    "status": "rejected",
+    "semantic_retrieval": "10/10 on both",
+    "strict_json": "baseline 10/10; shared seq16 0/10",
+    "structured_json": "passes both; preserve the raw-format failure as a regression"
+  },
+  "disk_seq16_decision": {
+    "status": "rejected",
+    "reason": "Same strict near-context formatting regression: 0/10 versus baseline 10/10; semantics and JSON-schema control pass"
+  }
+}

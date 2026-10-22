@@ -1,0 +1,107 @@
+[
+  {
+    "elapsed_seconds": 1,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 111394123776
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 111292866560
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 16,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 109774086144
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 110033043456
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 32,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 107539091456
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 109652430848
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 47,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 101943738368
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 103397838848
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 63,
+    "nodes": {
+      "spark": {
+        "running": false,
+        "oom_killed": false,
+        "status": "exited",
+        "exit_code": 1,
+        "restart_count": 0,
+        "available_bytes": 111462154240
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 67940397056
+      }
+    }
+  }
+]

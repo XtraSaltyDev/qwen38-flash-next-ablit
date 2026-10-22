@@ -1,0 +1,48 @@
+{
+  "reviewed_utc": "2026-10-22T13:47:25.681026+00:00",
+  "findings": [
+    {
+      "area": "Artifact precision and TP2 alignment",
+      "evidence": "checkpoint-summary.json",
+      "finding": "All 48 main attention output weights are MXFP8. Attention/KV heads, linear-attention heads, expert count and intermediate dimensions are divisible by two. MTP output projection remains BF16."
+    },
+    {
+      "area": "Weight composition",
+      "evidence": "checkpoint-summary.json",
+      "finding": "Checkpoint tensors total 102138950916 bytes: routed experts 65.78 GB, PLE table 28.80 GB; other components 7.56 GB. Altering attention output precision again is not the first performance opportunity."
+    },
+    {
+      "area": "Memory budget",
+      "evidence": "baseline startup logs",
+      "finding": "Baseline allocates 53.18 GiB KV per rank for 5.42M tokens (20.69 full-context equivalents), yet caps active sequences at eight. Reserving 13.41 GiB per-rank for shared PLE can remove disk transactions while retaining eight full-context equivalents."
+    },
+    {
+      "area": "Scheduler",
+      "evidence": "baseline/results.json",
+      "finding": "C16 request fanout exceeds max_num_seqs=8. Baseline p95 TTFT across repeated code/prose fixtures is 12.508 seconds; C8 aggregate throughput is higher than C16."
+    },
+    {
+      "area": "Quality",
+      "evidence": [
+        "baseline/results.json",
+        "baseline-extended/results.json",
+        "baseline-corrected-duration/results.json"
+      ],
+      "finding": "13/13 core checks, 3/3 invoice OCR and 261623-token retrieval pass. Three executed code fixtures pass with corrected duration prompt; sliding-window fixture uses an import despite the prompt constraint. Initial duration fixture was inconsistent and is unscored."
+    },
+    {
+      "area": "Transport",
+      "evidence": "prior deployment NCCL smoke plus live logs",
+      "finding": "Both CX7 RoCE rails are functioning; RoCEnante is live for small all-reduce/all-gather with NCCL fallback. Transport is not silently using LAN-only TCP."
+    },
+    {
+      "area": "Version scope",
+      "finding": "Create a versioned TP2 serving bundle first, using identical pinned weights and runtime. Revisit weight encoding or MTP training only after matched measurements establish a remaining bottleneck."
+    }
+  ],
+  "sources": [
+    "https://raw.githubusercontent.com/eugr/spark-vllm-docker/main/recipes/qwen3.8-flash-next-nvfp4-cluster.yaml",
+    "https://docs.vllm.ai/en/latest/configuration/optimization/"
+  ],
+  "qualification": "Preliminary review; candidate performance and promotion are pending."
+}

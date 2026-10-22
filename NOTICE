@@ -1,0 +1,36 @@
+Qwen3.8-Flash-Next Abliterated: Dual DGX Spark TP=2 Serving Recipe
+Original serving study, evaluation harnesses, measurements, and documentation:
+Copyright (c) 2026 XtraSaltyDev. See LICENSE and docs/ATTRIBUTION.md for scope.
+
+MODEL LINEAGE
+Qwen/Qwen3.8-Flash-Next: Qwen and its contributors.
+nvidia/Qwen3.8-Flash-Next-FP4-Local: NVIDIA quantized release.
+DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated:
+  DevelopingDad's trial117 community derivative and MXFP8 re-encode.
+The checkpoint is used unchanged at revision
+51f24153ae9b27653a823074c631dfa941fdb536.
+No model weights are distributed in this repository.
+
+The upstream checkpoint notice is preserved at third_party/model/NOTICE.txt.
+The Qwen Community License 1.0 is preserved under third_party/licenses/.
+The upstream card identifies governing NVIDIA download terms at
+https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-agreement/
+These terms are not replaced by this repository's MIT grant.
+
+SERVING RECIPE AND RUNTIME FOUNDATION
+serve-tp2.sh and recipes/ adapt the upstream DevelopingDad serve-spark.sh
+and eugr/spark-vllm-docker cluster recipe. Changes made here include native
+two-node rank wiring, NVIDIA CDI device use, the qualified BF16-KV/16-slot
+profile, and portable publication settings. The bounded memory/cache setup
+and many kernel flags are retained from the upstream launcher.
+eugr/spark-vllm-docker: Copyright (c) 2026 Eugene Rakhmatulin, MIT.
+Its complete MIT notice is preserved at third_party/licenses/EUGR-MIT.txt.
+
+The separately downloaded runtime relies on vLLM, local-inference-lab's
+B12X/FlashInfer work, FlashInfer, PyTorch, CUDA/NCCL, and their contributors.
+Runtime images, libraries, and model weights retain their own terms.
+See docs/ATTRIBUTION.md and third_party/SOURCES.json for pinned sources.
+
+Benchmark results are independent serving measurements. Upstream abliteration,
+refusal/KL, and re-encoding results are not claimed as new work.
+No upstream endorsement is implied.

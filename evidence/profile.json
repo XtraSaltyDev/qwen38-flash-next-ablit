@@ -1,0 +1,36 @@
+{
+  "version": "tp2-v2",
+  "status": "qualified and live-verified on 2026-10-22; historical snapshot",
+  "model_name": "Qwen3.8-Flash-Next",
+  "checkpoint": {
+    "repository": "DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated",
+    "tag": "trial117-mxfp8",
+    "revision": "51f24153ae9b27653a823074c631dfa941fdb536",
+    "weights_changed": false
+  },
+  "image_digest": "eugr/spark-vllm-b12x@sha256:03a956544e9f9b4b7ba91690469fbe7848bdbef29a7d2e0f5788368467bb3595",
+  "configuration": {
+    "tensor_parallel": 2,
+    "context_tokens": 262144,
+    "max_num_seqs": 16,
+    "max_num_batched_tokens": 4096,
+    "mtp_tokens": 4,
+    "kv_dtype": "auto (bfloat16)",
+    "kv_allocation": "profiled automatically",
+    "ple": "disk/io_uring",
+    "gpu_memory_utilization": 0.8,
+    "kv_capacity_tokens": 3281415,
+    "full_262k_context_equivalents": 12.52,
+    "preserved_full_context_concurrency_floor": 8,
+    "benchmark_reported_available_kv_gib_per_rank": 52.52
+  },
+  "recipe_file": "../serve-tp2.sh",
+  "rollback": "See docs/OPERATIONS.md#rollback",
+  "pending": [],
+  "verified_at_local": "2026-10-22T11:01:49.122206-05:00",
+  "verification": "report.json",
+  "managed_container_name": "qwen-flash-next-tp2-v2",
+  "qualified_recipe_sha256": "a93d6352c1ffba0cd76dbe3b9401653a11e7456fd3279a05af0042bbd5aedc3f",
+  "published_recipe_sha256": "f4aa89f88845637e3330da46ecc3639902de37dd2e711e5a686a7455d7ccb71f",
+  "publication_note": "Network/container variable overrides and attribution comments added; default Docker invocation checked against original qualified recipe."
+}

@@ -1,0 +1,336 @@
+{
+  "created_on": "2026-10-22",
+  "policy": "Measurements and fixture outputs retained. Personal client configuration backups, SSH/tunnel registrations, dashboard source snapshots, full Docker inspections, and original local manifests are not tracked. Published logs remove local usernames and management endpoints.",
+  "records": [
+    {
+      "path": "evidence/runs/baseline/results.json",
+      "original_sha256": "ce2f2c5f77c41b013023a2fe621ae64ce1952381867ca3889878311125093ad2",
+      "published_sha256": "ce2f2c5f77c41b013023a2fe621ae64ce1952381867ca3889878311125093ad2",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/baseline-context-control/results.json",
+      "original_sha256": "7b0f7cda85b87a506bde2a0708bb3c8e2916b042e4475c8e81995641be488a9d",
+      "published_sha256": "7b0f7cda85b87a506bde2a0708bb3c8e2916b042e4475c8e81995641be488a9d",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/baseline-control/results.json",
+      "original_sha256": "1915b46b1573e8dafed5700ae98bdeb9f5e731097720ee59bfe514100c3f2d91",
+      "published_sha256": "1915b46b1573e8dafed5700ae98bdeb9f5e731097720ee59bfe514100c3f2d91",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/baseline-control100/results.json",
+      "original_sha256": "d672586c6e016c36090c37a1d550bc551a0ca10b3565fdd277d128b07a18ece3",
+      "published_sha256": "d672586c6e016c36090c37a1d550bc551a0ca10b3565fdd277d128b07a18ece3",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/baseline-corrected-duration/results.json",
+      "original_sha256": "c1dceafcc45924ad9242a73d5e8edb6bf5ec2b96c05ef5ad51666d836428b59a",
+      "published_sha256": "c1dceafcc45924ad9242a73d5e8edb6bf5ec2b96c05ef5ad51666d836428b59a",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/baseline-extended/results.json",
+      "original_sha256": "c463be7309647579b7e1ef5d7c6701cdcec2a4149e8b016de04c00966c7d0f11",
+      "published_sha256": "c463be7309647579b7e1ef5d7c6701cdcec2a4149e8b016de04c00966c7d0f11",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/baseline-long-prefill/results.json",
+      "original_sha256": "1b7d8d811f6c3a0fbd858f3f0be6975b9121a61b2fae26dca129b8c1071eedbe",
+      "published_sha256": "1b7d8d811f6c3a0fbd858f3f0be6975b9121a61b2fae26dca129b8c1071eedbe",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/baseline-repeat-control/results.json",
+      "original_sha256": "03aaf5a3cab3dcfa7f1ac26af01acdfd0d602ef4c56dc986cc71a18cbe9764e1",
+      "published_sha256": "03aaf5a3cab3dcfa7f1ac26af01acdfd0d602ef4c56dc986cc71a18cbe9764e1",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/bf16kv-seq16/results.json",
+      "original_sha256": "590c05513c2f85d7d009cb0f34851331604ce7e890edcfe698eb7172172d4975",
+      "published_sha256": "590c05513c2f85d7d009cb0f34851331604ce7e890edcfe698eb7172172d4975",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/bf16kv-seq16-audit/results.json",
+      "original_sha256": "f5aa9647e5c8a230a4c03961a4f1aee6c1c058c4a6c42062027b2b1622afb7a6",
+      "published_sha256": "f5aa9647e5c8a230a4c03961a4f1aee6c1c058c4a6c42062027b2b1622afb7a6",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/bf16kv-seq16-context-control/results.json",
+      "original_sha256": "ac1260f9893c1d63cefa0befb7865e5e47f5f126dc3d5c2760c6b4c9f7dfa610",
+      "published_sha256": "ac1260f9893c1d63cefa0befb7865e5e47f5f126dc3d5c2760c6b4c9f7dfa610",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/bf16kv-seq16-control100/results.json",
+      "original_sha256": "cf92ef4ff3f9d40d01b3a0c6278164ae1851aa8c9262b06cd85cdd99b97547da",
+      "published_sha256": "cf92ef4ff3f9d40d01b3a0c6278164ae1851aa8c9262b06cd85cdd99b97547da",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/bf16kv-seq16-extended/results.json",
+      "original_sha256": "5bc376aecf2821d21505dcb7df054a2d2d9801a7dfe9f57cd53f1b1e3a7780cf",
+      "published_sha256": "5bc376aecf2821d21505dcb7df054a2d2d9801a7dfe9f57cd53f1b1e3a7780cf",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/bf16kv-seq16-long-prefill/results.json",
+      "original_sha256": "4d3fe34b97f527bf51c9fe7b2f586685bfd962e78f2074820b88cd4b7055a90a",
+      "published_sha256": "4d3fe34b97f527bf51c9fe7b2f586685bfd962e78f2074820b88cd4b7055a90a",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/disk-seq16-context-control/results.json",
+      "original_sha256": "5fc32e50aee275f38312856ec18b7e0ff2f50d632121c522c6cd1fcf50f1d0d2",
+      "published_sha256": "5fc32e50aee275f38312856ec18b7e0ff2f50d632121c522c6cd1fcf50f1d0d2",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/selected-audit/results.json",
+      "original_sha256": "d525c31280b243599eadb029ef144d65063c02e7a7875334926a85c2ed987ecb",
+      "published_sha256": "d525c31280b243599eadb029ef144d65063c02e7a7875334926a85c2ed987ecb",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/selected-context-control/results.json",
+      "original_sha256": "914bfe59b06646250d62dd13c23d5764cc8cbde1fe048b03d7c657fdf616118a",
+      "published_sha256": "914bfe59b06646250d62dd13c23d5764cc8cbde1fe048b03d7c657fdf616118a",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/selected-control100/results.json",
+      "original_sha256": "72065f165b0067e2980cf57f713cca81fb72203c3f5487187bc36ef2a386c9f9",
+      "published_sha256": "72065f165b0067e2980cf57f713cca81fb72203c3f5487187bc36ef2a386c9f9",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/selected-extended/results.json",
+      "original_sha256": "1605d9a72f973c5b16a77b3aac15b9e2715ff702694ee88645e56a47d04439d5",
+      "published_sha256": "1605d9a72f973c5b16a77b3aac15b9e2715ff702694ee88645e56a47d04439d5",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/selected-long-prefill/results.json",
+      "original_sha256": "8272135fbe0d30f953f4c0887a76f887d1c7f6198bea2a3da6eab2efd39160c5",
+      "published_sha256": "8272135fbe0d30f953f4c0887a76f887d1c7f6198bea2a3da6eab2efd39160c5",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/selected-quality/results.json",
+      "original_sha256": "9e790570c205d553b38ff715c603d7e3beb74a023179e240779bbbccf6e9372c",
+      "published_sha256": "9e790570c205d553b38ff715c603d7e3beb74a023179e240779bbbccf6e9372c",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/shared-seq16/results.json",
+      "original_sha256": "2e676bb93f7129822b7c26ee8978d4d4fd08c062907a8fb58850ec2ec7e8d109",
+      "published_sha256": "2e676bb93f7129822b7c26ee8978d4d4fd08c062907a8fb58850ec2ec7e8d109",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/shared-seq16-repeat-control/results.json",
+      "original_sha256": "62acbda40d759d19b059d88a322b139ca9c636794672f8e710ae96759883fe36",
+      "published_sha256": "62acbda40d759d19b059d88a322b139ca9c636794672f8e710ae96759883fe36",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/shared-seq8/results.json",
+      "original_sha256": "832ebc0144cdb21bce5a69f2706485d7a94065c16bd43d3a4223bdd3ad761f4e",
+      "published_sha256": "832ebc0144cdb21bce5a69f2706485d7a94065c16bd43d3a4223bdd3ad761f4e",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/runs/shared-seq8-repeat-control/results.json",
+      "original_sha256": "2cea584d9d261f29d776914e644d8469e4cce85dabe92f844d6d6dfc5c3af5e9",
+      "published_sha256": "2cea584d9d261f29d776914e644d8469e4cce85dabe92f844d6d6dfc5c3af5e9",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/startup/baseline-restored-startup.json",
+      "original_sha256": "aaf6ba1697fbb220b95058804612f6d06294790fd760bca2b81ebcb0fbb4e844",
+      "published_sha256": "2303ca05a9d0dff05fb731c53158787a2a9db3ba09071165c72692eba6471003",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/startup/bf16kv-seq16-startup.json",
+      "original_sha256": "db1df3c60360dd348a1e8eac0be12307f852aaa3cc9664866ab77780991fa54e",
+      "published_sha256": "5a046e00ec9fdfdb5758d9828a360b70b3cdee31591f0b7f8c582d38ca2d90a3",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/startup/disk-seq16-startup.json",
+      "original_sha256": "eda189d3f4656ef11932c91a5a9c8bffd779f8cb8a3327a05375aafd6ba77f59",
+      "published_sha256": "0f71c501f5f8b1e7b3399e990405f6b1365cd65515e3485caab04fa3a7580e12",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/startup/shared-seq16-dynamic-startup.json",
+      "original_sha256": "73cc8df63258a68c972b5801198f3b367be690d4467584f592da1daac2c8a977",
+      "published_sha256": "0af0d0719602a46d3ff62e61e2a24e46e261e043038074f6caec8c05c59d5752",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/startup/shared-seq16-guard-corrected-startup.json",
+      "original_sha256": "4c0d2ee7f36a4ba8284079c4d16eede6763d9527e4a89eb52bad832c5ae5d37a",
+      "published_sha256": "816d41947560abe502ec1c3a7b3ec0954a0a7639617c152e3881feb3e3efbf58",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/startup/shared-seq16-startup.json",
+      "original_sha256": "8d9befb3d8b5488d389ee90f74ee0b12c7f8f5126542cd5635a378bfc0267c92",
+      "published_sha256": "df56f0e2a0b0351136c146fef0d3c2089a89f0c7fff6eff52c4259d70d89b0fd",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/startup/shared-seq8-startup.json",
+      "original_sha256": "fb8f2e738f2cc8fa06a205dedd1246cfb482d378979bb469c606dbc944cca6c4",
+      "published_sha256": "4e1383416893397596dbc8fe8dbb89dcea23a17ffe90d09632f6664a5a0323d7",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/logs/disk-seq16-C-3765-startup.log.gz",
+      "original_sha256": "10d56db44f2eee1612588b2e8b314661d936481064822ea618bb9b809f93c418",
+      "published_sha256": "ca57b20eb9586f77b30d3159037f6b409aebe52fd6dfa0aea07687ade3e8e53c",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/logs/disk-seq16-spark-startup.log.gz",
+      "original_sha256": "eaea45bb1b6f58df7d0aa7d7a30016077ae9f337ce349d41f74c034d2c609c50",
+      "published_sha256": "d61617a7a804a74911516bf5921bf93c66c15e8ec4c7d70c4e24a39853d5d767",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/logs/dynamic-rejected-C-3765-startup.log.gz",
+      "original_sha256": "89d7d57c4b126c7893b0bc73e8e5b1ddd17bde34ab82465adf33a9274a1cfb61",
+      "published_sha256": "9321fb1d7d9d0ddcf7dbbb78a4d4b8b67a5085c1906596da967cc3630e013d63",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/logs/dynamic-rejected-spark-startup.log.gz",
+      "original_sha256": "f76a4c3b5d468b7e167cf5a609ba494d5f20c2242890ef22cfeef8da013ff2d3",
+      "published_sha256": "b087048bd9c54bee89d65f82d7008ed04fcb84bbde378ed215b9946925efda51",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/logs/shared-seq16-C-3765-startup.log.gz",
+      "original_sha256": "23a617231b6f77834764207abce11f7915c03523a9494d2a7a99b8d3b9c3bfa7",
+      "published_sha256": "80815b0fda4914b1723ef8dfc0176a19dfe892a986c308b8e6ea7867f28264dd",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/logs/shared-seq16-guard-failed-C-3765-startup.log.gz",
+      "original_sha256": "584dbc1356b695efa97c0498a5a884a35c33cdc1b50ad477f81dc86131192ec5",
+      "published_sha256": "fda73b837f2d3669d094c408d50231b4430dc665b10e1de89fe2545f6d0f86c4",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/logs/shared-seq16-guard-failed-spark-startup.log.gz",
+      "original_sha256": "0d07a6c8b7deab55403bd2fb6ac0c88b2b94010a0e4b767913f99f259e0abd59",
+      "published_sha256": "40e4343010825350b4c34d8425278793409ee2775fd74562a31d33ce2a42538f",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/logs/shared-seq16-spark-startup.log.gz",
+      "original_sha256": "b4ae585ffe64b0247d985baa9950f385b142634d8b7ad0b300817be2aa3e3b20",
+      "published_sha256": "45c1b5124d3d9116394f772c1479fb180b3e56171ecf877b2da1ed83026224a9",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/logs/shared-seq8-C-3765-startup.log.gz",
+      "original_sha256": "21bd1f4822df594713a008fd48941829565a467af904667a6f0e30dc7e7db566",
+      "published_sha256": "dfbc133629a20dce4083d69155b78349bd2aed7bbf75087031fc5016ba535428",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/logs/shared-seq8-spark-startup.log.gz",
+      "original_sha256": "b788ce237f398d37471b550dd363c789548f8d0c2c6b3af36cb6461f1659f5d0",
+      "published_sha256": "a83919d4da8bc309b5913a5be736dc07d02591a617a8617410e9c56d53a9e24f",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    },
+    {
+      "path": "evidence/protocol.json",
+      "original_sha256": "2bd0068b80042d3e54020f72a3c346e205e2efd73e95c8513d63c5156702ea4f",
+      "published_sha256": "2bd0068b80042d3e54020f72a3c346e205e2efd73e95c8513d63c5156702ea4f",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/checkpoint-summary.json",
+      "original_sha256": "316e438b87aa75a578214aa493f7b5ce2e086f67c843a36129ed3126f6e57a22",
+      "published_sha256": "316e438b87aa75a578214aa493f7b5ce2e086f67c843a36129ed3126f6e57a22",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/review.json",
+      "original_sha256": "5e1c79dc0a64504cfe77619dcffb194d896c455f98de93e1a4e70f7586f05773",
+      "published_sha256": "5e1c79dc0a64504cfe77619dcffb194d896c455f98de93e1a4e70f7586f05773",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/qualification.json",
+      "original_sha256": "2c646b18104abc06762f0a4b9d13260dec5abce6e8b2c7518df93edee4073cc2",
+      "published_sha256": "2c646b18104abc06762f0a4b9d13260dec5abce6e8b2c7518df93edee4073cc2",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/managed-restart-context.json",
+      "original_sha256": "7eba3c31a74344e71f14af3221a4cef2627f7f9dee90b91387ea6e9a2a25ab2d",
+      "published_sha256": "7eba3c31a74344e71f14af3221a4cef2627f7f9dee90b91387ea6e9a2a25ab2d",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/dynamic-rejection.json",
+      "original_sha256": "de6736fdef358e3d1fcf93fe6da6be8b4a978e94b738f9739f345e0db2b55094",
+      "published_sha256": "de6736fdef358e3d1fcf93fe6da6be8b4a978e94b738f9739f345e0db2b55094",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/comparison-preliminary.json",
+      "original_sha256": "407693a9bb4d993b94aeb7704a3f21aa55d2ed085dc82cca8054dade17c5a110",
+      "published_sha256": "407693a9bb4d993b94aeb7704a3f21aa55d2ed085dc82cca8054dade17c5a110",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/report.json",
+      "original_sha256": "9080e39c03337d19f34727afae1df9af01adb4df8b2296c7f86f61c4e96379e6",
+      "published_sha256": "e50ff121444b37c074f4c8e4adb615f14a2e0f9b303894b15ccb4039a766d78e",
+      "transform": "removed personal connections and detailed runtime command/environment; normalized host labels and paths; measurements unchanged"
+    },
+    {
+      "path": "evidence/profile.json",
+      "original_sha256": "edb399f47d414f5e0d8c5a352d089cc93672aca6ecaa7a36ff81d3743983bb10",
+      "published_sha256": "12b15b08674906fd9ce1bccc936ddcb36c9830cb85f777d210cff943af8fdd5d",
+      "transform": "historical status wording and relocated documentation paths; qualified configuration and original recipe hash retained; original qualified recipe hash preserved and published recipe hash added"
+    },
+    {
+      "path": "evidence/checkpoint-review.json.gz",
+      "original_sha256": "abeffdc27d1c36efc7c547103b76eae59ebbd831f6d62ba84b733cf90dccf17f",
+      "published_sha256": "3ba0fcfd0d5878ee4f51e86ee69b7f4c7e35c3e682ddc6d2aaa81a3b8b991237",
+      "transform": "deterministic gzip; any local usernames/management endpoints anonymized; tensor review values unchanged"
+    },
+    {
+      "path": "evidence/integrity/checksums.log",
+      "original_sha256": "6a4deaa681a210a615dd2fd74473a46f8aafa7063e2c297a39bf9077f65cf0de",
+      "published_sha256": "6a4deaa681a210a615dd2fd74473a46f8aafa7063e2c297a39bf9077f65cf0de",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/integrity/mxfp8-structural-check.json",
+      "original_sha256": "d8034c07a0d09935d4197a31456ddccae393de0a7ba14e0e7dcfe4a6df752087",
+      "published_sha256": "d8034c07a0d09935d4197a31456ddccae393de0a7ba14e0e7dcfe4a6df752087",
+      "transform": "unchanged"
+    },
+    {
+      "path": "evidence/integrity/initial-deployment.json",
+      "original_sha256": "c70928c5cb0979340925b9ff2d60f8d3bf64103fd21094c47fef9d95f0475f33",
+      "published_sha256": "1298808c62ddc89441e2f940cbd215a30d9db3801ff6b3e0551b4bfa0d80857c",
+      "transform": "publication substitutions for local usernames/management endpoints; measurements unchanged"
+    }
+  ]
+}

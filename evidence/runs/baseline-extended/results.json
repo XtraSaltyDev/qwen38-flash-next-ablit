@@ -1,0 +1,418 @@
+{
+  "label": "baseline-extended",
+  "started_utc": "2026-10-22T13:42:05.584777+00:00",
+  "protocol": {
+    "model": "Qwen3.8-Flash-Next",
+    "concurrency": [
+      1
+    ],
+    "repeats": 1,
+    "output_tokens": 256,
+    "temperature": 0,
+    "seed": 3741,
+    "thinking": false,
+    "fixture_sha256": "e0fa852d6a26c9123839ee5c7faafddec84a112ba3731d04afca35c1009f1119",
+    "cache_policy": "unique prefix for each wave; fixed prefix length, same prompts across treatments",
+    "percentiles": "nearest-rank; small controlled sample, not a production SLO"
+  },
+  "waves": [],
+  "quality": [
+    {
+      "name": "executed_code_merge_intervals",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-a3471d3e17f3f1a4",
+        "object": "chat.completion",
+        "created": 1792676525,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n    sorted_intervals = sorted(intervals, key=lambda x: x[0])\n    merged = []\n    current_start, current_end = sorted_intervals[0]\n    for start, end in sorted_intervals[1:]:\n        if start <= current_end:\n            current_end = max(current_end, end)\n        else:\n            merged.append([current_start, current_end])\n            current_start, current_end = start, end\n    merged.append([current_start, current_end])\n    return merged",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 67,
+          "total_tokens": 192,
+          "completion_tokens": 125,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "test_detail": ""
+    },
+    {
+      "name": "executed_code_flatten_once",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-b7f22c1b162def92",
+        "object": "chat.completion",
+        "created": 1792676527,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "def flatten_once(items):\n    result = []\n    for item in items:\n        if isinstance(item, list):\n            result.extend(item)\n        else:\n            result.append(item)\n    return result",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 52,
+          "total_tokens": 98,
+          "completion_tokens": 46,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "test_detail": ""
+    },
+    {
+      "name": "executed_code_parse_duration",
+      "passed": false,
+      "response": {
+        "id": "chatcmpl-85e1209724c3eafd",
+        "object": "chat.completion",
+        "created": 1792676527,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "```python\ndef parse_duration(text):\n    if not isinstance(text, str):\n        raise ValueError(\"Input must be a string\")\n    \n    if text == \"\":\n        raise ValueError(\"Empty input\")\n    \n    total_seconds = 0\n    i = 0\n    n = len(text)\n    \n    if n == 0:\n        raise ValueError(\"Empty input\")\n    \n    while i < n:\n        # Parse digits\n        start = i\n        while i < n and text[i].isdigit():\n            i += 1\n        \n        if i == start:\n            raise ValueError(\"Missing number\")\n        \n        num_str = text[start:i]\n        number = int(num_str)\n        \n        if number <= 0:\n            raise ValueError(\"Duration components must be positive integers\")\n        \n        # Check for unit character\n        if i >= n:\n            raise ValueError(\"Missing unit\")\n        \n        unit = text[i]\n        i += 1\n        \n        if unit == 'h':\n            total_seconds += number * 3600\n        elif unit == 'm':\n            total_seconds += number * 60\n        elif unit == 's':\n            total_seconds += number\n        else:\n            raise ValueError(f\"Unknown unit: {unit}\")\n    \n    return total_seconds\n```",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 88,
+          "total_tokens": 374,
+          "completion_tokens": 286,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "test_detail": "Traceback (most recent call last):\n  File \"<string>\", line 48, in <module>\n  File \"<string>\", line 28, in parse_duration\nValueError: Duration components must be positive integers\n"
+    },
+    {
+      "name": "executed_code_sliding_max",
+      "passed": false,
+      "response": {
+        "id": "chatcmpl-990e41aa3ae30b89",
+        "object": "chat.completion",
+        "created": 1792676531,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "def sliding_max(nums, k):\n    if not nums or k <= 0 or k > len(nums):\n        return []\n    from collections import deque\n    dq = deque()\n    result = []\n    for i in range(len(nums)):\n        # Remove elements outside the window\n        while dq and dq[0] < i - k + 1:\n            dq.popleft()\n        # Remove elements smaller than current from the back\n        while dq and nums[dq[-1]] <= nums[i]:\n            dq.pop()\n        dq.append(i)\n        # Start adding results once the first window is complete\n        if i >= k - 1:\n            result.append(nums[dq[0]])\n    return result",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 58,
+          "total_tokens": 216,
+          "completion_tokens": 158,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "test_detail": "Imports are outside fixture contract"
+    },
+    {
+      "name": "invoice_a",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-90fe85f5e4f12407",
+        "object": "chat.completion",
+        "created": 1792676533,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"invoice_number\": \"INV-2047\", \"total\": 148.50, \"currency\": \"USD\"}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 569,
+          "total_tokens": 599,
+          "completion_tokens": 30,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "expected": {
+        "invoice_number": "INV-2047",
+        "total": 148.5,
+        "currency": "USD"
+      },
+      "image_sha256": "0583838e2a5f86b082e052503f9d0981c7ecab51d1f64b9eb6b69cc8212e5378"
+    },
+    {
+      "name": "invoice_b",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-98cf3f5ab6cf93a5",
+        "object": "chat.completion",
+        "created": 1792676534,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"invoice_number\":\"CDR-3812\",\"total\":907.25,\"currency\":\"USD\"}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 569,
+          "total_tokens": 595,
+          "completion_tokens": 26,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "expected": {
+        "invoice_number": "CDR-3812",
+        "total": 907.25,
+        "currency": "USD"
+      },
+      "image_sha256": "69daadd07a7a6a3b9092eb9d474d2441cfcefb900d2008b2c37ec80474a65801"
+    },
+    {
+      "name": "invoice_c",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-9a71d6dbfddd907a",
+        "object": "chat.completion",
+        "created": 1792676535,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"invoice_number\": \"INV-1059\", \"total\": 63.40, \"currency\": \"USD\"}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 569,
+          "total_tokens": 598,
+          "completion_tokens": 29,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "expected": {
+        "invoice_number": "INV-1059",
+        "total": 63.4,
+        "currency": "USD"
+      },
+      "image_sha256": "61c8caa6026adcade5440ca7a907bbf381d4fc38c5f037d3de51da272b423140"
+    },
+    {
+      "name": "near_262k_retrieval",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-9dbc7920d0c24295",
+        "object": "chat.completion",
+        "created": 1792676537,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"early\": \"R7D4\",\n  \"middle\": \"C2K9\",\n  \"late\": \"P8M5\"\n}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 261623,
+          "total_tokens": 261660,
+          "completion_tokens": 37,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "actual_prompt_tokens": 261623
+    }
+  ],
+  "quality_summary": {
+    "passed": 6,
+    "total": 8,
+    "scope": "pure code fixtures, synthetic invoice OCR, and synthetic long-context retrieval; not a general capability benchmark"
+  },
+  "complete": true
+}

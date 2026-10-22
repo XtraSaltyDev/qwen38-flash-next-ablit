@@ -1,0 +1,20 @@
+{
+  "status": "active; managed restart and routes passed",
+  "qualified_at_utc": "2026-10-22T15:38:34.944148+00:00",
+  "selected": "bf16kv-seq16",
+  "core_checks": "13/13",
+  "extended_preserved_checks": "7/7; sliding_max no-import instruction failure also present in baseline",
+  "strict_261623_token_json": "10/10",
+  "invoice_ocr": "3/3",
+  "word_count_control": "100/100 versus baseline 95/100",
+  "target_greedy_tokens": {
+    "tokens": 384,
+    "mismatches": 0,
+    "scope": "Returned target top-1 audit on these fixtures; not a full-vocabulary distribution equivalence test"
+  },
+  "known_limits": [
+    "Bounded synthetic fixtures, not a full capability benchmark or production SLO qualification.",
+    "Serial prose decode was about 8 percent slower in the short fixture; coding decode remained close to baseline.",
+    "Capacity is 12.51 full-context equivalents with a 16-active-sequence scheduler. Original eight-full-context minimum retained."
+  ]
+}

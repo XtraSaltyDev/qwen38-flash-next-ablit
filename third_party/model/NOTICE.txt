@@ -1,0 +1,17 @@
+Qwen3.8 Flash Next FP4 Local — Abliterated Trial 117
+Community derivative published by DevelopingDad, October 20, 2026.
+
+Derived from nvidia/Qwen3.8-Flash-Next-FP4-Local at revision
+b9ce18a6887e18c089fdea8509a33e63429a3300, itself derived from
+Qwen/Qwen3.8-Flash-Next. Copyright and upstream license notices remain
+with their respective owners.
+
+Governing NVIDIA download terms:
+https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-agreement/
+The upstream NVIDIA model card and Qwen Community License 1.0 are
+preserved under upstream/.
+
+This release modifies attention output projections and routed/shared
+expert down projections using accepted trial 117 continuation directions.
+It is an approximate standalone bake, with measured results and
+qualification limits documented in README.md and validation-results.json.

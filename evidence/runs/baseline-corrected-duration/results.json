@@ -1,0 +1,70 @@
+{
+  "label": "baseline-corrected-duration",
+  "started_utc": "2026-10-22T13:44:27.290354+00:00",
+  "protocol": {
+    "model": "Qwen3.8-Flash-Next",
+    "concurrency": [
+      1
+    ],
+    "repeats": 1,
+    "output_tokens": 256,
+    "temperature": 0,
+    "seed": 3741,
+    "thinking": false,
+    "fixture_sha256": "e0fa852d6a26c9123839ee5c7faafddec84a112ba3731d04afca35c1009f1119",
+    "cache_policy": "unique prefix for each wave; fixed prefix length, same prompts across treatments",
+    "percentiles": "nearest-rank; small controlled sample, not a production SLO"
+  },
+  "waves": [],
+  "quality": [
+    {
+      "name": "executed_code_parse_duration",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-b15e903609946f30",
+        "object": "chat.completion",
+        "created": 1792676667,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "def parse_duration(text):\n    if not isinstance(text, str):\n        raise ValueError(\"Input must be a string\")\n    \n    if text == \"\":\n        raise ValueError(\"Empty input\")\n    \n    total_seconds = 0\n    i = 0\n    n = len(text)\n    \n    if n == 0:\n        raise ValueError(\"Empty input\")\n    \n    while i < n:\n        # Parse digits\n        start = i\n        while i < n and text[i].isdigit():\n            i += 1\n        \n        if i == start:\n            raise ValueError(\"Missing number\")\n        \n        num_str = text[start:i]\n        num = int(num_str)\n        \n        if i >= n:\n            raise ValueError(\"Missing unit\")\n        \n        unit = text[i]\n        i += 1\n        \n        if unit == 'h':\n            total_seconds += num * 3600\n        elif unit == 'm':\n            total_seconds += num * 60\n        elif unit == 's':\n            total_seconds += num\n        else:\n            raise ValueError(\"Unknown unit\")\n    \n    return total_seconds",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 89,
+          "total_tokens": 338,
+          "completion_tokens": 249,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "test_detail": ""
+    }
+  ],
+  "note": "Initial prompt said positive but its test included zero. That initial case is unscored; this prompt consistently specifies non-negative. Other fixtures unchanged.",
+  "complete": true
+}

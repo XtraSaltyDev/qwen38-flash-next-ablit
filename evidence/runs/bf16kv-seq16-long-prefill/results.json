@@ -1,0 +1,951 @@
+{
+  "label": "bf16kv-seq16-long-prefill",
+  "started_utc": "2026-10-22T15:25:23.910655+00:00",
+  "protocol": {
+    "model": "Qwen3.8-Flash-Next",
+    "concurrency": [
+      1,
+      4,
+      16
+    ],
+    "repeats": 1,
+    "output_tokens": 128,
+    "temperature": 0,
+    "seed": 3741,
+    "thinking": false,
+    "fixture_sha256": "4dd73c43b3fc26939b91d7887d94d3f8c01450586c743160a15db10abf1908a1",
+    "cache_policy": "unique prefix for each wave; fixed prefix length, same prompts across treatments",
+    "percentiles": "nearest-rank; small controlled sample, not a production SLO",
+    "context_records": 300
+  },
+  "waves": [
+    {
+      "repeat": 0,
+      "concurrency": 1,
+      "fixture": "code",
+      "wall_seconds": 4.159893149997515,
+      "aggregate_tokens_per_second": 30.770021100199763,
+      "ttft_p50_seconds": 2.7373269950039685,
+      "ttft_p95_seconds": 2.7373269950039685,
+      "e2e_p95_seconds": 4.1586020390022895,
+      "per_stream_decode_median": 89.35638498423535,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 41513.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 20041.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 144.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 41645.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 20135.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 145.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 2.7373269950039685,
+          "e2e_seconds": 4.1586020390022895,
+          "decode_tokens_per_second": 89.35638498423535,
+          "tpot_seconds": 0.011191142078726938,
+          "stream_chunk_gap_p95_seconds": 0.05205037999985507,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nimport unittest\nfrom collections import OrderedDict\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key=None, value=None):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU Cache using a doubly linked list and a dictionary.\n    \n    The doubly linked list maintains the order of usage:\n    - Head side: Most recently used\n    - Tail side: Least recently used\n    \n    The dictionary provides O"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "concurrency": 1,
+      "fixture": "prose",
+      "wall_seconds": 4.931301454002096,
+      "aggregate_tokens_per_second": 25.956636639222097,
+      "ttft_p50_seconds": 2.7266364019960747,
+      "ttft_p95_seconds": 2.7266364019960747,
+      "e2e_p95_seconds": 4.930862138993689,
+      "per_stream_decode_median": 57.61660335796064,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 41645.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 20135.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 145.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 41845.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 20212.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 146.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 2.7266364019960747,
+          "e2e_seconds": 4.930862138993689,
+          "decode_tokens_per_second": 57.61660335796064,
+          "tpot_seconds": 0.017356108165335546,
+          "stream_chunk_gap_p95_seconds": 0.05003403199953027,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering of disk writes that guarantees the atomicity and durability of transactions, even in the face of sudden power loss or system crashes. The fundamental principle is that no change to the actual database pages on disk is permitted until the corresponding log record describing that change has been safely persisted to stable storage. This mechanism relies on the concept of transactions, which are logical units of work that must either be fully applied or completely undone. When a transaction begins, the database writes a \"begin\" record to the log; as operations occur, \"update\" records are written containing"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "concurrency": 4,
+      "fixture": "code",
+      "wall_seconds": 13.22360201599804,
+      "aggregate_tokens_per_second": 38.71864862392089,
+      "ttft_p50_seconds": 8.063017117998243,
+      "ttft_p95_seconds": 10.961598280002363,
+      "e2e_p95_seconds": 13.221431970996491,
+      "per_stream_decode_median": 27.169161831376,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 41845.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 20212.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 146.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 42381.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 20586.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 150.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 6.704106843993941,
+          "e2e_seconds": 13.05719609499647,
+          "decode_tokens_per_second": 19.990274806852298,
+          "tpot_seconds": 0.05002432481104354,
+          "stream_chunk_gap_p95_seconds": 1.2580466549989069,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "Here is a complete Python implementation of a bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary, along with explanations and unit tests.\n\n### Implementation\n\n```python\nclass Node:\n    \"\"\"Doubly linked list node to store key-value pairs.\"\"\"\n    def __init__(self, key: str, value: any):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU Cache using a doubly linked list and a dictionary.\n    \n    - The"
+        },
+        {
+          "ttft_seconds": 9.421927392002544,
+          "e2e_seconds": 13.119371765998949,
+          "decode_tokens_per_second": 34.348048855899705,
+          "tpot_seconds": 0.029113735228318144,
+          "stream_chunk_gap_p95_seconds": 0.2823672459999216,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "Here is a complete Python implementation of a bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary, along with explanations and unit tests.\n\n### Implementation\n\n```python\nclass Node:\n    \"\"\"Doubly Linked List Node for LRU Cache.\"\"\"\n    def __init__(self, key=None, value=None):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU Cache using a Doubly Linked List and a Dictionary.\n    \n    - The dictionary provides"
+        },
+        {
+          "ttft_seconds": 4.0051786539988825,
+          "e2e_seconds": 12.987620652995247,
+          "decode_tokens_per_second": 14.138694133977163,
+          "tpot_seconds": 0.07072788975587689,
+          "stream_chunk_gap_p95_seconds": 2.6974033809965476,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nimport unittest\nfrom typing import Any, Optional\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary.\n    \n    - The dictionary provides O(1) lookup by key"
+        },
+        {
+          "ttft_seconds": 10.961598280002363,
+          "e2e_seconds": 13.221431970996491,
+          "decode_tokens_per_second": 56.19882582781177,
+          "tpot_seconds": 0.017793966070819907,
+          "stream_chunk_gap_p95_seconds": 0.10243926300609019,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nimport unittest\nfrom collections import OrderedDict\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key=None, value=None):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary.\n    \n    The doubly linked list maintains the order of usage:\n    - Head side: Most recently used\n    - Tail side: Least recently used\n    \n"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "concurrency": 4,
+      "fixture": "prose",
+      "wall_seconds": 14.215813444003288,
+      "aggregate_tokens_per_second": 36.01622953317377,
+      "ttft_p50_seconds": 8.079822102001344,
+      "ttft_p95_seconds": 10.967874734000361,
+      "e2e_p95_seconds": 14.21454258900485,
+      "per_stream_decode_median": 21.89091017042361,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 42381.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 20586.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 150.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 43153.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 20901.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 154.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 6.727384197998617,
+          "e2e_seconds": 14.10018991099787,
+          "decode_tokens_per_second": 17.225464082972085,
+          "tpot_seconds": 0.0580535882913327,
+          "stream_chunk_gap_p95_seconds": 0.2816293259966187,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering of disk writes that guarantees the atomicity and durability of transactions, even in the face of hardware failures or power loss. The core principle is that no data page is written to the main database file until the corresponding log record describing the change has been safely persisted to stable storage. This mechanism relies on the concept of transactions, which are logical units of work that must either be fully applied or completely undone. When a transaction begins, the database writes a \"begin\" record to the log; as operations occur, \"update\" records are appended; and upon"
+        },
+        {
+          "ttft_seconds": 10.967874734000361,
+          "e2e_seconds": 14.21377320800093,
+          "decode_tokens_per_second": 39.1263007815129,
+          "tpot_seconds": 0.02555825570079188,
+          "stream_chunk_gap_p95_seconds": 0.11349670599884121,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The provided context document, consisting of 300 identical records of cedar assets in the north zone, serves as a static baseline but does not directly influence the theoretical mechanics of database durability. To explain how a database write-ahead log (WAL) ensures crash recovery reliability, we must look at the fundamental principles of transactional integrity and disk persistence.\n\nA write-ahead log is a journaling mechanism that ensures atomicity and durability in database transactions. Before any data page is modified on disk, the database first writes the intended change to the WAL. This log contains a sequence of records describing every modification, including the transaction ID, the data"
+        },
+        {
+          "ttft_seconds": 4.026462563000678,
+          "e2e_seconds": 13.894817457003228,
+          "decode_tokens_per_second": 12.869419610879996,
+          "tpot_seconds": 0.07770358184253977,
+          "stream_chunk_gap_p95_seconds": 1.254345932000433,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering of disk writes that guarantees the atomicity and durability of transactions, even in the face of hardware failures or power loss. The fundamental principle is that no data page is written to the main database file until the corresponding log record describing the change has been safely persisted to stable storage. This \"write-ahead\" discipline means that the log serves as the authoritative source of truth for the state of the database, allowing the system to reconstruct the correct state after a crash by replaying or undoing operations recorded in the log.\n\nTransactions are the primary unit of work"
+        },
+        {
+          "ttft_seconds": 9.432260006004071,
+          "e2e_seconds": 14.21454258900485,
+          "decode_tokens_per_second": 26.556356257875137,
+          "tpot_seconds": 0.03765576837008487,
+          "stream_chunk_gap_p95_seconds": 0.1677964430054999,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering of disk writes that guarantees the atomicity and durability of transactions, even in the face of hardware failures or power loss. The core principle is that no change to the actual database pages on disk is permitted until the corresponding log record describing that change has been safely persisted to stable storage. This mechanism relies on the concept of transactions, which are logical units of work that must either be fully applied or completely undone. When a transaction begins, the database writes a \"begin\" record to the log; as operations occur, \"update\" records are appended; and"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "concurrency": 16,
+      "fixture": "code",
+      "wall_seconds": 48.80417883300106,
+      "aggregate_tokens_per_second": 41.963619693466825,
+      "ttft_p50_seconds": 25.975496610000846,
+      "ttft_p95_seconds": 45.02035564599646,
+      "e2e_p95_seconds": 48.79901430699829,
+      "per_stream_decode_median": 5.830769102739545,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 43153.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 20901.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 154.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 45305.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 22395.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 170.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 13.546614625003713,
+          "e2e_seconds": 46.74631375600438,
+          "decode_tokens_per_second": 3.825335871234207,
+          "tpot_seconds": 0.26141495378740687,
+          "stream_chunk_gap_p95_seconds": 2.8351464989973465,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nimport unittest\nfrom collections import OrderedDict\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key=None, value=None):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary.\n    \n    - The dictionary provides O(1) average-time lookup of nodes by key.\n    - The doubly linked list maintains the order of usage:"
+        },
+        {
+          "ttft_seconds": 6.753889448002155,
+          "e2e_seconds": 45.52381364200119,
+          "decode_tokens_per_second": 3.2757350611394176,
+          "tpot_seconds": 0.30527499365353566,
+          "stream_chunk_gap_p95_seconds": 2.8341708929947345,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nimport unittest\nfrom typing import Any, Optional\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary.\n    \n    The doubly linked list maintains the order of usage:\n"
+        },
+        {
+          "ttft_seconds": 4.038895274003153,
+          "e2e_seconds": 45.354747534001945,
+          "decode_tokens_per_second": 3.0738806790380298,
+          "tpot_seconds": 0.32532167133857315,
+          "stream_chunk_gap_p95_seconds": 2.834632623998914,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nimport unittest\nfrom collections import OrderedDict\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key=None, value=None):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary.\n    \n    The doubly linked list maintains the order of usage:\n    - Head side: Most recently used\n    - Tail side: Least recently used\n    \n"
+        },
+        {
+          "ttft_seconds": 9.468436057999497,
+          "e2e_seconds": 46.1542079619976,
+          "decode_tokens_per_second": 3.4618325691045153,
+          "tpot_seconds": 0.28886434570077246,
+          "stream_chunk_gap_p95_seconds": 2.8350302899998496,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key=None, value=None):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary.\n    \n    - The dictionary provides O(1) average-time lookup by key.\n    - The doubly linked list maintains the order of usage: most recently used at the head,\n      least"
+        },
+        {
+          "ttft_seconds": 19.03045390600164,
+          "e2e_seconds": 47.29452530999697,
+          "decode_tokens_per_second": 4.493337077475951,
+          "tpot_seconds": 0.2225517433385459,
+          "stream_chunk_gap_p95_seconds": 2.8346358410053654,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "Here is a complete Python implementation of a bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary, along with explanations and unit tests.\n\n### Implementation\n\n```python\nclass Node:\n    \"\"\"Doubly linked list node to store key-value pairs.\"\"\"\n    def __init__(self, key: str, value: any):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU Cache using a doubly linked list and a dictionary.\n    \n    - The"
+        },
+        {
+          "ttft_seconds": 16.282932436995907,
+          "e2e_seconds": 47.16203919200052,
+          "decode_tokens_per_second": 4.112813269101994,
+          "tpot_seconds": 0.24314257287405208,
+          "stream_chunk_gap_p95_seconds": 2.8342971180027234,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "Here is a complete Python implementation of a bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary, along with explanations and unit tests.\n\n### Implementation\n\n```python\nclass Node:\n    \"\"\"Doubly Linked List Node for LRU Cache.\"\"\"\n    def __init__(self, key=None, value=None):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU Cache using a Doubly Linked List and a Dictionary.\n    \n    - Dictionary (hash"
+        },
+        {
+          "ttft_seconds": 21.80940278199705,
+          "e2e_seconds": 47.033465913002146,
+          "decode_tokens_per_second": 5.034874807456901,
+          "tpot_seconds": 0.19861467032287478,
+          "stream_chunk_gap_p95_seconds": 2.8344976470034453,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nimport unittest\nfrom typing import Any, Optional\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary.\n    \n    The doubly linked list maintains the order of usage:\n"
+        },
+        {
+          "ttft_seconds": 24.582582096001715,
+          "e2e_seconds": 47.42244639300043,
+          "decode_tokens_per_second": 5.560453352460965,
+          "tpot_seconds": 0.17984145115747016,
+          "stream_chunk_gap_p95_seconds": 2.8338601069990546,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nimport unittest\nfrom typing import Any, Optional\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary.\n    \n    The doubly linked list maintains the order of usage:\n"
+        },
+        {
+          "ttft_seconds": 27.368411123999977,
+          "e2e_seconds": 48.18438124399836,
+          "decode_tokens_per_second": 6.101084853018124,
+          "tpot_seconds": 0.16390527653542034,
+          "stream_chunk_gap_p95_seconds": 2.8350949470041087,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "Here is a complete Python implementation of a bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary, along with explanations and unit tests.\n\n### Implementation\n\n```python\nclass Node:\n    \"\"\"Doubly Linked List Node for LRU Cache.\"\"\"\n    def __init__(self, key=None, value=None):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU Cache using a doubly linked list and a dictionary.\n    \n    - The dictionary provides O"
+        },
+        {
+          "ttft_seconds": 30.1831063599966,
+          "e2e_seconds": 47.788337234997016,
+          "decode_tokens_per_second": 7.213765096391955,
+          "tpot_seconds": 0.1386238651574836,
+          "stream_chunk_gap_p95_seconds": 2.834626431998913,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nimport unittest\nfrom typing import Any, Optional\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary.\n    \n    The doubly linked list maintains the order of usage:\n"
+        },
+        {
+          "ttft_seconds": 32.997140287996444,
+          "e2e_seconds": 48.09467764799774,
+          "decode_tokens_per_second": 8.411967923753433,
+          "tpot_seconds": 0.11887824692914407,
+          "stream_chunk_gap_p95_seconds": 2.83389812400128,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nimport unittest\nfrom typing import Any, Optional, Tuple\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary.\n    \n    The doubly linked list maintains the order of usage"
+        },
+        {
+          "ttft_seconds": 38.65310847500223,
+          "e2e_seconds": 48.74049174100219,
+          "decode_tokens_per_second": 12.589984602653095,
+          "tpot_seconds": 0.07942821469291307,
+          "stream_chunk_gap_p95_seconds": 2.8302890549966833,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nWhen the cache is full and a new item needs to be inserted, the least recently\nused item is evicted.\n\nKey operations:\n- get(key): Returns the value for the key if it exists, otherwise -1.\n  Marks the accessed item as most recently used.\n- put(key, value): Inserts or updates the value for the key.\n  If the cache exceeds capacity, evicts the least recently used"
+        },
+        {
+          "ttft_seconds": 35.81645302299876,
+          "e2e_seconds": 48.58970982000028,
+          "decode_tokens_per_second": 9.94264830170899,
+          "tpot_seconds": 0.10057682517324033,
+          "stream_chunk_gap_p95_seconds": 2.8349157140037278,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "Here is a complete Python implementation of a bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary, along with explanations and unit tests.\n\n### Implementation\n\n```python\nclass Node:\n    \"\"\"Doubly Linked List Node for LRU Cache.\"\"\"\n    def __init__(self, key=None, value=None):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU Cache using a Doubly Linked List and a Dictionary.\n    \n    - Dictionary (hash"
+        },
+        {
+          "ttft_seconds": 41.48371663600119,
+          "e2e_seconds": 48.798701201005315,
+          "decode_tokens_per_second": 17.361622416482625,
+          "tpot_seconds": 0.057598303661449794,
+          "stream_chunk_gap_p95_seconds": 0.6818235000027926,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nimport unittest\nfrom collections import OrderedDict\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key=None, value=None):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU Cache using a doubly linked list and a dictionary.\n    \n    - The dictionary provides O(1) lookup of nodes by key.\n    - The doubly linked list maintains the order of usage:\n        - Head side: most"
+        },
+        {
+          "ttft_seconds": 45.02035564599646,
+          "e2e_seconds": 48.79901430699829,
+          "decode_tokens_per_second": 33.609810092327514,
+          "tpot_seconds": 0.029753217803163996,
+          "stream_chunk_gap_p95_seconds": 0.3240692039980786,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nimport unittest\nfrom typing import Any, Optional\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary.\n    \n    The doubly linked list maintains the order of usage:\n"
+        },
+        {
+          "ttft_seconds": 44.33817969500524,
+          "e2e_seconds": 48.740423517003364,
+          "decode_tokens_per_second": 28.848924579183393,
+          "tpot_seconds": 0.03466333718108761,
+          "stream_chunk_gap_p95_seconds": 0.33466040199709823,
+          "usage": {
+            "prompt_tokens": 8174,
+            "total_tokens": 8302,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\nimport unittest\nfrom collections import OrderedDict\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    def __init__(self, key=None, value=None):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    Bounded LRU (Least Recently Used) cache using a doubly linked list and a dictionary.\n    \n    The doubly linked list maintains the order of usage:\n    - Head side: Most recently used\n    - Tail side: Least recently used\n    \n"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "concurrency": 16,
+      "fixture": "prose",
+      "wall_seconds": 51.21453493300214,
+      "aggregate_tokens_per_second": 39.98864780631424,
+      "ttft_p50_seconds": 26.107515592499112,
+      "ttft_p95_seconds": 45.15061452899681,
+      "e2e_p95_seconds": 51.20907955700386,
+      "per_stream_decode_median": 5.323660402453445,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 45305.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 22395.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 170.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 48485.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 23632.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 186.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 4.046036301995628,
+          "e2e_seconds": 48.18547283899534,
+          "decode_tokens_per_second": 2.8772456099103745,
+          "tpot_seconds": 0.34755461840157253,
+          "stream_chunk_gap_p95_seconds": 2.831941149997874,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between the modification of data in memory and the persistence of that modification to stable storage. The fundamental principle is that no change to the database\u2019s actual data pages may be written to disk until the corresponding log record describing that change has been safely persisted to the log file. This mechanism guarantees that the log serves as the authoritative source of truth for the state of all transactions, allowing the database to reconstruct a consistent state after an unexpected failure.\n\nTransactions are the atomic units of work protected by this mechanism. When a transaction begins, it generates log records for"
+        },
+        {
+          "ttft_seconds": 6.773221641997225,
+          "e2e_seconds": 47.88704791499913,
+          "decode_tokens_per_second": 3.0889851787741955,
+          "tpot_seconds": 0.3237309155354481,
+          "stream_chunk_gap_p95_seconds": 2.843595401995117,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The provided context document, consisting of 300 identical records of cedar assets in the north zone, serves as a static baseline of committed data but does not inherently illustrate the dynamic mechanisms of database durability. To understand how a database ensures that such data remains consistent and recoverable after a system failure, one must examine the Write-Ahead Log (WAL), a fundamental component of modern database management systems. The WAL operates on the principle that no change to the main database file is considered committed until the corresponding log record has been safely persisted to stable storage. This mechanism relies on the strict ordering of operations, where the log is written before the"
+        },
+        {
+          "ttft_seconds": 9.490623170000617,
+          "e2e_seconds": 48.5954862610015,
+          "decode_tokens_per_second": 3.2476779091249712,
+          "tpot_seconds": 0.30791230780315654,
+          "stream_chunk_gap_p95_seconds": 2.8320397900024545,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering of disk writes that guarantees the atomicity and durability of transactions, even in the face of hardware failures or power loss. The core principle is that no change to the actual database pages on disk is permitted until the corresponding log record describing that change has been safely persisted to stable storage. This mechanism relies on the concept of transactions, which are logical units of work that must either be fully applied or completely undone. When a transaction begins, the database system writes a \"begin\" record to the log; as the transaction modifies data, it writes \"update\""
+        },
+        {
+          "ttft_seconds": 13.611581452001701,
+          "e2e_seconds": 49.15109396500338,
+          "decode_tokens_per_second": 3.5734873952910484,
+          "tpot_seconds": 0.27983868120473765,
+          "stream_chunk_gap_p95_seconds": 2.829922257005819,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering of disk writes that guarantees the atomicity and durability of transactions, even in the face of hardware failures or power loss. The core principle is that no change to the actual database pages on disk is permitted until the corresponding log record describing that change has been safely persisted to stable storage. This mechanism relies on the concept of transactions, which are logical units of work that must either be fully applied or completely undone. When a transaction begins, the database writes a \"begin\" record to the log; as operations occur, \"update\" records are written; and"
+        },
+        {
+          "ttft_seconds": 19.135991782997735,
+          "e2e_seconds": 48.1847071709999,
+          "decode_tokens_per_second": 4.371966137010456,
+          "tpot_seconds": 0.2287300424252139,
+          "stream_chunk_gap_p95_seconds": 2.8320139339994057,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The provided context document, consisting of 300 identical records of \"cedar\" assets in the \"north\" zone, serves as a static dataset but does not inherently contain information regarding database internals. However, the question asks for a technical explanation of how a database write-ahead log (WAL) ensures crash recovery reliability. Below is a precise, connected prose explanation covering transactions, checkpoints, torn writes, fsync, and an example recovery sequence.\n\nA database write-ahead log (WAL) is a fundamental mechanism that ensures atomicity and durability in database systems, particularly during unexpected crashes. The core principle is that changes to the"
+        },
+        {
+          "ttft_seconds": 16.353316053995513,
+          "e2e_seconds": 49.410132673998305,
+          "decode_tokens_per_second": 3.841870239953834,
+          "tpot_seconds": 0.2602898946456913,
+          "stream_chunk_gap_p95_seconds": 2.8298571999985143,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering of disk writes that guarantees the atomicity and durability of transactions, even in the face of hardware failures or power loss. The fundamental principle is that no change to the actual database pages on disk is permitted until the corresponding log record describing that change has been safely persisted to stable storage. This mechanism relies on the concept of transactions, which are logical units of work that must either be fully applied or completely undone. When a transaction begins, the database writes a \"begin\" record to the log; as operations occur, \"update\" records are written containing the"
+        },
+        {
+          "ttft_seconds": 21.914575511000294,
+          "e2e_seconds": 49.539531051996164,
+          "decode_tokens_per_second": 4.597292466644154,
+          "tpot_seconds": 0.21751933496847142,
+          "stream_chunk_gap_p95_seconds": 2.8296103669999866,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering of disk writes that guarantees the atomicity and durability of transactions, even in the face of hardware failures or power loss. The fundamental principle is that no change to the actual database pages on disk is permitted until the corresponding log record describing that change has been safely persisted to stable storage. This mechanism relies on the concept of transactions, which are logical units of work that must either be fully applied or completely undone. When a transaction begins, the database system writes a \"begin\" record to the log; as the transaction modifies data, it writes \"update\""
+        },
+        {
+          "ttft_seconds": 27.515484205003304,
+          "e2e_seconds": 50.17279236500326,
+          "decode_tokens_per_second": 5.605255447962281,
+          "tpot_seconds": 0.17840400125984218,
+          "stream_chunk_gap_p95_seconds": 2.8293010849956772,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering of disk writes that guarantees the atomicity and durability of transactions, even in the face of hardware failures or power loss. The core principle is that no change to the actual database pages on disk is permitted until the corresponding log record describing that change has been safely persisted to stable storage. This mechanism relies on the concept of transactions, which are logical units of work that must either be fully applied or completely undone. When a transaction begins, the database system writes a \"begin\" record to the log; as the transaction modifies data, it writes \"update\""
+        },
+        {
+          "ttft_seconds": 24.69954697999492,
+          "e2e_seconds": 49.887637773994356,
+          "decode_tokens_per_second": 5.04206535694461,
+          "tpot_seconds": 0.19833142357479872,
+          "stream_chunk_gap_p95_seconds": 2.830067921000591,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering of disk writes that guarantees the atomicity and durability of transactions, even in the face of hardware failures or power loss. The core principle is that no change to the actual database pages on disk is permitted until the corresponding log record describing that change has been safely persisted to stable storage. This mechanism relies on the concept of transactions, which are logical units of work that must either be fully applied or completely undone. When a transaction begins, the database writes a \"begin\" record to the log; as operations occur, \"update\" records are appended; and"
+        },
+        {
+          "ttft_seconds": 35.96988610900007,
+          "e2e_seconds": 50.775702124003146,
+          "decode_tokens_per_second": 8.577710264081897,
+          "tpot_seconds": 0.11658122846459114,
+          "stream_chunk_gap_p95_seconds": 2.8204723360031494,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering of disk writes that guarantees the atomicity and durability of transactions, even in the face of hardware failures or power loss. The core principle is that no change to the actual database pages on disk is permitted until the corresponding log record describing that change has been safely persisted to stable storage. This mechanism relies on the concept of transactions, which are logical units of work that must either be fully applied or completely undone. When a transaction begins, the database writes a \"begin\" record to the log; as operations occur, \"update\" records are written; and"
+        },
+        {
+          "ttft_seconds": 33.13731639600155,
+          "e2e_seconds": 50.613096510001924,
+          "decode_tokens_per_second": 7.26720061545387,
+          "tpot_seconds": 0.13760456782677458,
+          "stream_chunk_gap_p95_seconds": 2.8290395950025413,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The provided context document, consisting of 300 identical records of cedar assets in the north zone, serves as a static baseline of committed data, but the reliability of such data in the face of system failure depends entirely on the underlying database engine\u2019s durability mechanisms, specifically the Write-Ahead Log (WAL). The WAL is a fundamental protocol that ensures atomicity and durability by mandating that all changes to the database are first recorded in a sequential log file before they are applied to the actual data pages on disk. This separation of concerns allows the database to treat the log as the single source of truth for transaction state, ensuring that even"
+        },
+        {
+          "ttft_seconds": 30.322614714998053,
+          "e2e_seconds": 50.61247665099654,
+          "decode_tokens_per_second": 6.259283596931493,
+          "tpot_seconds": 0.1597626924094369,
+          "stream_chunk_gap_p95_seconds": 2.8292780769988894,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between the modification of data in memory and the persistence of that modification to stable storage. The fundamental principle is that no change to the database\u2019s actual data pages may be written to disk until the corresponding log record describing that change has been safely persisted. This mechanism relies on the atomicity and durability guarantees provided by transactions, which are the units of work that either fully complete or fully roll back, ensuring the database remains in a consistent state even after an unexpected failure.\n\nThe process begins when a transaction modifies data. Before any in-memory page is updated"
+        },
+        {
+          "ttft_seconds": 41.64155180499802,
+          "e2e_seconds": 51.03767896300269,
+          "decode_tokens_per_second": 13.516207035555832,
+          "tpot_seconds": 0.07398525321263523,
+          "stream_chunk_gap_p95_seconds": 0.3221205040026689,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering of disk writes that guarantees the atomicity and durability of transactions, even in the face of hardware failures or power loss. The fundamental principle is that no change to the actual database pages on disk is permitted until the corresponding log record describing that change has been safely persisted to stable storage. This mechanism relies on the concept of transactions, which are logical units of work that must either be fully applied or completely undone. When a transaction begins, the database system writes a \"begin\" record to the log; as the transaction modifies data, it writes \"update\""
+        },
+        {
+          "ttft_seconds": 38.81269705800514,
+          "e2e_seconds": 50.77497530300025,
+          "decode_tokens_per_second": 10.616706734198855,
+          "tpot_seconds": 0.09419116728342602,
+          "stream_chunk_gap_p95_seconds": 0.6886615399998846,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering of disk writes that guarantees the atomicity and durability of transactions, even in the face of hardware failures or power loss. The core principle is that no data page is written to the main database file until the corresponding log record describing that change has been safely persisted to stable storage. This mechanism relies on the concept of transactions, which are logical units of work that must either be fully applied or completely undone. When a transaction begins, the database writes a \"begin\" record to the log; as operations occur, \"update\" records are appended; and upon"
+        },
+        {
+          "ttft_seconds": 44.46155436200206,
+          "e2e_seconds": 51.20907955700386,
+          "decode_tokens_per_second": 18.82171556677917,
+          "tpot_seconds": 0.053130119645683455,
+          "stream_chunk_gap_p95_seconds": 0.298513901005208,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between the modification of data in memory and the persistence of that modification to stable storage. The fundamental principle is that no change to the database\u2019s actual data files may be written to disk until the corresponding log record describing that change has been safely persisted. This mechanism relies on the concept of transactions, which are atomic units of work that must either be fully applied or completely undone. When a transaction begins, the database writes a \"begin\" record to the log; as operations occur, \"before-image\" and \"after-image\" records are appended; and"
+        },
+        {
+          "ttft_seconds": 45.15061452899681,
+          "e2e_seconds": 51.207326314994134,
+          "decode_tokens_per_second": 20.96847340393756,
+          "tpot_seconds": 0.04769064398423088,
+          "stream_chunk_gap_p95_seconds": 0.27927134000492515,
+          "usage": {
+            "prompt_tokens": 8176,
+            "total_tokens": 8304,
+            "completion_tokens": 128,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between disk writes and memory modifications, guaranteeing that the database can always reconstruct a consistent state after an unexpected failure. The core principle is that no data page is written to the main database file until the corresponding log record describing that change has been durably persisted to the log file. This mechanism relies on the atomicity and durability properties of transactions, where each transaction is represented by a sequence of log records containing before-images and after-images of modified data. When a transaction begins, a \"BEGIN\" record is logged; as it modifies data, \""
+        }
+      ]
+    }
+  ],
+  "quality": [],
+  "model_catalog": [
+    {
+      "id": "Qwen3.8-Flash-Next",
+      "object": "model",
+      "created": 1792682723,
+      "owned_by": "vllm",
+      "root": "/model",
+      "parent": null,
+      "max_model_len": 262144,
+      "permission": [
+        {
+          "id": "modelperm-817c90487b33bfce",
+          "object": "model_permission",
+          "created": 1792682723,
+          "allow_create_engine": false,
+          "allow_sampling": true,
+          "allow_logprobs": true,
+          "allow_search_indices": false,
+          "allow_view": true,
+          "allow_fine_tuning": false,
+          "organization": "*",
+          "group": null,
+          "is_blocking": false
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "1": {
+      "clean_waves": 2,
+      "aggregate_tokens_per_second_median": 28.36332886971093,
+      "per_stream_decode_median": 73.486494171098,
+      "ttft_p50_seconds": 2.7319816985000216,
+      "ttft_p95_seconds": 2.7373269950039685,
+      "e2e_p95_seconds": 4.930862138993689,
+      "preemptions": 0.0
+    },
+    "4": {
+      "clean_waves": 2,
+      "aggregate_tokens_per_second_median": 37.367439078547335,
+      "per_stream_decode_median": 23.273315532363718,
+      "ttft_p50_seconds": 8.07465579500058,
+      "ttft_p95_seconds": 10.967874734000361,
+      "e2e_p95_seconds": 14.21454258900485,
+      "preemptions": 0.0
+    },
+    "16": {
+      "clean_waves": 2,
+      "aggregate_tokens_per_second_median": 40.976133749890536,
+      "per_stream_decode_median": 5.582854400211623,
+      "ttft_p50_seconds": 26.03397905199745,
+      "ttft_p95_seconds": 45.02035564599646,
+      "e2e_p95_seconds": 51.207326314994134,
+      "preemptions": 0.0
+    }
+  },
+  "complete": true
+}

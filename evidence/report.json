@@ -1,0 +1,352 @@
+{
+  "status": "qualified and live-verified on 2026-10-22; historical snapshot",
+  "as_of_utc": "2026-10-22T15:44:55.743306+00:00",
+  "selected_profile": "TP2 v2: 16 sequences, BF16 KV, disk PLE, MTP4",
+  "public_model_name": "Qwen3.8-Flash-Next",
+  "checkpoint_revision": "51f24153ae9b27653a823074c631dfa941fdb536",
+  "checkpoint_weights_changed": false,
+  "nodes": [
+    "DGX Spark rank 0/head",
+    "DGX Spark rank 1/worker"
+  ],
+  "context_tokens": 262144,
+  "model_review": {
+    "attention_outputs_mxfp8": 48,
+    "attention_outputs_total": 48,
+    "num_kv_heads": 2,
+    "num_attention_heads": 24,
+    "linear_key_heads": 16,
+    "linear_value_heads": 48,
+    "expert_intermediate": 640,
+    "routed_experts": 512,
+    "mtp_preserved_in_bf16": true,
+    "tensor_bytes": 102138950916,
+    "ple_table_gib": 26.822218898683786,
+    "expected_ple_gib_per_rank": 13.411109449341893,
+    "quant_layers": 545
+  },
+  "comparisons": {
+    "short_prompts": {
+      "input_tokens_per_stream": [
+        62,
+        64
+      ],
+      "output_tokens_per_stream": 256,
+      "baseline_repeats": 1,
+      "v2_repeats": 2,
+      "rows": [
+        {
+          "concurrent_requests": 1,
+          "baseline": {
+            "clean_waves": 2,
+            "aggregate_tokens_per_second_median": 63.8749469871007,
+            "per_stream_decode_median": 66.65434805117634,
+            "ttft_p50_seconds": 0.17918695350090275,
+            "ttft_p95_seconds": 0.18160869499843102,
+            "e2e_p95_seconds": 4.556052036998153,
+            "preemptions": 0.0
+          },
+          "v2": {
+            "clean_waves": 4,
+            "aggregate_tokens_per_second_median": 65.05830590408151,
+            "per_stream_decode_median": 68.12630395628027,
+            "ttft_p50_seconds": 0.18177115800062893,
+            "ttft_p95_seconds": 0.18918121900060214,
+            "e2e_p95_seconds": 5.09558100799768,
+            "preemptions": 0.0
+          },
+          "aggregate_throughput_change_percent": 1.852618237350212,
+          "ttft_p95_change_percent": 4.169692427026428,
+          "e2e_p95_change_percent": 11.842028287170447
+        },
+        {
+          "concurrent_requests": 4,
+          "baseline": {
+            "clean_waves": 2,
+            "aggregate_tokens_per_second_median": 159.11976980685873,
+            "per_stream_decode_median": 43.58737394794643,
+            "ttft_p50_seconds": 0.5240726285010169,
+            "ttft_p95_seconds": 0.5262900329980766,
+            "e2e_p95_seconds": 8.16951139199955,
+            "preemptions": 0.0
+          },
+          "v2": {
+            "clean_waves": 4,
+            "aggregate_tokens_per_second_median": 155.30532162153412,
+            "per_stream_decode_median": 43.057122531840704,
+            "ttft_p50_seconds": 0.5103052114973252,
+            "ttft_p95_seconds": 0.5348994820014923,
+            "e2e_p95_seconds": 8.043137524000485,
+            "preemptions": 0.0
+          },
+          "aggregate_throughput_change_percent": -2.3972182651814,
+          "ttft_p95_change_percent": 1.6358753659784897,
+          "e2e_p95_change_percent": -1.5468962822283605
+        },
+        {
+          "concurrent_requests": 8,
+          "baseline": {
+            "clean_waves": 2,
+            "aggregate_tokens_per_second_median": 232.13645532521258,
+            "per_stream_decode_median": 31.733376567806452,
+            "ttft_p50_seconds": 0.532085642000311,
+            "ttft_p95_seconds": 0.5672558890000801,
+            "e2e_p95_seconds": 10.648214323999127,
+            "preemptions": 0.0
+          },
+          "v2": {
+            "clean_waves": 4,
+            "aggregate_tokens_per_second_median": 227.04395021341693,
+            "per_stream_decode_median": 31.75017463293877,
+            "ttft_p50_seconds": 0.5581965675009997,
+            "ttft_p95_seconds": 0.5831788770010462,
+            "e2e_p95_seconds": 10.58843424099905,
+            "preemptions": 0.0
+          },
+          "aggregate_throughput_change_percent": -2.193755007011411,
+          "ttft_p95_change_percent": 2.8070203077193323,
+          "e2e_p95_change_percent": -0.561409464358209
+        },
+        {
+          "concurrent_requests": 16,
+          "baseline": {
+            "clean_waves": 2,
+            "aggregate_tokens_per_second_median": 229.01459762118736,
+            "per_stream_decode_median": 31.082061040799218,
+            "ttft_p50_seconds": 3.914801613504096,
+            "ttft_p95_seconds": 11.890346255000622,
+            "e2e_p95_seconds": 21.67999559999589,
+            "preemptions": 0.0
+          },
+          "v2": {
+            "clean_waves": 4,
+            "aggregate_tokens_per_second_median": 313.4159906857641,
+            "per_stream_decode_median": 21.772235002451364,
+            "ttft_p50_seconds": 0.7319547854967823,
+            "ttft_p95_seconds": 0.7691331030000583,
+            "e2e_p95_seconds": 15.844035032998363,
+            "preemptions": 0.0
+          },
+          "aggregate_throughput_change_percent": 36.854154250981374,
+          "ttft_p95_change_percent": -93.53144907216986,
+          "e2e_p95_change_percent": -26.9186427648474
+        }
+      ]
+    },
+    "approximately_8k_inputs": {
+      "input_tokens_per_stream": [
+        8174,
+        8176
+      ],
+      "output_tokens_per_stream": 128,
+      "baseline_repeats": 1,
+      "v2_repeats": 1,
+      "rows": [
+        {
+          "concurrent_requests": 1,
+          "baseline": {
+            "clean_waves": 2,
+            "aggregate_tokens_per_second_median": 26.285162413124475,
+            "per_stream_decode_median": 60.97337245935965,
+            "ttft_p50_seconds": 2.773167707997345,
+            "ttft_p95_seconds": 2.806927667996206,
+            "e2e_p95_seconds": 5.165017378996708,
+            "preemptions": 0.0
+          },
+          "v2": {
+            "clean_waves": 2,
+            "aggregate_tokens_per_second_median": 28.36332886971093,
+            "per_stream_decode_median": 73.486494171098,
+            "ttft_p50_seconds": 2.7319816985000216,
+            "ttft_p95_seconds": 2.7373269950039685,
+            "e2e_p95_seconds": 4.930862138993689,
+            "preemptions": 0.0
+          },
+          "aggregate_throughput_change_percent": 7.9062340339537185,
+          "ttft_p95_change_percent": -2.479603367974337,
+          "e2e_p95_change_percent": -4.533484068324734
+        },
+        {
+          "concurrent_requests": 4,
+          "baseline": {
+            "clean_waves": 2,
+            "aggregate_tokens_per_second_median": 35.9998639907148,
+            "per_stream_decode_median": 22.373739839428634,
+            "ttft_p50_seconds": 8.40969780049636,
+            "ttft_p95_seconds": 11.55550866699923,
+            "e2e_p95_seconds": 14.61676460900344,
+            "preemptions": 0.0
+          },
+          "v2": {
+            "clean_waves": 2,
+            "aggregate_tokens_per_second_median": 37.367439078547335,
+            "per_stream_decode_median": 23.273315532363718,
+            "ttft_p50_seconds": 8.07465579500058,
+            "ttft_p95_seconds": 10.967874734000361,
+            "e2e_p95_seconds": 14.21454258900485,
+            "preemptions": 0.0
+          },
+          "aggregate_throughput_change_percent": 3.798834040554322,
+          "ttft_p95_change_percent": -5.085314285446064,
+          "e2e_p95_change_percent": -2.7517855747012154
+        },
+        {
+          "concurrent_requests": 16,
+          "baseline": {
+            "clean_waves": 2,
+            "aggregate_tokens_per_second_median": 38.644212702689615,
+            "per_stream_decode_median": 7.0454217269793125,
+            "ttft_p50_seconds": 25.939297248500225,
+            "ttft_p95_seconds": 49.30081862500083,
+            "e2e_p95_seconds": 54.30800187499699,
+            "preemptions": 0.0
+          },
+          "v2": {
+            "clean_waves": 2,
+            "aggregate_tokens_per_second_median": 40.976133749890536,
+            "per_stream_decode_median": 5.582854400211623,
+            "ttft_p50_seconds": 26.03397905199745,
+            "ttft_p95_seconds": 45.02035564599646,
+            "e2e_p95_seconds": 51.207326314994134,
+            "preemptions": 0.0
+          },
+          "aggregate_throughput_change_percent": 6.034334468505342,
+          "ttft_p95_change_percent": -8.682336517701783,
+          "e2e_p95_change_percent": -5.709426701317078
+        }
+      ]
+    }
+  },
+  "quality": {
+    "status": "all baseline-passing gates retained; managed restart and routes passed",
+    "qualified_at_utc": "2026-10-22T15:38:34.944148+00:00",
+    "selected": "bf16kv-seq16",
+    "core_checks": "13/13",
+    "extended_preserved_checks": "7/7; sliding_max no-import instruction failure also present in baseline",
+    "strict_261623_token_json": "10/10",
+    "invoice_ocr": "3/3",
+    "word_count_control": "100/100 versus baseline 95/100",
+    "target_greedy_tokens": {
+      "tokens": 384,
+      "mismatches": 0,
+      "scope": "Returned target top-1 audit on these fixtures; not a full-vocabulary distribution equivalence test"
+    },
+    "known_limits": [
+      "Bounded synthetic fixtures, not a full capability benchmark or production SLO qualification.",
+      "Serial prose decode was about 8 percent slower in the short fixture; coding decode remained close to baseline.",
+      "Capacity is 12.51 full-context equivalents with a 16-active-sequence scheduler. Original eight-full-context minimum retained."
+    ],
+    "post_restart_context": {
+      "samples": 2,
+      "strict_json_passes": 2,
+      "semantic_retrieval_passes": 2,
+      "structured_json_passed": true,
+      "prompt_tokens": 261623,
+      "initial_cache_state": "cold",
+      "cache_scope": "Identical prompt repeats exercise prefix reuse"
+    }
+  },
+  "experiments": [
+    {
+      "id": "baseline",
+      "configuration": "8 sequences, FP8 KV, disk PLE, auto KV allocation",
+      "status": "reference; preserved for rollback"
+    },
+    {
+      "id": "shared-seq8",
+      "configuration": "8 sequences, FP8 KV32 GiB/rank, shared PLE",
+      "status": "not selected; modest performance gain and initial word-count miss prompted controls"
+    },
+    {
+      "id": "shared-seq16",
+      "configuration": "16 sequences, FP8 KV32 GiB/rank, shared PLE",
+      "status": "rejected: near-full raw JSON formatting 0/10 versus reference 10/10; semantic retrieval and JSON schema passed"
+    },
+    {
+      "id": "dynamic",
+      "configuration": "16 sequences, dynamic MTP6/4/2/0, shared PLE",
+      "status": "rejected/unscored: B12X full-graph preparation refused an unprepared CuTe object"
+    },
+    {
+      "id": "disk-seq16",
+      "configuration": "16 sequences, FP8 KV, original disk/auto-memory settings",
+      "status": "rejected: same raw JSON formatting regression, 0/10; isolated effect beyond shared-table placement"
+    },
+    {
+      "id": "bf16kv-seq16",
+      "configuration": "16 sequences, BF16 KV, original disk/auto-memory settings, MTP4",
+      "status": "qualified: reference formatting retained; 13/13 core checks and all baseline-passing extended cases hold"
+    }
+  ],
+  "capacity": {
+    "kv_capacity_tokens": 3281415,
+    "full_262144_token_context_equivalents": 12.52,
+    "original_minimum_full_contexts_preserved": 8,
+    "active_sequence_limit": 16,
+    "note": "The active sequence limit does not guarantee 16 simultaneous maximum-length contexts."
+  },
+  "limitations": [
+    "Controlled synthetic code/prose and record-document probes; not a full capability benchmark, production SLO or broad workload optimum.",
+    "Serial short-prose decode median was about 8 percent slower; coding decode stayed close to the initial reference. Aggregate single-stream decode stayed within the predefined 5 percent floor.",
+    "Original no-import sliding-window instruction failure remains; no new code-case regression was accepted.",
+    "Long-prompt prefill remains the main latency bottleneck: the gain there is modest."
+  ],
+  "next_optimization_targets": [
+    "Profile long-prompt GDN/MoE prefill and test batched-token budgets with mixed short/long traffic.",
+    "Fix B12X preparation coverage for every adaptive speculative CUDA-graph shape before retesting dynamic MTP.",
+    "Keep weights pinned until a measured bottleneck justifies weight or draft-layer changes; use held-out quality fixtures for those experiments."
+  ],
+  "reproduction": {
+    "recipe": "../serve-tp2.sh",
+    "protocol": "protocol.json",
+    "evaluation": "../scripts/evaluate.py",
+    "extended_quality": "../scripts/quality_extended.py",
+    "format_control": "../scripts/near_context_control.py",
+    "target_audit": "../scripts/audit_target.py",
+    "rollback": "../docs/OPERATIONS.md#rollback"
+  },
+  "sources": [
+    "https://raw.githubusercontent.com/eugr/spark-vllm-docker/main/recipes/qwen3.8-flash-next-nvfp4-cluster.yaml",
+    "https://docs.vllm.ai/en/latest/configuration/optimization/"
+  ],
+  "selection_note": "Faster FP8 configurations were retained as rejected evidence; the selected cache precision passed the original strict-format floor.",
+  "verified_at_local": "2026-10-22T11:01:49.122206-05:00",
+  "managed_restart": {
+    "passed": true,
+    "launcher_job": "1ed887e9ca5c",
+    "cold_and_warm_261623_token_json": "2/2 strict and semantic; structured JSON also passed",
+    "restart_policy": "unless-stopped on both nodes"
+  },
+  "runtime": {
+    "head": {
+      "image_id": "sha256:a7f76ae9f18c7701c9cde5f72c606393d9a21ca94dd8e53b27589935f64fcbe2",
+      "image_digest": "eugr/spark-vllm-b12x@sha256:03a956544e9f9b4b7ba91690469fbe7848bdbef29a7d2e0f5788368467bb3595",
+      "running": true,
+      "oom_killed": false,
+      "restart_count": 0,
+      "started_at": "2026-10-22T15:40:15.51139291Z",
+      "restart_policy": "unless-stopped",
+      "memory_limit_bytes": 111669149696,
+      "host_available_bytes": 11904843776,
+      "model_mount_readonly": true
+    },
+    "worker": {
+      "image_id": "sha256:a7f76ae9f18c7701c9cde5f72c606393d9a21ca94dd8e53b27589935f64fcbe2",
+      "image_digest": "eugr/spark-vllm-b12x@sha256:03a956544e9f9b4b7ba91690469fbe7848bdbef29a7d2e0f5788368467bb3595",
+      "running": true,
+      "oom_killed": false,
+      "restart_count": 0,
+      "started_at": "2026-10-22T15:40:15.358449654Z",
+      "restart_policy": "unless-stopped",
+      "memory_limit_bytes": 111669149696,
+      "host_available_bytes": 15028441088,
+      "model_mount_readonly": true
+    }
+  },
+  "evidence_note": "The initial duration-code prompt said positive while its test included zero; that case was unscored and corrected consistently before candidate evaluation. Rejected results and original scripts remain available.",
+  "publication": {
+    "date": "2026-10-22",
+    "scope": "Original serving measurements; personal connections and raw Docker details omitted. Host labels and local paths anonymized. Numerical measurements unchanged. Original complete bundle retained locally outside tracked files.",
+    "runtime_scope": "State observed at qualification; this file is not a live service status."
+  }
+}

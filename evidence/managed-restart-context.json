@@ -1,0 +1,173 @@
+{
+  "label": "managed-restart-context",
+  "started_utc": "2026-10-22T15:48:10.800401+00:00",
+  "protocol": {
+    "model": "Qwen3.8-Flash-Next",
+    "concurrency": [
+      1
+    ],
+    "repeats": 2,
+    "output_tokens": 256,
+    "temperature": 0,
+    "seed": 3741,
+    "thinking": false,
+    "fixture_sha256": "e0fa852d6a26c9123839ee5c7faafddec84a112ba3731d04afca35c1009f1119",
+    "cache_policy": "unique prefix for each wave; fixed prefix length, same prompts across treatments",
+    "percentiles": "nearest-rank; small controlled sample, not a production SLO"
+  },
+  "waves": [],
+  "quality": [
+    {
+      "name": "near_262k_structured_json",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-82a15a84b9fa0a82",
+        "object": "chat.completion",
+        "created": 1792684186,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"early\": \"R7D4\",\n  \"middle\": \"C2K9\",\n  \"late\": \"P8M5\"\n}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-c47386d2",
+        "usage": {
+          "prompt_tokens": 261623,
+          "total_tokens": 261660,
+          "completion_tokens": 37,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    }
+  ],
+  "context_control": [
+    {
+      "i": 0,
+      "strict_json": true,
+      "semantic_retrieval": true,
+      "response": {
+        "id": "chatcmpl-94ad2c203ad6c2d9",
+        "object": "chat.completion",
+        "created": 1792684091,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"early\": \"R7D4\",\n  \"middle\": \"C2K9\",\n  \"late\": \"P8M5\"\n}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-c47386d2",
+        "usage": {
+          "prompt_tokens": 261623,
+          "total_tokens": 261660,
+          "completion_tokens": 37,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "i": 1,
+      "strict_json": true,
+      "semantic_retrieval": true,
+      "response": {
+        "id": "chatcmpl-9d09547763bf1f0b",
+        "object": "chat.completion",
+        "created": 1792684185,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"early\": \"R7D4\",\n  \"middle\": \"C2K9\",\n  \"late\": \"P8M5\"\n}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-c47386d2",
+        "usage": {
+          "prompt_tokens": 261623,
+          "total_tokens": 261660,
+          "completion_tokens": 37,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    }
+  ],
+  "summary": {
+    "samples": 2,
+    "strict_json_passes": 2,
+    "semantic_retrieval_passes": 2,
+    "structured_json_passed": true,
+    "prompt_tokens": 261623,
+    "initial_cache_state": "cold",
+    "cache_scope": "Identical prompt repeats exercise prefix reuse"
+  },
+  "complete": true
+}

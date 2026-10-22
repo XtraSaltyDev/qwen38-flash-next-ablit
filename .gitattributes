@@ -1,0 +1,6 @@
+# Evidence is retained for reproducibility, rather than hand-edited source.
+evidence/** linguist-generated=true
+third_party/** linguist-vendored=true
+*.gz binary
+# Keep upstream license snapshots byte-for-byte, including original CRLF/spacing.
+third_party/licenses/* -text -whitespace

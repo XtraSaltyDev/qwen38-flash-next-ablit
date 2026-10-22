@@ -1,0 +1,711 @@
+{
+  "label": "shared-seq16-repeat-control",
+  "started_utc": "2026-10-22T14:10:07.904585+00:00",
+  "protocol": {
+    "model": "Qwen3.8-Flash-Next",
+    "concurrency": [
+      1
+    ],
+    "repeats": 6,
+    "output_tokens": 32,
+    "temperature": 0,
+    "seed": 3741,
+    "thinking": false,
+    "fixture_sha256": "e0fa852d6a26c9123839ee5c7faafddec84a112ba3731d04afca35c1009f1119",
+    "cache_policy": "unique prefix for each wave; fixed prefix length, same prompts across treatments",
+    "percentiles": "nearest-rank; small controlled sample, not a production SLO"
+  },
+  "waves": [],
+  "quality": [
+    {
+      "name": "word_count_repeat_0",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-bdbcac8264850a3a",
+        "object": "chat.completion",
+        "created": 1792678207,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "6",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": {
+              "content": [
+                {
+                  "token": "6",
+                  "logprob": -0.591417670249939,
+                  "bytes": [
+                    54
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "6",
+                      "logprob": -0.591417670249939,
+                      "bytes": [
+                        54
+                      ]
+                    },
+                    {
+                      "token": "5",
+                      "logprob": -1.091417670249939,
+                      "bytes": [
+                        53
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "<|im_end|>",
+                  "logprob": -7.510157047363464e-06,
+                  "bytes": [
+                    60,
+                    124,
+                    105,
+                    109,
+                    95,
+                    101,
+                    110,
+                    100,
+                    124,
+                    62
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "<|im_end|>",
+                      "logprob": -7.510157047363464e-06,
+                      "bytes": [
+                        60,
+                        124,
+                        105,
+                        109,
+                        95,
+                        101,
+                        110,
+                        100,
+                        124,
+                        62
+                      ]
+                    },
+                    {
+                      "token": "\n\n",
+                      "logprob": -13.312507629394531,
+                      "bytes": [
+                        10,
+                        10
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-7ec69512",
+        "usage": {
+          "prompt_tokens": 39,
+          "total_tokens": 41,
+          "completion_tokens": 2,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "name": "word_count_repeat_1",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-a7a829dbd678902a",
+        "object": "chat.completion",
+        "created": 1792678208,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "6",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": {
+              "content": [
+                {
+                  "token": "6",
+                  "logprob": -0.6191971898078918,
+                  "bytes": [
+                    54
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "6",
+                      "logprob": -0.6191971898078918,
+                      "bytes": [
+                        54
+                      ]
+                    },
+                    {
+                      "token": "5",
+                      "logprob": -0.9941971898078918,
+                      "bytes": [
+                        53
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "<|im_end|>",
+                  "logprob": -5.483612312673358e-06,
+                  "bytes": [
+                    60,
+                    124,
+                    105,
+                    109,
+                    95,
+                    101,
+                    110,
+                    100,
+                    124,
+                    62
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "<|im_end|>",
+                      "logprob": -5.483612312673358e-06,
+                      "bytes": [
+                        60,
+                        124,
+                        105,
+                        109,
+                        95,
+                        101,
+                        110,
+                        100,
+                        124,
+                        62
+                      ]
+                    },
+                    {
+                      "token": "\n\n",
+                      "logprob": -13.625005722045898,
+                      "bytes": [
+                        10,
+                        10
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-7ec69512",
+        "usage": {
+          "prompt_tokens": 39,
+          "total_tokens": 41,
+          "completion_tokens": 2,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "name": "word_count_repeat_2",
+      "passed": false,
+      "response": {
+        "id": "chatcmpl-a1f837f439ced240",
+        "object": "chat.completion",
+        "created": 1792678208,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "5",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": {
+              "content": [
+                {
+                  "token": "5",
+                  "logprob": -0.7851428389549255,
+                  "bytes": [
+                    53
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "5",
+                      "logprob": -0.7851428389549255,
+                      "bytes": [
+                        53
+                      ]
+                    },
+                    {
+                      "token": "6",
+                      "logprob": -0.7851428389549255,
+                      "bytes": [
+                        54
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "<|im_end|>",
+                  "logprob": -4.768360213347478e-06,
+                  "bytes": [
+                    60,
+                    124,
+                    105,
+                    109,
+                    95,
+                    101,
+                    110,
+                    100,
+                    124,
+                    62
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "<|im_end|>",
+                      "logprob": -4.768360213347478e-06,
+                      "bytes": [
+                        60,
+                        124,
+                        105,
+                        109,
+                        95,
+                        101,
+                        110,
+                        100,
+                        124,
+                        62
+                      ]
+                    },
+                    {
+                      "token": "\n\n",
+                      "logprob": -13.875004768371582,
+                      "bytes": [
+                        10,
+                        10
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-7ec69512",
+        "usage": {
+          "prompt_tokens": 39,
+          "total_tokens": 41,
+          "completion_tokens": 2,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "name": "word_count_repeat_3",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-99c73e7f6ed42c66",
+        "object": "chat.completion",
+        "created": 1792678208,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "6",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": {
+              "content": [
+                {
+                  "token": "6",
+                  "logprob": -0.628237247467041,
+                  "bytes": [
+                    54
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "6",
+                      "logprob": -0.628237247467041,
+                      "bytes": [
+                        54
+                      ]
+                    },
+                    {
+                      "token": "5",
+                      "logprob": -1.003237247467041,
+                      "bytes": [
+                        53
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "<|im_end|>",
+                  "logprob": -7.390948667307384e-06,
+                  "bytes": [
+                    60,
+                    124,
+                    105,
+                    109,
+                    95,
+                    101,
+                    110,
+                    100,
+                    124,
+                    62
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "<|im_end|>",
+                      "logprob": -7.390948667307384e-06,
+                      "bytes": [
+                        60,
+                        124,
+                        105,
+                        109,
+                        95,
+                        101,
+                        110,
+                        100,
+                        124,
+                        62
+                      ]
+                    },
+                    {
+                      "token": "\n\n",
+                      "logprob": -13.375007629394531,
+                      "bytes": [
+                        10,
+                        10
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-7ec69512",
+        "usage": {
+          "prompt_tokens": 39,
+          "total_tokens": 41,
+          "completion_tokens": 2,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "name": "word_count_repeat_4",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-a617f25d816446d9",
+        "object": "chat.completion",
+        "created": 1792678208,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "6",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": {
+              "content": [
+                {
+                  "token": "6",
+                  "logprob": -0.6319056749343872,
+                  "bytes": [
+                    54
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "6",
+                      "logprob": -0.6319056749343872,
+                      "bytes": [
+                        54
+                      ]
+                    },
+                    {
+                      "token": "5",
+                      "logprob": -1.0069056749343872,
+                      "bytes": [
+                        53
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "<|im_end|>",
+                  "logprob": -6.079655122448457e-06,
+                  "bytes": [
+                    60,
+                    124,
+                    105,
+                    109,
+                    95,
+                    101,
+                    110,
+                    100,
+                    124,
+                    62
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "<|im_end|>",
+                      "logprob": -6.079655122448457e-06,
+                      "bytes": [
+                        60,
+                        124,
+                        105,
+                        109,
+                        95,
+                        101,
+                        110,
+                        100,
+                        124,
+                        62
+                      ]
+                    },
+                    {
+                      "token": "\n\n",
+                      "logprob": -13.437505722045898,
+                      "bytes": [
+                        10,
+                        10
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-7ec69512",
+        "usage": {
+          "prompt_tokens": 39,
+          "total_tokens": 41,
+          "completion_tokens": 2,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "name": "word_count_repeat_5",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-8f2347cc2dee9cf6",
+        "object": "chat.completion",
+        "created": 1792678209,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "6",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": {
+              "content": [
+                {
+                  "token": "6",
+                  "logprob": -0.591417670249939,
+                  "bytes": [
+                    54
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "6",
+                      "logprob": -0.591417670249939,
+                      "bytes": [
+                        54
+                      ]
+                    },
+                    {
+                      "token": "5",
+                      "logprob": -1.091417670249939,
+                      "bytes": [
+                        53
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "token": "<|im_end|>",
+                  "logprob": -7.510157047363464e-06,
+                  "bytes": [
+                    60,
+                    124,
+                    105,
+                    109,
+                    95,
+                    101,
+                    110,
+                    100,
+                    124,
+                    62
+                  ],
+                  "top_logprobs": [
+                    {
+                      "token": "<|im_end|>",
+                      "logprob": -7.510157047363464e-06,
+                      "bytes": [
+                        60,
+                        124,
+                        105,
+                        109,
+                        95,
+                        101,
+                        110,
+                        100,
+                        124,
+                        62
+                      ]
+                    },
+                    {
+                      "token": "\n\n",
+                      "logprob": -13.312507629394531,
+                      "bytes": [
+                        10,
+                        10
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-7ec69512",
+        "usage": {
+          "prompt_tokens": 39,
+          "total_tokens": 41,
+          "completion_tokens": 2,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    }
+  ],
+  "quality_summary": {
+    "passed": 5,
+    "total": 6,
+    "scope": "Within-boot cold-cache repeat control for a numerically unstable word-count case"
+  },
+  "complete": true
+}

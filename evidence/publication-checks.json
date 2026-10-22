@@ -1,0 +1,18 @@
+{
+  "checked_on": "2026-10-22",
+  "checks": {
+    "syntax": "passed",
+    "recipe": {
+      "platform": "Linux DGX Spark; mocked Docker only",
+      "rank_0_qualified_default_arguments": "identical",
+      "rank_1_qualified_default_arguments": "identical",
+      "network_overrides_and_rank_guard": "passed"
+    },
+    "local_documentation_links": "passed",
+    "json_and_compressed_evidence": "passed",
+    "model_card_and_citation_yaml": "passed",
+    "public_secret_and_personal_endpoint_pattern_scan": "passed",
+    "all_run_numeric_values_match_originals": "passed"
+  },
+  "scope": "Packaging checks and Linux mocked-Docker argument comparison. No new GPU benchmark or live deployment changes. macOS system Bash 3 is not a qualified execution target."
+}

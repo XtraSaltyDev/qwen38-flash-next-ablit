@@ -1,0 +1,1927 @@
+{
+  "label": "baseline-control",
+  "started_utc": "2026-10-22T14:25:22.949971+00:00",
+  "protocol": {
+    "model": "Qwen3.8-Flash-Next",
+    "concurrency": [
+      1,
+      4,
+      8,
+      16
+    ],
+    "repeats": 1,
+    "output_tokens": 256,
+    "temperature": 0,
+    "seed": 3741,
+    "thinking": false,
+    "fixture_sha256": "e0fa852d6a26c9123839ee5c7faafddec84a112ba3731d04afca35c1009f1119",
+    "cache_policy": "unique prefix for each wave; fixed prefix length, same prompts across treatments",
+    "percentiles": "nearest-rank; small controlled sample, not a production SLO"
+  },
+  "waves": [
+    {
+      "repeat": 0,
+      "concurrency": 1,
+      "fixture": "code",
+      "wall_seconds": 3.577090159000363,
+      "aggregate_tokens_per_second": 71.56654951955154,
+      "ttft_p50_seconds": 0.17676521200337447,
+      "ttft_p95_seconds": 0.17676521200337447,
+      "e2e_p95_seconds": 3.5760597530024825,
+      "per_stream_decode_median": 75.01556482512143,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 200.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 76.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 2.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 512.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 253.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 3.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 0.17676521200337447,
+          "e2e_seconds": 3.5760597530024825,
+          "decode_tokens_per_second": 75.01556482512143,
+          "tpot_seconds": 0.013330566827447482,
+          "stream_chunk_gap_p95_seconds": 0.04963178899924969,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nWhen the cache is full and a new item needs to be inserted, the least recently\nused item is evicted.\n\nKey operations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  the least recently used item is evicted.\n\nThe implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage (most recent at head, least recent at tail).\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "concurrency": 1,
+      "fixture": "prose",
+      "wall_seconds": 4.55651051899622,
+      "aggregate_tokens_per_second": 56.183344454649855,
+      "ttft_p50_seconds": 0.18160869499843102,
+      "ttft_p95_seconds": 0.18160869499843102,
+      "e2e_p95_seconds": 4.556052036998153,
+      "per_stream_decode_median": 58.29313127723125,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 512.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 253.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 3.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 920.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 406.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 4.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 0.18160869499843102,
+          "e2e_seconds": 4.556052036998153,
+          "decode_tokens_per_second": 58.29313127723125,
+          "tpot_seconds": 0.01715467977254793,
+          "stream_chunk_gap_p95_seconds": 0.04666404499585042,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, a mechanism that ensures the database can always return to a consistent state after an unexpected failure by strictly ordering the persistence of changes. At the core of this system is the principle that no data page is written to the main database file until the corresponding log record describing that change has been safely persisted to stable storage. This ordering is enforced through the use of `fsync`, a system call that forces the operating system to flush all buffered data from volatile memory to the physical disk, ensuring that the log record is durable before any subsequent operations proceed. Without this guarantee, a crash could leave the database in a state where a data page reflects a change that was never recorded in the log, or vice versa, leading to irreversible corruption.\n\nTransactions are the fundamental units of work managed by this protocol, and their atomicity is preserved through careful log record management. When a transaction begins, a `BEGIN` record is written to the log. As the transaction executes, every modification to a data page generates a log record containing the transaction ID, the page ID, the old value, and the new value. These records are appended to the log sequentially. Crucially, before the transaction can commit, a"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "concurrency": 4,
+      "fixture": "code",
+      "wall_seconds": 5.308092129002034,
+      "aggregate_tokens_per_second": 192.91300435520523,
+      "ttft_p50_seconds": 0.5239246680030192,
+      "ttft_p95_seconds": 0.5241545809985837,
+      "e2e_p95_seconds": 5.304969520002487,
+      "per_stream_decode_median": 53.34035981287457,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 920.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 406.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 4.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 2096.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 1132.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 8.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 0.18034849599644076,
+          "e2e_seconds": 5.085293019001256,
+          "decode_tokens_per_second": 51.98835558771715,
+          "tpot_seconds": 0.019235076560803196,
+          "stream_chunk_gap_p95_seconds": 0.07318329199915752,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nWhen the cache is full and a new item needs to be inserted, the least recently\nused item is evicted.\n\nKey operations:\n- get(key): Returns the value if key exists, else -1. Marks the key as recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds\n  capacity, the least recently used item is evicted.\n\nThe implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage (most recently used at head,\n  least recently used at tail).\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node']"
+        },
+        {
+          "ttft_seconds": 0.5241545809985837,
+          "e2e_seconds": 5.304969520002487,
+          "decode_tokens_per_second": 53.33818674293425,
+          "tpot_seconds": 0.01874829387844668,
+          "stream_chunk_gap_p95_seconds": 0.07312220400490332,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nWhen the cache is full and a new item needs to be inserted, the least recently\nused item is evicted.\n\nKey operations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  the least recently used item is evicted.\n\nThe implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage (most recent at head, least recent at tail).\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n"
+        },
+        {
+          "ttft_seconds": 0.5239906760034501,
+          "e2e_seconds": 5.304416093000327,
+          "decode_tokens_per_second": 53.342532882814886,
+          "tpot_seconds": 0.018746766341164223,
+          "stream_chunk_gap_p95_seconds": 0.07316341999830911,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nWhen the cache is full and a new item needs to be inserted, the least recently\nused item is evicted.\n\nKey operations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  the least recently used item is evicted.\n\nThe implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage (most recent at head, least recent at tail).\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n"
+        },
+        {
+          "ttft_seconds": 0.5238586600025883,
+          "e2e_seconds": 5.304070107005828,
+          "decode_tokens_per_second": 53.34492058083789,
+          "tpot_seconds": 0.018745927243149958,
+          "stream_chunk_gap_p95_seconds": 0.07316020399593981,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nWhen the cache is full and a new item needs to be inserted, the least recently\nused item is evicted.\n\nKey operations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  the least recently used item is evicted.\n\nThe implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage (most recently used at head,\n  least recently used at tail).\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "concurrency": 4,
+      "fixture": "prose",
+      "wall_seconds": 8.17065594199812,
+      "aggregate_tokens_per_second": 125.32653525851224,
+      "ttft_p50_seconds": 0.5252654524956597,
+      "ttft_p95_seconds": 0.5262900329980766,
+      "e2e_p95_seconds": 8.16951139199955,
+      "per_stream_decode_median": 34.12871743628546,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 2096.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 1132.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 8.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 3824.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 1720.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 12.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 0.5262900329980766,
+          "e2e_seconds": 7.773409821995301,
+          "decode_tokens_per_second": 35.18639230817572,
+          "tpot_seconds": 0.028420077603910684,
+          "stream_chunk_gap_p95_seconds": 0.07642278199637076,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between disk writes and memory modifications, guaranteeing that the database can always reconstruct a consistent state after an unexpected failure. The core principle is that no data page is written to disk until the corresponding log record describing the change has been durably persisted to the log file on stable storage. This \"write-ahead\" rule prevents the database from entering a state where a partial or uncommitted change is permanently recorded on disk without a corresponding record to undo or redo it.\n\nTransactions are the fundamental unit of atomicity and durability in this model. When a transaction begins, it generates log records for each operation\u2014such as insert, update, or delete\u2014containing the before-image (old value) and after-image (new value) of the affected data. These log records are appended sequentially to the WAL. Crucially, before any modified data page is flushed from the buffer pool to the database file, the system must ensure that all log records pertaining to that page have been written to the log file and made durable. This is achieved through the `fsync` system call, which forces the operating system to flush the log buffer from volatile memory to the physical disk, ensuring that the log record survives"
+        },
+        {
+          "ttft_seconds": 0.525581293994037,
+          "e2e_seconds": 8.16951139199955,
+          "decode_tokens_per_second": 33.35980271019691,
+          "tpot_seconds": 0.029976196462766714,
+          "stream_chunk_gap_p95_seconds": 0.07720291400619317,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, which enforces a strict ordering of disk operations to ensure that the database can always be restored to a consistent state after an unexpected failure. At the core of this mechanism is the principle that no change to the actual database pages on disk may occur until the corresponding log record describing that change has been safely persisted to stable storage. This discipline protects against the fundamental hazard of torn writes, where a power loss or system crash occurs during a partial write of a database page, leaving the data in a corrupted, inconsistent state that cannot be easily identified or repaired without external metadata. By writing the intent to change data to the log first, the database ensures that even if the subsequent update to the data page is lost or corrupted, the log contains a complete, atomic record of what the change was supposed to be.\n\nTransactions are the logical units of work that WAL protects. When a transaction begins, it writes a \"begin\" record to the log. As the transaction modifies data, it writes \"update\" records containing the before-image (old value) and after-image (new value) of the modified data. Crucially, these log records are appended sequentially to the log file, which is optimized for"
+        },
+        {
+          "ttft_seconds": 0.5249496109972824,
+          "e2e_seconds": 7.832035627994628,
+          "decode_tokens_per_second": 34.897632162374016,
+          "tpot_seconds": 0.028655239282342534,
+          "stream_chunk_gap_p95_seconds": 0.07647126200026833,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of a database\u2019s crash recovery mechanism hinges on the Write-Ahead Logging (WAL) protocol, which enforces a strict ordering of disk operations to ensure that the database can always be restored to a consistent state after an unexpected failure. At the core of this system is the concept of atomic transactions, which must either be fully applied or completely discarded, never left in a partial state. To achieve this, the database engine never modifies the actual data pages on disk before the corresponding log records describing those changes have been safely persisted. This \"write-ahead\" rule guarantees that if a crash occurs during a transaction, the log contains enough information to either redo the committed changes or undo the uncommitted ones, thereby preserving the ACID properties of atomicity and durability.\n\nThe process begins when a transaction modifies data. The system first writes a log record containing the before-image and after-image of the data to the log buffer in memory. Crucially, before the transaction is considered committed, the log record must be flushed to stable storage using an `fsync` operation. This `fsync` call forces the operating system to write the data from the kernel\u2019s buffer cache to the physical disk, ensuring that the log record survives even if the power is lost immediately afterward. Only after"
+        },
+        {
+          "ttft_seconds": 0.18963192199589685,
+          "e2e_seconds": 7.998237567997421,
+          "decode_tokens_per_second": 32.6562784138773,
+          "tpot_seconds": 0.030621982925496175,
+          "stream_chunk_gap_p95_seconds": 0.07788925399654545,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, which enforces a strict ordering of operations to ensure that the database can always be restored to a consistent state after an unexpected failure. At the core of this mechanism is the principle that no change to the actual database pages on disk may occur until the corresponding log record describing that change has been durably persisted to stable storage. This discipline protects against the fundamental hazard of torn writes, where a power loss or system crash occurs mid-write, leaving a database page in a corrupted, half-written state that is neither the old nor the new version. By writing the intent to change (the log record) before the change itself, the database ensures that even if the data page is corrupted, the log contains the complete, atomic description of what the page should have become, allowing the recovery process to reconstruct the correct state.\n\nTransactions are the logical units of work that WAL protects, and their atomicity is guaranteed through careful log management. When a transaction begins, a \"begin\" record is written to the log. As the transaction executes, every modification to a data page generates a log record containing the transaction ID, the page ID, the old value (for undo), and the new value (for"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "concurrency": 8,
+      "fixture": "code",
+      "wall_seconds": 7.5295518429993535,
+      "aggregate_tokens_per_second": 271.9949397657897,
+      "ttft_p50_seconds": 0.5315981515013846,
+      "ttft_p95_seconds": 0.5322478910020436,
+      "e2e_p95_seconds": 7.525968351001211,
+      "per_stream_decode_median": 37.66253811177437,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 3824.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 1720.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 12.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 6164.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 3175.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 20.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 0.5322478910020436,
+          "e2e_seconds": 7.482677397005318,
+          "decode_tokens_per_second": 36.68838016121875,
+          "tpot_seconds": 0.027256586298052058,
+          "stream_chunk_gap_p95_seconds": 0.11532766400341643,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRUCache class that supports O(1) time complexity for\nget, put, and eviction operations. It uses a doubly linked list to maintain\nthe order of usage (most recently used at the head, least recently used at the\ntail) and a dictionary for O(1) key lookups.\n\nEviction: When the cache reaches its capacity, the least recently used item\n(tail of the doubly linked list) is removed.\n\nUpdate: When a key is accessed (get) or updated (put), it is moved to the\nhead of the doubly linked list to mark it as most recently used.\n\nLookup: Keys are looked up in O(1) time via the dictionary. If found, the\nnode is moved to the head of the list.\n\"\"\"\n\nfrom typing import Any, Optional\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key ="
+        },
+        {
+          "ttft_seconds": 0.5315989599985187,
+          "e2e_seconds": 6.994537616999878,
+          "decode_tokens_per_second": 39.45573577798951,
+          "tpot_seconds": 0.025344857478436702,
+          "stream_chunk_gap_p95_seconds": 0.10600806199363433,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThe LRU (Least Recently Used) cache evicts the least recently used item when\nthe cache reaches its capacity. This implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage, with the most recently\n  used items at the head and the least recently used items at the tail.\n\nOperations:\n- get(key): Returns the value if the key exists, and marks it as most recently\n  used. Returns -1 if the key does not exist.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds\n  capacity, the least recently used item is evicted.\n\"\"\"\n\n\nclass Node:\n    \"\"\"Doubly linked list node for storing key-value pairs.\"\"\"\n\n    def __init__(self, key: int = 0, value: int = 0):\n        self.key = key\n        self.value = value\n        self.prev = None\n        self.next = None\n\n\nclass LRUCache:\n    \"\"\"\n    A bounded LRU cache using a doubly linked list and a"
+        },
+        {
+          "ttft_seconds": 0.5309989720044541,
+          "e2e_seconds": 7.3016231680012424,
+          "decode_tokens_per_second": 37.66270178616202,
+          "tpot_seconds": 0.02655146743528152,
+          "stream_chunk_gap_p95_seconds": 0.11067962399829412,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nWhen the cache is full and a new item needs to be inserted, the least recently\nused item is evicted.\n\nKey operations:\n- get(key): Returns the value if key exists, else -1. Marks the key as recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds\n  capacity, the least recently used item is evicted.\n\nThe implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage (most recently used at head,\n  least recently used at tail).\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node']"
+        },
+        {
+          "ttft_seconds": 0.18790007299685385,
+          "e2e_seconds": 7.48177215999749,
+          "decode_tokens_per_second": 34.96085439371344,
+          "tpot_seconds": 0.028603419949022102,
+          "stream_chunk_gap_p95_seconds": 0.11559406600281363,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nIt uses a doubly linked list to maintain the order of usage and a dictionary\nfor O(1) average-time lookups.\n\nOperations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  evicts the least recently used item.\n\nEviction: When the cache is full and a new item is inserted, the least recently used\nitem (tail of the doubly linked list) is removed.\n\nUpdate: When an existing key is updated, its value is changed and it is moved to the\nfront (most recently used position) of the doubly linked list.\n\nLookup: When a key is accessed via get(), if it exists, it is moved to the front of\nthe doubly linked list to mark it as most recently used.\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n   "
+        },
+        {
+          "ttft_seconds": 0.5299807430055807,
+          "e2e_seconds": 7.30066378700576,
+          "decode_tokens_per_second": 37.66237443738671,
+          "tpot_seconds": 0.02655169821176541,
+          "stream_chunk_gap_p95_seconds": 0.11039555900060805,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache implementation using a doubly linked list and a dictionary.\n\nThe LRU (Least Recently Used) cache evicts the least recently used item when\nthe cache reaches its capacity. This implementation uses:\n- A dictionary for O(1) key lookup\n- A doubly linked list to maintain the order of usage (most recently used at head,\n  least recently used at tail)\n\nOperations:\n- get(key): Returns the value if key exists, moves it to most recently used position.\n  Returns -1 if key does not exist.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  evicts the least recently used item.\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    \n    __slots__ = ('key', 'value', 'prev', 'next')\n    \n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass LR"
+        },
+        {
+          "ttft_seconds": 0.5319233929985785,
+          "e2e_seconds": 7.300722522995784,
+          "decode_tokens_per_second": 37.67285675089981,
+          "tpot_seconds": 0.02654431031371453,
+          "stream_chunk_gap_p95_seconds": 0.11068690400134074,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nWhen the cache is full and a new item needs to be inserted, the least recently\nused item is evicted.\n\nKey operations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  the least recently used item is evicted.\n\nThe implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage (most recent at head, least recent at tail).\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n"
+        },
+        {
+          "ttft_seconds": 0.5315973430042504,
+          "e2e_seconds": 7.189449120000063,
+          "decode_tokens_per_second": 38.30064239054933,
+          "tpot_seconds": 0.02610922265488554,
+          "stream_chunk_gap_p95_seconds": 0.10781682399829151,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nWhen the cache is full and a new item needs to be inserted, the least recently\nused item is evicted.\n\nKey operations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  the least recently used item is evicted.\n\nThe implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage (most recent at head, least recent at tail).\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n"
+        },
+        {
+          "ttft_seconds": 0.5317406719987048,
+          "e2e_seconds": 7.525968351001211,
+          "decode_tokens_per_second": 36.45863584989376,
+          "tpot_seconds": 0.027428343839225513,
+          "stream_chunk_gap_p95_seconds": 0.11530731200036826,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nIt uses a doubly linked list to maintain the order of usage and a dictionary\nfor O(1) average-time lookups.\n\nKey operations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  evicts the least recently used item.\n\nEviction: When the cache is full and a new item is inserted, the least recently used\nitem (tail of the doubly linked list) is removed.\n\nUpdate: When an existing key is updated, its value is changed and it is moved to the\nfront (most recently used position) of the doubly linked list.\n\nLookup: When a key is accessed via get(), it is moved to the front of the doubly\nlinked list to mark it as most recently used.\n\"\"\"\n\n\nclass Node:\n    \"\"\"Doubly linked list node for LRU cache.\"\"\"\n    __slots__ = ('key', 'value', '"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "concurrency": 8,
+      "fixture": "prose",
+      "wall_seconds": 10.651246165005432,
+      "aggregate_tokens_per_second": 192.2779708846355,
+      "ttft_p50_seconds": 0.5669860874986625,
+      "ttft_p95_seconds": 0.5672558890000801,
+      "e2e_p95_seconds": 10.648214323999127,
+      "per_stream_decode_median": 26.332076522655548,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 6164.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 3175.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 20.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 9588.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 4359.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 28.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 0.19772174300305778,
+          "e2e_seconds": 10.516942750000453,
+          "decode_tokens_per_second": 24.71116761886253,
+          "tpot_seconds": 0.0404675333607741,
+          "stream_chunk_gap_p95_seconds": 0.11444498800119618,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, which enforces a strict ordering of disk operations to ensure that the database can always be restored to a consistent state after an unexpected failure. At the core of this mechanism is the principle that no change to the actual database pages on disk may occur until the corresponding log record describing that change has been permanently persisted to stable storage. This discipline protects against the fundamental hazard of torn writes, where a power loss or system crash occurs during a partial write of a database page, leaving the data in a corrupted, inconsistent state that cannot be easily identified or repaired without external metadata. By writing the intent to change data to the log first, the database ensures that even if the subsequent update to the data page is lost or corrupted, the log contains a complete, atomic record of what the change was supposed to be.\n\nTransactions are managed through this log by recording their lifecycle events, such as begin, update, and commit or abort, as discrete log records. When a transaction modifies data, the database first writes a log record containing the transaction ID, the object being modified, the old value, and the new value. Crucially, before this log record is considered durable, the system must issue an fs"
+        },
+        {
+          "ttft_seconds": 0.5672558890000801,
+          "e2e_seconds": 10.216683345999627,
+          "decode_tokens_per_second": 26.426438370188162,
+          "tpot_seconds": 0.03784089198823352,
+          "stream_chunk_gap_p95_seconds": 0.10640344100102084,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, a mechanism that ensures the durability and atomicity of transactions by strictly ordering the persistence of changes. The fundamental principle is that no modification to the actual database pages on disk may occur until the corresponding log record describing that change has been safely written to stable storage. This ordering guarantees that if a crash occurs, the system can always reconstruct the state of the database by replaying the log, thereby preventing data loss or corruption.\n\nTransactions are the atomic units of work that WAL protects. When a transaction begins, it generates log records for each operation, such as updates or deletions. These records contain the \"before\" and \"after\" images of the data, along with transaction identifiers and status flags. Crucially, before any data page is modified in memory and eventually flushed to disk, the log record for that modification must be written to the log file and forced to disk using an `fsync` operation. The `fsync` call is essential because it instructs the operating system to flush all buffered data to the physical storage medium, ensuring that the log record survives even if the power fails immediately after the call returns. Without `fsync`, the log record might remain in volatile memory"
+        },
+        {
+          "ttft_seconds": 0.5664877419985714,
+          "e2e_seconds": 10.35547557099926,
+          "decode_tokens_per_second": 26.04967995205197,
+          "tpot_seconds": 0.03838818756470858,
+          "stream_chunk_gap_p95_seconds": 0.10662401799345389,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between the modification of data in memory and the persistence of that modification to stable storage, thereby guaranteeing that the database can always be restored to a consistent state after an unexpected failure. The fundamental principle is that no change to the actual database pages on disk may occur until the corresponding log record describing that change has been safely written to the log file on stable storage. This mechanism relies on the atomicity and durability properties of transactions, where a transaction is a logical unit of work that must either be fully applied or completely undone. When a transaction begins, it generates log records for each operation, such as updates or inserts, which are first appended to the log buffer in memory. Before any modified data page is written back to the database file on disk, the system must ensure that all log records pertaining to that page have been flushed to the log file on disk using an fsync operation. The fsync call is critical because it forces the operating system to commit the data from the volatile disk cache to the physical storage medium, ensuring that the log record survives even if the power fails immediately after the call returns. Without fsync, the log record might remain in the OS buffer cache and be lost"
+        },
+        {
+          "ttft_seconds": 0.5658519939970574,
+          "e2e_seconds": 9.90778794400103,
+          "decode_tokens_per_second": 27.296269356234625,
+          "tpot_seconds": 0.03663504294119205,
+          "stream_chunk_gap_p95_seconds": 0.10613590299908537,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, a mechanism that ensures the atomicity and durability of transactions by strictly ordering the persistence of changes. Before any modification to the actual database pages is written to disk, the corresponding log record describing the change must be flushed to stable storage. This fundamental rule guarantees that if a crash occurs, the system can always reconstruct the state of the database by replaying or undoing operations based on the log, rather than relying on potentially inconsistent or partially written data pages.\n\nTransactions are the logical units of work that WAL protects. When a transaction begins, it writes a \"begin\" record to the log. As it executes, every update generates a log record containing the transaction ID, the data item being modified, the old value, and the new value. These records are appended sequentially to the log file. Crucially, the transaction is not considered committed until a \"commit\" record is successfully written to the log and flushed to disk. If a crash occurs before this commit record is persisted, the transaction is treated as uncommitted, and its effects must be undone during recovery. If the commit record is present, the transaction is considered durable, and its effects must be redone if they were not yet"
+        },
+        {
+          "ttft_seconds": 0.5671039520020713,
+          "e2e_seconds": 10.285938200999226,
+          "decode_tokens_per_second": 26.23771467512293,
+          "tpot_seconds": 0.03811307548626335,
+          "stream_chunk_gap_p95_seconds": 0.10647936099849176,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between disk writes and memory modifications, guaranteeing that the database can always reconstruct a consistent state after an unexpected failure. The core principle is that no data page is written to disk until the corresponding log record describing the change has been durably persisted to stable storage. This \"write-ahead\" rule prevents the database from entering a state where a partial or inconsistent update exists on disk without a corresponding record to either redo or undo it.\n\nTransactions are the fundamental unit of atomicity in this model. When a transaction begins, it generates log records for each operation\u2014such as `BEGIN`, `UPDATE`, and `COMMIT`\u2014which are appended sequentially to the WAL. These log records contain enough information to both redo the change (the new value) and undo it (the old value). Crucially, before any modified data page is flushed from the buffer pool to disk, the log records for all changes to that page must already be on disk. This ensures that if a crash occurs after a data page is written but before the transaction commits, the system can still identify the transaction as incomplete and roll it back using the log.\n\nCheckpoints optimize recovery by bounding the amount of log that"
+        },
+        {
+          "ttft_seconds": 0.5670477919993573,
+          "e2e_seconds": 10.648214323999127,
+          "decode_tokens_per_second": 25.294691759190336,
+          "tpot_seconds": 0.039533986399999096,
+          "stream_chunk_gap_p95_seconds": 0.10838738799793646,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between disk writes and memory modifications, guaranteeing that the database can always reconstruct a consistent state after an unexpected failure. The core principle is that no change to the actual database pages on disk may occur until the corresponding log record describing that change has been durably written to the log file. This \"write-ahead\" rule, combined with atomic transaction semantics, checkpoints, and careful handling of torn writes and fsync, creates a robust recovery mechanism.\n\nWhen a transaction begins, it generates log records for each operation\u2014such as \"begin transaction,\" \"update page X offset Y to value Z,\" and \"commit transaction.\" These log records are appended sequentially to the WAL file. Crucially, before any modified database page is written to disk, the log records describing those modifications must already be safely persisted. This is achieved through fsync: the database calls fsync on the log file to ensure the operating system flushes the log data from volatile buffers to non-volatile storage. Only after the log record is confirmed durable can the database proceed to write the modified page to its final location on disk. This ordering prevents a scenario where a page update is lost while the log record describing it is also"
+        },
+        {
+          "ttft_seconds": 0.5669243829979678,
+          "e2e_seconds": 9.712639286000922,
+          "decode_tokens_per_second": 27.88191002064496,
+          "tpot_seconds": 0.03586554863922727,
+          "stream_chunk_gap_p95_seconds": 0.10609028700127965,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, a mechanism that ensures the atomicity and durability of transactions by strictly ordering the persistence of changes. Before any modification to the actual database pages is committed to disk, the corresponding log record describing that change must be written to the log file and flushed to stable storage. This fundamental rule guarantees that if a crash occurs, the system can always reconstruct the state of the database by replaying or undoing log records, regardless of whether the data pages themselves were successfully written.\n\nTransactions are the primary units of work managed by this protocol. When a transaction begins, it generates log records for each operation, such as updates or inserts, which are appended to the log buffer. These records contain sufficient information to both redo the change (the new value) and undo it (the old value). Crucially, the transaction is not considered committed until its commit record is written to the log and forced to disk via an `fsync` operation. This `fsync` call is the critical barrier that ensures the log record is physically stored on non-volatile media, protecting against power loss or hardware failure. If the system crashes before the commit record is fsynced, the transaction is treated as uncommitted"
+        },
+        {
+          "ttft_seconds": 0.5671551050036214,
+          "e2e_seconds": 9.512672042001213,
+          "decode_tokens_per_second": 28.505898741899465,
+          "tpot_seconds": 0.035080458576461145,
+          "stream_chunk_gap_p95_seconds": 0.10261321199504891,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, a mechanism that ensures the atomicity and durability of transactions by strictly ordering the persistence of changes. Before any modification to the actual database pages is written to disk, the corresponding log record describing the change must be flushed to stable storage. This fundamental rule guarantees that if a crash occurs, the system can always reconstruct the state of the database by replaying or undoing operations based on the log, rather than relying on potentially inconsistent or partially written data pages.\n\nTransactions are the primary unit of work managed by this protocol. When a transaction begins, it is assigned a unique identifier, and every subsequent operation\u2014whether an insert, update, or delete\u2014generates a log record containing the transaction ID, the old value (for undo), and the new value (for redo). These records are appended sequentially to the log file. Crucially, the transaction is not considered committed until a special \"commit\" record is written to the log and fsynced to disk. The fsync system call is vital here; it forces the operating system to flush all buffered data to the physical storage medium, ensuring that the log record is truly durable. Without fsync, a crash could result in the loss"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "concurrency": 16,
+      "fixture": "code",
+      "wall_seconds": 15.172268176000216,
+      "aggregate_tokens_per_second": 269.9662273620454,
+      "ttft_p50_seconds": 3.8970295325052575,
+      "ttft_p95_seconds": 8.112407767999684,
+      "e2e_p95_seconds": 15.166188271003193,
+      "per_stream_decode_median": 36.75338564350538,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 9588.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 4359.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 28.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 14124.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 7305.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 44.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 0.19707860400376376,
+          "e2e_seconds": 6.734579977004614,
+          "decode_tokens_per_second": 39.00572794571355,
+          "tpot_seconds": 0.025637260286277844,
+          "stream_chunk_gap_p95_seconds": 0.10200666499440558,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThe LRU (Least Recently Used) cache evicts the least recently used items when\nthe cache reaches its capacity. This implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage, with the most recently\n  used items at the head and the least recently used items at the tail.\n\nOperations:\n- get(key): Returns the value if the key exists, otherwise -1. Marks the key\n  as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds\n  capacity, evicts the least recently used item. Marks the key as most recently\n  used.\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass LRUCache"
+        },
+        {
+          "ttft_seconds": 0.537172031996306,
+          "e2e_seconds": 6.993851126993832,
+          "decode_tokens_per_second": 39.49398696267368,
+          "tpot_seconds": 0.025320310176460886,
+          "stream_chunk_gap_p95_seconds": 0.10199880900472635,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThe LRU (Least Recently Used) cache evicts the least recently used item when\nthe cache reaches its capacity. This implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage, with the most recently\n  used items at the head and the least recently used items at the tail.\n\nOperations:\n- get(key): Returns the value if the key exists, marking it as most recently\n  used. Returns -1 if the key does not exist.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds\n  capacity, the least recently used item is evicted.\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list.\"\"\"\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass LRUCache:\n    \"\"\"\n    A bounded"
+        },
+        {
+          "ttft_seconds": 0.5379289150005206,
+          "e2e_seconds": 6.994089703999634,
+          "decode_tokens_per_second": 39.49715757304306,
+          "tpot_seconds": 0.025318277603918093,
+          "stream_chunk_gap_p95_seconds": 0.10206832900439622,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nIt uses a doubly linked list to maintain the order of usage and a dictionary\nfor O(1) average-time lookups.\n\nOperations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  evicts the least recently used item.\n\nTime Complexity:\n- get: O(1)\n- put: O(1)\n\nSpace Complexity:\n- O(capacity)\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"Doubly linked list node to store key-value pairs.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass"
+        },
+        {
+          "ttft_seconds": 0.5407803870039061,
+          "e2e_seconds": 7.762499005999416,
+          "decode_tokens_per_second": 35.31015447337779,
+          "tpot_seconds": 0.028320465172531412,
+          "stream_chunk_gap_p95_seconds": 0.2509374569999636,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nWhen the cache is full and a new item needs to be inserted, the least recently\nused item is evicted.\n\nKey operations:\n- get(key): Returns the value if key exists, else -1. Marks the key as recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds\n  capacity, the least recently used item is evicted.\n\nThe implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage (most recently used at head,\n  least recently used at tail).\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node']"
+        },
+        {
+          "ttft_seconds": 0.5369531019969145,
+          "e2e_seconds": 7.254926525994961,
+          "decode_tokens_per_second": 37.95787567260763,
+          "tpot_seconds": 0.02634499381960018,
+          "stream_chunk_gap_p95_seconds": 0.10316988699923968,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nIt uses a doubly linked list to maintain the order of usage and a dictionary\nfor O(1) average-time lookups.\n\nOperations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  evicts the least recently used item.\n\nTime Complexity:\n- get: O(1)\n- put: O(1)\n\nSpace Complexity:\n- O(capacity)\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"Doubly linked list node for storing key-value pairs in the LRU cache.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node"
+        },
+        {
+          "ttft_seconds": 0.5376008980019833,
+          "e2e_seconds": 7.2555138419993455,
+          "decode_tokens_per_second": 37.958217399624004,
+          "tpot_seconds": 0.02634475664312691,
+          "stream_chunk_gap_p95_seconds": 0.10351944099966204,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nIt uses a doubly linked list to maintain the order of usage and a dictionary\nfor O(1) average-time lookups.\n\nOperations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  evicts the least recently used item.\n\nTime Complexity:\n- get: O(1)\n- put: O(1)\n\nSpace Complexity:\n- O(capacity)\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"Doubly linked list node for storing key-value pairs in the LRU cache.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node"
+        },
+        {
+          "ttft_seconds": 0.5374804169987328,
+          "e2e_seconds": 6.7335136990004685,
+          "decode_tokens_per_second": 41.15536318062156,
+          "tpot_seconds": 0.02429816973334014,
+          "stream_chunk_gap_p95_seconds": 0.10140333399613155,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nIt uses a doubly linked list to maintain the order of usage and a dictionary\nfor O(1) average-time lookups.\n\nOperations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  evicts the least recently used item.\n\nTime Complexity:\n- get: O(1)\n- put: O(1)\n\nSpace Complexity:\n- O(capacity)\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"Doubly linked list node to store key-value pairs.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass"
+        },
+        {
+          "ttft_seconds": 0.5370183030026965,
+          "e2e_seconds": 7.508714941999642,
+          "decode_tokens_per_second": 36.57646240280015,
+          "tpot_seconds": 0.027339986819595867,
+          "stream_chunk_gap_p95_seconds": 0.19819489899964537,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nWhen the cache is full and a new item needs to be inserted, the least recently\nused item is evicted.\n\nOperations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  the least recently used item is evicted.\n\nThe implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage (most recently used at head,\n  least recently used at tail).\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node']"
+        },
+        {
+          "ttft_seconds": 7.253646519995527,
+          "e2e_seconds": 14.417286497999157,
+          "decode_tokens_per_second": 35.59642874055539,
+          "tpot_seconds": 0.028092705796092667,
+          "stream_chunk_gap_p95_seconds": 0.2069743389947689,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nIt uses a doubly linked list to maintain the order of usage and a dictionary\nfor O(1) average-time lookups.\n\nOperations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  evicts the least recently used item.\n\nTime Complexity:\n- get: O(1)\n- put: O(1)\n\nSpace Complexity:\n- O(capacity)\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"Doubly linked list node for storing key-value pairs in the LRU cache.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node"
+        },
+        {
+          "ttft_seconds": 7.508557244997064,
+          "e2e_seconds": 14.710816184997384,
+          "decode_tokens_per_second": 35.40555846774216,
+          "tpot_seconds": 0.028244152705883607,
+          "stream_chunk_gap_p95_seconds": 0.19652965800196398,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nWhen the cache is full and a new item needs to be inserted, the least recently\nused item is evicted.\n\nOperations:\n- get(key): Returns the value for the key if it exists, else -1. Marks the key as recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  the least recently used item is evicted.\n\nThe implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage (most recently used at head,\n  least recently used at tail).\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['"
+        },
+        {
+          "ttft_seconds": 7.253278678006609,
+          "e2e_seconds": 14.3039685870026,
+          "decode_tokens_per_second": 36.16667351582785,
+          "tpot_seconds": 0.02764976434900389,
+          "stream_chunk_gap_p95_seconds": 0.20666790500399657,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThe LRU (Least Recently Used) cache evicts the least recently used item when\nthe cache reaches its capacity. This implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage, with the most recently\n  used items at the head and the least recently used items at the tail.\n\nOperations:\n- get(key): Returns the value if the key exists, otherwise -1. Marks the key\n  as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds\n  capacity, evicts the least recently used item.\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"Doubly linked list node for the LRU cache.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node"
+        },
+        {
+          "ttft_seconds": 7.50783428199793,
+          "e2e_seconds": 14.974049196993292,
+          "decode_tokens_per_second": 34.15385210621926,
+          "tpot_seconds": 0.0292792741764524,
+          "stream_chunk_gap_p95_seconds": 0.19648468200466596,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThe LRU (Least Recently Used) cache evicts the least recently used item when\nthe cache reaches its capacity. This implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage (most recently used at\n  the head, least recently used at the tail).\n\nOperations:\n- get(key): Returns the value if the key exists, otherwise -1. Marks the key\n  as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds\n  capacity, evicts the least recently used item. Marks the key as most recently\n  used.\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"Doubly linked list node for the LRU cache.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self"
+        },
+        {
+          "ttft_seconds": 7.759009483001137,
+          "e2e_seconds": 15.166188271003193,
+          "decode_tokens_per_second": 34.426062512901936,
+          "tpot_seconds": 0.02904775995294924,
+          "stream_chunk_gap_p95_seconds": 0.1468399639998097,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nIt uses a doubly linked list to maintain the order of usage and a dictionary\nfor O(1) average-time lookups.\n\nKey operations:\n- get(key): Returns the value if key exists, else -1. Marks the key as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds capacity,\n  evicts the least recently used item.\n\nEviction: When the cache is full and a new item is inserted, the least recently used\nitem (tail of the doubly linked list) is removed.\n\nUpdate: When an existing key is updated, its value is changed and it is moved to the\nfront (most recently used position) of the doubly linked list.\n\nLookup: When a key is accessed via get(), if it exists, its node is moved to the front\nof the doubly linked list to mark it as most recently used.\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\""
+        },
+        {
+          "ttft_seconds": 7.758983594998426,
+          "e2e_seconds": 14.97402025199699,
+          "decode_tokens_per_second": 35.34285577782211,
+          "tpot_seconds": 0.02829426139999437,
+          "stream_chunk_gap_p95_seconds": 0.14733094300027005,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThe LRU (Least Recently Used) cache evicts the least recently used item when\nthe cache reaches its capacity. This implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage, with the most recently\n  used items at the head and the least recently used items at the tail.\n\nOperations:\n- get(key): Returns the value if the key exists, otherwise -1. Marks the key\n  as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds\n  capacity, the least recently used item is evicted.\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass LRUCache:\n    \"\"\"\n    A bounded L"
+        },
+        {
+          "ttft_seconds": 8.013045387997408,
+          "e2e_seconds": 14.917942955995386,
+          "decode_tokens_per_second": 36.93030888421062,
+          "tpot_seconds": 0.027078029678423442,
+          "stream_chunk_gap_p95_seconds": 0.11259297800279455,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThis module provides an LRU (Least Recently Used) cache with a fixed capacity.\nWhen the cache is full and a new item needs to be inserted, the least recently\nused item is evicted.\n\nKey operations:\n- get(key): Returns the value if key exists, else -1. Marks the key as recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds\n  capacity, the least recently used item is evicted.\n\nThe implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage (most recently used at head,\n  least recently used at tail).\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"A node in the doubly linked list representing a cache entry.\"\"\"\n\n    __slots__ = ('key', 'value', 'prev', 'next')\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node']"
+        },
+        {
+          "ttft_seconds": 8.112407767999684,
+          "e2e_seconds": 14.709639362998132,
+          "decode_tokens_per_second": 38.652576664630494,
+          "tpot_seconds": 0.025871496450974304,
+          "stream_chunk_gap_p95_seconds": 0.11191951900400454,
+          "usage": {
+            "prompt_tokens": 62,
+            "total_tokens": 318,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "```python\n\"\"\"\nBounded LRU Cache Implementation using a Doubly Linked List and a Dictionary.\n\nThe LRU (Least Recently Used) cache evicts the least recently used item when\nthe cache reaches its capacity. This implementation uses:\n- A dictionary for O(1) average-time lookups.\n- A doubly linked list to maintain the order of usage, with the most recently\n  used items at the head and the least recently used items at the tail.\n\nOperations:\n- get(key): Returns the value if the key exists, otherwise -1. Marks the key\n  as most recently used.\n- put(key, value): Inserts or updates the key-value pair. If the cache exceeds\n  capacity, the least recently used item is evicted.\n\"\"\"\n\nfrom typing import Optional, Any\n\n\nclass Node:\n    \"\"\"Doubly linked list node for the LRU cache.\"\"\"\n\n    def __init__(self, key: Any = None, value: Any = None):\n        self.key = key\n        self.value = value\n        self.prev: Optional['Node'] = None\n        self.next: Optional['Node'] = None\n\n\nclass LRUCache:\n    \"\"\"\n    A bounded L"
+        }
+      ]
+    },
+    {
+      "repeat": 0,
+      "concurrency": 16,
+      "fixture": "prose",
+      "wall_seconds": 21.779939167005068,
+      "aggregate_tokens_per_second": 188.0629678803293,
+      "ttft_p50_seconds": 5.571063297000364,
+      "ttft_p95_seconds": 12.00852862400643,
+      "e2e_p95_seconds": 21.775904328998877,
+      "per_stream_decode_median": 25.000133273197733,
+      "external_completions_detected": false,
+      "preemptions_delta": 0.0,
+      "metrics_before": {
+        "vllm:spec_decode_num_draft_tokens_total": 14124.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 7305.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 44.0
+      },
+      "metrics_after": {
+        "vllm:spec_decode_num_draft_tokens_total": 20896.0,
+        "vllm:spec_decode_num_accepted_tokens_total": 9692.0,
+        "vllm:num_requests_running": 0.0,
+        "vllm:num_requests_waiting": 0.0,
+        "vllm:num_requests_waiting_by_reason": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:request_success_total": 60.0
+      },
+      "streams": [
+        {
+          "ttft_seconds": 0.20861773900105618,
+          "e2e_seconds": 11.337778856999648,
+          "decode_tokens_per_second": 22.912778177647393,
+          "tpot_seconds": 0.043643769090190555,
+          "stream_chunk_gap_p95_seconds": 0.2125239849992795,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between disk writes and memory modifications, guaranteeing that the database can always reconstruct a consistent state after an unexpected failure. The core principle is that no change to the actual database pages on disk may occur until the corresponding log record describing that change has been durably written to the log file. This \"write-ahead\" rule prevents the database from entering a state where a page modification is partially applied without a corresponding record of what was changed, which would make recovery impossible.\n\nTransactions are the fundamental units of atomicity and durability in this model. When a transaction begins, it generates log records for each operation\u2014such as insert, update, or delete\u2014containing the before-image (old value) and after-image (new value) of the affected data. These log records are appended sequentially to the WAL. Crucially, before any modified database page is flushed from the buffer pool to disk, the log records for all changes to that page must already be on stable storage. This is enforced through fsync operations: the database calls fsync on the log file to ensure the operating system has committed the log data to physical media before acknowledging the write to the application. Without fsync, the OS"
+        },
+        {
+          "ttft_seconds": 0.5750483509982587,
+          "e2e_seconds": 10.297442813003727,
+          "decode_tokens_per_second": 26.22810676901916,
+          "tpot_seconds": 0.038127037105903795,
+          "stream_chunk_gap_p95_seconds": 0.09898231300030602,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between disk writes and memory modifications, guaranteeing that the database can always reconstruct a consistent state after an unexpected failure. The core principle is that no data page is written to disk until the corresponding log record describing the change has been durably persisted to stable storage. This \"write-ahead\" rule prevents the database from entering an inconsistent state where a partial update exists on disk without a corresponding record of the intended change.\n\nTransactions are the fundamental units of atomicity and durability in this model. When a transaction begins, it generates log records for each operation, such as updates or inserts, which are first appended to an in-memory log buffer. Before any modified data page is flushed from the buffer pool to disk, the log buffer containing the relevant log records must be flushed to disk using an `fsync` system call. This `fsync` ensures that the log records are physically written to non-volatile storage, making them durable even if the power fails immediately afterward. If the system crashes before the data page is written, the log records remain on disk, allowing the recovery process to redo the changes. Conversely, if the data page is written but the transaction has not committed, the log"
+        },
+        {
+          "ttft_seconds": 0.5757530109985964,
+          "e2e_seconds": 11.609140569999,
+          "decode_tokens_per_second": 23.11166889012121,
+          "tpot_seconds": 0.04326818650588393,
+          "stream_chunk_gap_p95_seconds": 0.21250888099893928,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between disk writes and memory modifications, guaranteeing that the database can always reconstruct a consistent state after an unexpected failure. The core principle is that no data page is written to the main database file until the corresponding log record describing that change has been durably persisted to the log file on disk. This \"write-ahead\" rule prevents the database from entering a state where a partial or corrupted update exists in the data file without a corresponding record in the log to either redo or undo it.\n\nTransactions are the fundamental units of atomicity and durability in this model. When a transaction begins, it generates log records for each operation, such as updates or inserts, which are first appended to the in-memory log buffer. Before any modified data page is flushed from the buffer pool to the database file, the WAL mechanism ensures that all log records up to that point have been written to stable storage. This is achieved through the `fsync` system call, which forces the operating system to flush the log buffer from volatile memory to the physical disk, ensuring durability even if power is lost immediately afterward. Without `fsync`, the log might reside only in the OS page cache, making it vulnerable to loss"
+        },
+        {
+          "ttft_seconds": 0.575003949998063,
+          "e2e_seconds": 10.297381468997628,
+          "decode_tokens_per_second": 26.228152476251463,
+          "tpot_seconds": 0.03812697066274339,
+          "stream_chunk_gap_p95_seconds": 0.09925551399646793,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the strict adherence to the Write-Ahead Logging (WAL) protocol, which ensures that the log is the single source of truth for transactional integrity. Before any modification to the actual database pages is written to disk, the corresponding log record describing the change must be persisted to stable storage. This ordering guarantees that if a crash occurs, the system can always reconstruct the state of the database by replaying the log, because the log contains a complete history of all committed transactions, even if their data changes were lost in volatile memory.\n\nTransactions are managed through atomicity and durability guarantees enforced by this log structure. When a transaction begins, a \"begin\" record is written to the log and fsynced to disk. As the transaction executes, every update generates a log record containing the before-image and after-image of the data, which is also fsynced before the transaction proceeds. Only after all such log records are safely persisted does the transaction write a \"commit\" record to the log and fsync it. This commit record acts as the definitive marker of durability; once it is on disk, the transaction is considered permanently committed, regardless of whether the actual data pages have been written to the database file. If a crash occurs before the"
+        },
+        {
+          "ttft_seconds": 0.5756622420012718,
+          "e2e_seconds": 10.95792204499594,
+          "decode_tokens_per_second": 24.561126848939725,
+          "tpot_seconds": 0.04071474432546929,
+          "stream_chunk_gap_p95_seconds": 0.11010154099494684,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between disk writes and memory modifications, guaranteeing that the database can always reconstruct a consistent state after an unexpected failure. The core principle is that no data page is written to the main database file until the corresponding log record describing that change has been durably persisted to the log file on stable storage. This \"write-ahead\" rule prevents the database from entering a state where a partial or corrupted update exists in the data file without a corresponding record in the log to either redo or undo it.\n\nTransactions are the fundamental units of atomicity and durability in this model. When a transaction begins, it generates log records for each operation, such as updates to specific rows or pages. These log records contain enough information to both redo the change (the new value) and undo it (the old value). Crucially, before any modification to a data page in memory is allowed to be flushed to disk, the log records for that transaction must be forced to disk using an `fsync` system call. `fsync` ensures that the operating system\u2019s buffer cache is flushed to the physical storage device, making the log record durable even if power is lost immediately afterward. Without `fsync`, the"
+        },
+        {
+          "ttft_seconds": 0.5758775709982729,
+          "e2e_seconds": 10.566141071001766,
+          "decode_tokens_per_second": 25.52485227240611,
+          "tpot_seconds": 0.03917750392158233,
+          "stream_chunk_gap_p95_seconds": 0.10357222599850502,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, a mechanism that ensures the atomicity and durability of transactions by strictly ordering the persistence of changes. At its core, WAL enforces a fundamental rule: no modification to the actual database pages on disk may occur until the corresponding log record describing that change has been safely written to stable storage. This discipline creates a durable history of intent, allowing the database to reconstruct its state after a crash by replaying or undoing operations based on this log, rather than relying on the potentially inconsistent state of the data files themselves.\n\nTransactions are the primary unit of work managed by this system. When a transaction begins, it generates log records for every operation, such as updates or inserts, which are first written to an in-memory log buffer. Before any data page is modified on disk, the relevant log records must be flushed to disk via an `fsync` call, ensuring they survive power loss. This `fsync` operation is critical because it forces the operating system to commit the data from volatile memory to non-volatile storage, guaranteeing durability. If a crash occurs before the `fsync` completes, the transaction is considered uncommitted and will be ignored during recovery. Conversely, if the"
+        },
+        {
+          "ttft_seconds": 0.5761740050002118,
+          "e2e_seconds": 10.95776756399573,
+          "decode_tokens_per_second": 24.562703071634484,
+          "tpot_seconds": 0.040712131603903995,
+          "stream_chunk_gap_p95_seconds": 0.11004390900052385,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between disk writes and memory modifications, guaranteeing that the database can always reconstruct a consistent state after an unexpected failure. The fundamental principle is that no data page is written to the main database file until the corresponding log record describing that change has been durably persisted to the log file on stable storage. This \"write-ahead\" rule prevents the database from entering a state where a partial or corrupted update exists in the data file without a corresponding record in the log to either redo or undo it.\n\nTransactions are the atomic units of work that the WAL protects. When a transaction begins, it generates log records for each operation, such as updates to specific rows or pages. These log records contain enough information to both redo the change (the new value) and undo it (the old value). Crucially, before any modification to a data page in memory is allowed to be flushed to disk, the log record for that modification must first be written to the log file and made durable. This durability is achieved through the `fsync` system call, which forces the operating system to flush the log buffer from volatile memory to the physical disk, ensuring that the log record survives even if power is lost immediately"
+        },
+        {
+          "ttft_seconds": 0.5763245490015834,
+          "e2e_seconds": 10.019189238999388,
+          "decode_tokens_per_second": 27.004516994731954,
+          "tpot_seconds": 0.03703084192156002,
+          "stream_chunk_gap_p95_seconds": 0.09894213700317778,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between the modification of data in memory and the persistence of that modification to stable storage. The fundamental principle is that no change to the database\u2019s actual data pages may be written to disk until the corresponding record describing that change has been safely recorded in the log on non-volatile storage. This guarantee is anchored by the use of `fsync` system calls, which force the operating system to flush the log buffer from volatile memory to the physical disk, ensuring that the log record survives even if the power fails immediately after the call returns. Without this explicit synchronization, the operating system\u2019s write-back cache could lose the log record, breaking the atomicity and durability guarantees of transactions.\n\nTransactions are the logical units of work that the WAL protects. When a transaction begins, it generates log records for every operation, such as \"start transaction,\" \"update page X,\" or \"commit transaction.\" These records are appended sequentially to the log file. Crucially, the database engine delays writing the modified data pages to disk until after the relevant log records have been `fsync`ed. This creates a dependency chain: if the data page is on disk, the log record must also be on disk."
+        },
+        {
+          "ttft_seconds": 10.565802044999145,
+          "e2e_seconds": 20.379847071999393,
+          "decode_tokens_per_second": 25.983169966965505,
+          "tpot_seconds": 0.03848645108627548,
+          "stream_chunk_gap_p95_seconds": 0.206165231000341,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, which enforces a strict ordering of disk operations to ensure that the database can always be restored to a consistent state after an unexpected failure. At the core of this mechanism is the principle that no change to the actual database pages on disk may occur until the corresponding log record describing that change has been durably written to stable storage. This invariant guarantees that the log serves as the authoritative source of truth for all committed transactions, even if the data pages themselves are lost or corrupted during a crash.\n\nTransactions are managed through atomic units of work, each identified by a unique transaction ID. When a transaction begins, a \"BEGIN\" record is appended to the log. As the transaction executes, every modification to a data page generates a log record containing the transaction ID, the page ID, the old value (for undo), and the new value (for redo). Crucially, before any modified page is written to disk, the log record must be flushed to disk using an `fsync` operation. This `fsync` call forces the operating system to commit the data from volatile buffers to non-volatile storage, ensuring durability. If the system crashes before the `fsync` completes, the"
+        },
+        {
+          "ttft_seconds": 11.33650288300123,
+          "e2e_seconds": 21.39633580500231,
+          "decode_tokens_per_second": 25.34833351380114,
+          "tpot_seconds": 0.03945032518431795,
+          "stream_chunk_gap_p95_seconds": 0.11837424200348323,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, a mechanism that ensures the atomicity and durability of transactions by strictly ordering the persistence of changes. Before any modification to the actual database pages is committed to disk, the corresponding log record describing the change must be written to the log file and flushed to stable storage. This \"write-ahead\" guarantee means that if a crash occurs, the log contains a complete history of all committed transactions, even if the data pages themselves were not yet updated. Transactions are managed through log records that include before-images and after-images, allowing the system to undo uncommitted changes and redo committed ones during recovery.\n\nA critical component of this process is the checkpoint, which periodically forces all dirty pages in the buffer pool to disk and records a checkpoint record in the log. This operation bounds the amount of work required during recovery, as the system only needs to scan the log from the most recent checkpoint forward. Without checkpoints, recovery would require scanning the entire log history, which could be prohibitively slow. The checkpoint record serves as a synchronization point, ensuring that all transactions committed before the checkpoint are already reflected in the database on disk, so recovery only needs to consider transactions that were active or committed after that point.\n\n"
+        },
+        {
+          "ttft_seconds": 10.839742138996371,
+          "e2e_seconds": 21.554503831001057,
+          "decode_tokens_per_second": 23.798942741795184,
+          "tpot_seconds": 0.042018673301979156,
+          "stream_chunk_gap_p95_seconds": 0.18952310899476288,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, a mechanism that ensures the atomicity and durability of transactions by strictly ordering the persistence of changes. At its core, WAL mandates that before any modification to the actual database pages is written to disk, the corresponding log record describing that change must be permanently stored in the log file. This invariant guarantees that if a crash occurs, the system can always reconstruct the state of the database by replaying the log, because the log contains a complete history of all committed transactions, even if their data changes were lost in volatile memory.\n\nTransactions are the fundamental units of work protected by this protocol. When a transaction begins, it generates log records for each operation, such as updates or deletions, which are appended to the log buffer. Crucially, the system does not wait for these log records to be flushed to disk for every single operation, as that would be prohibitively slow. Instead, log records are batched and flushed to stable storage only at critical points, such as when a transaction commits or when a checkpoint is initiated. This batching is made safe by the use of `fsync`, a system call that forces the operating system to flush all buffered data from the kernel\u2019s page cache to"
+        },
+        {
+          "ttft_seconds": 10.840026764999493,
+          "e2e_seconds": 21.775904328998877,
+          "decode_tokens_per_second": 23.31774459870081,
+          "tpot_seconds": 0.04288579436862503,
+          "stream_chunk_gap_p95_seconds": 0.18972494899935555,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between the modification of data in memory and the persistence of that modification to stable storage. The fundamental principle, often summarized as \"write-ahead logging,\" dictates that no change to the database\u2019s actual data pages may be written to disk until the corresponding log record describing that change has been safely persisted to the log file. This mechanism guarantees that even if a system crashes at any arbitrary point, the database can always reconstruct a consistent state by replaying or undoing operations based on the durable log records.\n\nTransactions are the atomic units of work protected by this mechanism. When a transaction begins, it generates log records for each operation, such as updates or inserts, which are first written to an in-memory log buffer. Before any modified data page is flushed from the buffer pool to disk, the log buffer containing the relevant log records must be flushed to stable storage. This is achieved through the `fsync` system call, which forces the operating system to commit the data from the kernel\u2019s page cache to the physical disk, ensuring durability against power failures or hardware crashes. Without `fsync`, the log records might remain in volatile memory, rendering the WAL ineffective because the log itself could be lost during"
+        },
+        {
+          "ttft_seconds": 10.95704575200216,
+          "e2e_seconds": 21.478743692001444,
+          "decode_tokens_per_second": 24.235632067576475,
+          "tpot_seconds": 0.04126156054901681,
+          "stream_chunk_gap_p95_seconds": 0.1895961809932487,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, which enforces a strict ordering of disk operations to ensure that the database can always be restored to a consistent state after an unexpected failure. At the core of this mechanism is the principle that no change to the actual database pages on disk may occur until the corresponding log record describing that change has been durably written to stable storage. This discipline protects against the fundamental hazard of torn writes, where a power loss or system crash occurs in the middle of a disk write, leaving a page in a corrupted, half-written state that is neither the old nor the new version. By ensuring that the log record is fully persisted before the data page is modified, the system guarantees that even if the data page is torn, the log contains the complete information necessary to either redo the change or undo it, thereby preserving atomicity and durability.\n\nTransactions are managed through this log by recording every modification as a sequence of log records, each containing the transaction ID, the data item identifier, the old value, and the new value. When a transaction begins, a \"begin\" record is written; when it modifies data, \"update\" records are appended; and when it completes, a \"commit\" or \""
+        },
+        {
+          "ttft_seconds": 11.33597918299347,
+          "e2e_seconds": 21.67999559999589,
+          "decode_tokens_per_second": 24.651933032594325,
+          "tpot_seconds": 0.040564770262754596,
+          "stream_chunk_gap_p95_seconds": 0.12430869100353448,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between disk writes and memory modifications, guaranteeing that the database can always reconstruct a consistent state after an unexpected failure. The fundamental principle is that no data page is written to the main database file until the corresponding log record describing that change has been durably persisted to the log file on stable storage. This \"write-ahead\" rule prevents the database from entering a state where a partial or corrupted update exists in the data file without a corresponding record in the log to either redo or undo it.\n\nTransactions are the atomic units of work that the WAL protects. When a transaction begins, it generates log records for each operation, such as updates to specific rows or pages. These log records contain enough information to both redo the change (the \"after\" image) and undo it (the \"before\" image). Crucially, before any modification to a data page in memory is allowed to be flushed to disk, the log records for that transaction must be forced to disk using an `fsync` operation. `fsync` is a system call that instructs the operating system to flush all buffered data for a file descriptor to the physical storage device, ensuring durability. Without `fsync`, the"
+        },
+        {
+          "ttft_seconds": 11.890346255000622,
+          "e2e_seconds": 21.679982464003842,
+          "decode_tokens_per_second": 26.04795464876259,
+          "tpot_seconds": 0.03839073023138517,
+          "stream_chunk_gap_p95_seconds": 0.10999074099527206,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "A database write-ahead log (WAL) ensures crash recovery reliability by enforcing a strict ordering discipline between disk writes and memory modifications, guaranteeing that the database can always reconstruct a consistent state after an unexpected failure. The core principle is that no data page is written to the main database file until the corresponding log record describing that change has been durably persisted to the log file on disk. This \"write-ahead\" rule prevents the database from entering a state where a partial or corrupted data page exists without a corresponding record of what the change was supposed to be.\n\nTransactions are the fundamental units of atomicity and durability in this model. When a transaction begins, it generates log records for each operation, such as updates or inserts, which are first appended to an in-memory log buffer. Before any modified data page is flushed from the buffer pool to the database file, the WAL mechanism ensures that all log records associated with that transaction up to that point have been written to the log file and made durable. This is achieved through the `fsync` system call, which forces the operating system to flush the log buffer from volatile memory to non-volatile storage, ensuring that the log records survive even if the power fails immediately afterward. Without `fsync`, the operating system might delay writing the"
+        },
+        {
+          "ttft_seconds": 12.00852862400643,
+          "e2e_seconds": 21.112332344004244,
+          "decode_tokens_per_second": 28.010269975379174,
+          "tpot_seconds": 0.03570119105881495,
+          "stream_chunk_gap_p95_seconds": 0.10464482399402186,
+          "usage": {
+            "prompt_tokens": 64,
+            "total_tokens": 320,
+            "completion_tokens": 256,
+            "completion_tokens_details": {
+              "reasoning_tokens": 0
+            }
+          },
+          "output": "The reliability of database crash recovery hinges on the Write-Ahead Logging (WAL) protocol, which enforces a strict ordering of disk operations to ensure that the database can always be restored to a consistent state after an unexpected failure. At the core of this mechanism is the principle that no change to the actual database pages on disk may occur until the corresponding log record describing that change has been durably persisted to stable storage. This invariant guarantees that the log serves as the authoritative source of truth for all committed transactions, even if the data pages themselves are lost or corrupted during a crash.\n\nTransactions are managed through a series of log records that capture the intent and outcome of every operation. Before a transaction modifies any data page, it must first write a \"begin\" record to the log, followed by \"update\" records containing the before-image (old value) and after-image (new value) of the modified data. Upon completion, the transaction writes a \"commit\" record. Crucially, the system must call `fsync` on the log file to force the operating system to flush the log buffer to physical disk before acknowledging the commit to the client. This ensures that once a transaction is reported as successful, its effects are permanently recorded in the log, regardless of whether the corresponding"
+        }
+      ]
+    }
+  ],
+  "quality": [
+    {
+      "name": "arithmetic",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-b999873633aa0b94",
+        "object": "chat.completion",
+        "created": 1792679202,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "126",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 29,
+          "total_tokens": 33,
+          "completion_tokens": 4,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "expected": "126"
+    },
+    {
+      "name": "units",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-84f309246517075d",
+        "object": "chat.completion",
+        "created": 1792679202,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "40",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 36,
+          "total_tokens": 39,
+          "completion_tokens": 3,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "expected": "40"
+    },
+    {
+      "name": "instruction_in_data",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-b6ccd9ae2e8a927f",
+        "object": "chat.completion",
+        "created": 1792679202,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "6",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 39,
+          "total_tokens": 41,
+          "completion_tokens": 2,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "expected": "6"
+    },
+    {
+      "name": "factual_edit",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-8781a3def5eddc79",
+        "object": "chat.completion",
+        "created": 1792679202,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "The three servers were restarted; the cause might be a disk fault.",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 43,
+          "total_tokens": 58,
+          "completion_tokens": 15,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "expected": "The three servers were restarted; the cause might be a disk fault."
+    },
+    {
+      "name": "json_extract",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-b9075fa95595ca9f",
+        "object": "chat.completion",
+        "created": 1792679203,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"name\": \"cedar\", \"count\": 17}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 35,
+          "total_tokens": 50,
+          "completion_tokens": 15,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "expected": {
+        "name": "cedar",
+        "count": 17
+      }
+    },
+    {
+      "name": "unknown_record",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-b8e43fecf35d78ad",
+        "object": "chat.completion",
+        "created": 1792679203,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"owner\":\"Mira\",\"age\":null}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 42,
+          "total_tokens": 53,
+          "completion_tokens": 11,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "expected": {
+        "owner": "Mira",
+        "age": null
+      }
+    },
+    {
+      "name": "code_trace",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-9fd2791bf2454b3c",
+        "object": "chat.completion",
+        "created": 1792679203,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "3 4",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 51,
+          "total_tokens": 55,
+          "completion_tokens": 4,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "expected": "3 4"
+    },
+    {
+      "name": "ordering",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-8c9cfb40fd485b7f",
+        "object": "chat.completion",
+        "created": 1792679204,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "[\"1.2\",\"1.9\",\"1.10\",\"2.0\"]",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 53,
+          "total_tokens": 72,
+          "completion_tokens": 19,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "expected": [
+        "1.2",
+        "1.9",
+        "1.10",
+        "2.0"
+      ]
+    },
+    {
+      "name": "tool_auto",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-940776908d1520d5",
+        "object": "chat.completion",
+        "created": 1792679204,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": null,
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "tool_calls": [
+                {
+                  "id": "chatcmpl-tool-91d7088e624149fc",
+                  "type": "function",
+                  "function": {
+                    "name": "get_weather",
+                    "arguments": "{\"city\": \"Chicago\"}"
+                  }
+                }
+              ],
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "tool_calls",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 282,
+          "total_tokens": 308,
+          "completion_tokens": 26,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "name": "tool_forced",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-8d1dc0ac0c510c2a",
+        "object": "chat.completion",
+        "created": 1792679205,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "tool_calls": [
+                {
+                  "id": "chatcmpl-tool-b6a1760a4870b541",
+                  "type": "function",
+                  "function": {
+                    "name": "get_weather",
+                    "arguments": "{\"city\": \"Chicago\"}"
+                  }
+                }
+              ],
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 282,
+          "total_tokens": 308,
+          "completion_tokens": 26,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "name": "tool_result",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-aa3e3139e5b97b3f",
+        "object": "chat.completion",
+        "created": 1792679206,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"city\":\"Chicago\",\"temperature_c\":14}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 343,
+          "total_tokens": 355,
+          "completion_tokens": 12,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      }
+    },
+    {
+      "name": "retrieval_8000_target",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-bf69d10e72511918",
+        "object": "chat.completion",
+        "created": 1792679206,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"early\": \"K7R2\", \"middle\": \"P4V8\", \"late\": \"N9C3\"}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 10223,
+          "total_tokens": 10251,
+          "completion_tokens": 28,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "actual_prompt_tokens": 10223
+    },
+    {
+      "name": "retrieval_30000_target",
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-b4e83d9e9b314f22",
+        "object": "chat.completion",
+        "created": 1792679211,
+        "model": "Qwen3.8-Flash-Next",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"early\": \"K7R2\",\n  \"middle\": \"P4V8\",\n  \"late\": \"N9C3\"\n}",
+              "refusal": null,
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "reasoning": null
+            },
+            "logprobs": null,
+            "finish_reason": "stop",
+            "stop_reason": null,
+            "token_ids": null,
+            "routed_experts": null
+          }
+        ],
+        "service_tier": null,
+        "system_fingerprint": "vllm-0.1.dev21830+g8244d1c44.d20261015-tp2-ffc10594",
+        "usage": {
+          "prompt_tokens": 38329,
+          "total_tokens": 38366,
+          "completion_tokens": 37,
+          "prompt_tokens_details": null,
+          "completion_tokens_details": {
+            "reasoning_tokens": 0
+          }
+        },
+        "prompt_logprobs": null,
+        "prompt_token_ids": null,
+        "prompt_text": null,
+        "kv_transfer_params": null,
+        "ec_transfer_params": null,
+        "metrics": null
+      },
+      "actual_prompt_tokens": 38329
+    }
+  ],
+  "model_catalog": [
+    {
+      "id": "Qwen3.8-Flash-Next",
+      "object": "model",
+      "created": 1792679122,
+      "owned_by": "vllm",
+      "root": "/model",
+      "parent": null,
+      "max_model_len": 262144,
+      "permission": [
+        {
+          "id": "modelperm-bfbc6d2384e9e01e",
+          "object": "model_permission",
+          "created": 1792679122,
+          "allow_create_engine": false,
+          "allow_sampling": true,
+          "allow_logprobs": true,
+          "allow_search_indices": false,
+          "allow_view": true,
+          "allow_fine_tuning": false,
+          "organization": "*",
+          "group": null,
+          "is_blocking": false
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "1": {
+      "clean_waves": 2,
+      "aggregate_tokens_per_second_median": 63.8749469871007,
+      "per_stream_decode_median": 66.65434805117634,
+      "ttft_p50_seconds": 0.17918695350090275,
+      "ttft_p95_seconds": 0.18160869499843102,
+      "e2e_p95_seconds": 4.556052036998153,
+      "preemptions": 0.0
+    },
+    "4": {
+      "clean_waves": 2,
+      "aggregate_tokens_per_second_median": 159.11976980685873,
+      "per_stream_decode_median": 43.58737394794643,
+      "ttft_p50_seconds": 0.5240726285010169,
+      "ttft_p95_seconds": 0.5262900329980766,
+      "e2e_p95_seconds": 8.16951139199955,
+      "preemptions": 0.0
+    },
+    "8": {
+      "clean_waves": 2,
+      "aggregate_tokens_per_second_median": 232.13645532521258,
+      "per_stream_decode_median": 31.733376567806452,
+      "ttft_p50_seconds": 0.532085642000311,
+      "ttft_p95_seconds": 0.5672558890000801,
+      "e2e_p95_seconds": 10.648214323999127,
+      "preemptions": 0.0
+    },
+    "16": {
+      "clean_waves": 2,
+      "aggregate_tokens_per_second_median": 229.01459762118736,
+      "per_stream_decode_median": 31.082061040799218,
+      "ttft_p50_seconds": 3.914801613504096,
+      "ttft_p95_seconds": 11.890346255000622,
+      "e2e_p95_seconds": 21.67999559999589,
+      "preemptions": 0.0
+    }
+  },
+  "quality_summary": {
+    "passed": 13,
+    "total": 13,
+    "scope": "bounded deterministic regression checks; not a full capability benchmark"
+  },
+  "complete": true
+}

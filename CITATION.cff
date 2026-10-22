@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Cite this repository for its TP=2 serving recipe and evaluation; cite upstream models separately for their weights and model results."
+title: "Qwen3.8-Flash-Next Abliterated: Dual DGX Spark TP=2 Serving Recipe"
+type: software
+authors:
+  - name: XtraSaltyDev
+    website: https://github.com/XtraSaltyDev
+version: tp2-v2
+date-released: 2026-10-22
+url: https://github.com/XtraSaltyDev/qwen38-flash-next-ablit
+repository-code: https://github.com/XtraSaltyDev/qwen38-flash-next-ablit
+abstract: "Reproducible serving and bounded evaluation of DevelopingDad's pinned trial117-mxfp8 checkpoint across two DGX Sparks, with 16 active slots, BF16 KV, MTP4, and 262K context. No new model weights are distributed."
+keywords:
+  - Qwen3.8-Flash-Next
+  - DGX Spark
+  - tensor parallelism
+  - vLLM
+  - inference

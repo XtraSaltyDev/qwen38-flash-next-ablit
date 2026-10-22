@@ -1,0 +1,533 @@
+{
+  "passed": true,
+  "attention_output_weights": {
+    "model.language_model.layers.0.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        43442280,
+        59170920
+      ]
+    },
+    "model.language_model.layers.1.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        101359720,
+        117088360
+      ]
+    },
+    "model.language_model.layers.10.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        159277160,
+        175005800
+      ]
+    },
+    "model.language_model.layers.11.self_attn.o_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        177954920,
+        193683560
+      ]
+    },
+    "model.language_model.layers.12.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        268640360,
+        284369000
+      ]
+    },
+    "model.language_model.layers.13.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        326557800,
+        342286440
+      ]
+    },
+    "model.language_model.layers.14.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        384475240,
+        400203880
+      ]
+    },
+    "model.language_model.layers.15.self_attn.o_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        403153000,
+        418881640
+      ]
+    },
+    "model.language_model.layers.16.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        493838440,
+        509567080
+      ]
+    },
+    "model.language_model.layers.17.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        551755880,
+        567484520
+      ]
+    },
+    "model.language_model.layers.18.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        609673320,
+        625401960
+      ]
+    },
+    "model.language_model.layers.19.self_attn.o_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        628351080,
+        644079720
+      ]
+    },
+    "model.language_model.layers.2.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        719036520,
+        734765160
+      ]
+    },
+    "model.language_model.layers.20.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        776953960,
+        792682600
+      ]
+    },
+    "model.language_model.layers.21.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        834871400,
+        850600040
+      ]
+    },
+    "model.language_model.layers.22.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        892788840,
+        908517480
+      ]
+    },
+    "model.language_model.layers.23.self_attn.o_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        911466600,
+        927195240
+      ]
+    },
+    "model.language_model.layers.24.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1002152040,
+        1017880680
+      ]
+    },
+    "model.language_model.layers.25.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1060069480,
+        1075798120
+      ]
+    },
+    "model.language_model.layers.26.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1117986920,
+        1133715560
+      ]
+    },
+    "model.language_model.layers.27.self_attn.o_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1136664680,
+        1152393320
+      ]
+    },
+    "model.language_model.layers.28.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1227350120,
+        1243078760
+      ]
+    },
+    "model.language_model.layers.29.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1285267560,
+        1300996200
+      ]
+    },
+    "model.language_model.layers.3.self_attn.o_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1303945320,
+        1319673960
+      ]
+    },
+    "model.language_model.layers.30.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1394630760,
+        1410359400
+      ]
+    },
+    "model.language_model.layers.31.self_attn.o_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1413308520,
+        1429037160
+      ]
+    },
+    "model.language_model.layers.32.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1503993960,
+        1519722600
+      ]
+    },
+    "model.language_model.layers.33.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1561911400,
+        1577640040
+      ]
+    },
+    "model.language_model.layers.34.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1619828840,
+        1635557480
+      ]
+    },
+    "model.language_model.layers.35.self_attn.o_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1638506600,
+        1654235240
+      ]
+    },
+    "model.language_model.layers.36.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1729192040,
+        1744920680
+      ]
+    },
+    "model.language_model.layers.37.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1787109480,
+        1802838120
+      ]
+    },
+    "model.language_model.layers.38.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1845026920,
+        1860755560
+      ]
+    },
+    "model.language_model.layers.39.self_attn.o_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1863704680,
+        1879433320
+      ]
+    },
+    "model.language_model.layers.4.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        1954390120,
+        1970118760
+      ]
+    },
+    "model.language_model.layers.40.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        2012307560,
+        2028036200
+      ]
+    },
+    "model.language_model.layers.41.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        2070225000,
+        2085953640
+      ]
+    },
+    "model.language_model.layers.42.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        2128142440,
+        2143871080
+      ]
+    },
+    "model.language_model.layers.43.self_attn.o_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        2146820200,
+        2162548840
+      ]
+    },
+    "model.language_model.layers.44.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        2237505640,
+        2253234280
+      ]
+    },
+    "model.language_model.layers.45.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        2295423080,
+        2311151720
+      ]
+    },
+    "model.language_model.layers.46.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        2353340520,
+        2369069160
+      ]
+    },
+    "model.language_model.layers.47.self_attn.o_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        2372018280,
+        2387746920
+      ]
+    },
+    "model.language_model.layers.5.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        2462703720,
+        2478432360
+      ]
+    },
+    "model.language_model.layers.6.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        2520621160,
+        2536349800
+      ]
+    },
+    "model.language_model.layers.7.self_attn.o_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        2539298920,
+        2555027560
+      ]
+    },
+    "model.language_model.layers.8.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        2629984360,
+        2645713000
+      ]
+    },
+    "model.language_model.layers.9.linear_attn.out_proj.weight": {
+      "dtype": "F8_E4M3",
+      "shape": [
+        2560,
+        6144
+      ],
+      "data_offsets": [
+        2687901800,
+        2703630440
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "status": "rejected",
+  "reason": "Pinned B12X runtime refuses an unprepared CuTe kernel during dynamic full CUDA-graph capture",
+  "error": "b12x kernel resolution is frozen; refusing planned CuTe object load",
+  "performance": "unscored; server never became healthy",
+  "decision": "Retain fixed MTP4 for the v2 candidate; preserve graph preparation guard and pinned runtime",
+  "requires_for_future_attempt": "Prepare every dynamic batch/speculation graph shape in the runtime, then rerun numerical and serving gates"
+}

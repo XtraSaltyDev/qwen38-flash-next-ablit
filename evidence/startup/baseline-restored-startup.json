@@ -1,0 +1,381 @@
+[
+  {
+    "elapsed_seconds": 0,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 125786075136
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 125702467584
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 16,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 124144492544
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 124448714752
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 32,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 121617809408
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 124005818368
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 47,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 103474221056
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 107341713408
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 63,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 79182012416
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 82260398080
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 78,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 78715260928
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 81716535296
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 94,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 77958410240
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 81059733504
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 110,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 77416112128
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 80397299712
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 126,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 76704956416
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 79768301568
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 141,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 75936665600
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 79132303360
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 156,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 74261196800
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 77496647680
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 172,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 73438240768
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 76677046272
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 188,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 72502235136
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 75751624704
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 204,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 74116296704
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 77103054848
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 219,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 69633470464
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 74732564480
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 235,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 71331127296
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 74357108736
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 250,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 12882092032
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 15900024832
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 266,
+    "nodes": {
+      "spark": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 12521549824
+      },
+      "worker": {
+        "running": true,
+        "oom_killed": false,
+        "status": "running",
+        "exit_code": 0,
+        "restart_count": 0,
+        "available_bytes": 15674228736
+      }
+    },
+    "health_ready": true
+  }
+]

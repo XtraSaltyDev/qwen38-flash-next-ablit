@@ -1,0 +1,27 @@
+# Publish only the reviewed recipe, documentation, and evidence tree.
+# The complete original machine-specific bundle remains available locally.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/LICENSE
+!/NOTICE
+!/CITATION.cff
+!/SHA256SUMS
+!/serve-tp2.sh
+!/docs/
+!/scripts/
+!/evidence/
+!/recipes/
+!/third_party/
+
+**/__pycache__/
+**/*.py[cod]
+**/.DS_Store
+**/.env
+**/.env.*
+**/*.pem
+**/*.key
+**/*client-backups*/
+**/node_modules/
+**/.local/
