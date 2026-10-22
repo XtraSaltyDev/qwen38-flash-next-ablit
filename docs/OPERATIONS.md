@@ -1,14 +1,48 @@
 # Operations and reproduction
 
-The qualified configuration is in `../serve-tp2.sh`; measurements are in `../evidence/`. The model is `DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated`; commit hashes identify the measured artifact without relying on a release tag. Original defaults were qualified on two GB10 DGX Sparks on October 22, 2026. Repository publication made the network/container names configurable while preserving the default Docker invocation. Other topology or performance settings require their own qualification.
+[README](../README.md) · [Results](RESULTS.md) · [Attribution](ATTRIBUTION.md) · [Recipes](../recipes/README.md) · [HF model card](https://huggingface.co/DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated)
+
+Reference for configuring, inspecting, recovering, and evaluating the published two-Spark deployment.
+
+Use the [README quick start](../README.md#quick-start) for first-time setup. The current published launcher is [`serve-tp2.sh`](../serve-tp2.sh), and the measured configuration is recorded in [`evidence/profile.json`](../evidence/profile.json).
 
 ## Prerequisites
 
-Both nodes need Docker access, NVIDIA CDI, RDMA devices, the pinned B12X image, and the complete checkpoint at revision `51f24153ae9b27653a823074c631dfa941fdb536`. Follow the [eugr networking guide](https://github.com/eugr/spark-vllm-docker/blob/main/docs/NETWORKING.md) for direct CX7 links and trusted SSH. Do not place two large model deployments in the same host memory budget.
+Both nodes need:
 
-The qualified example topology uses head `10.100.225.2`, worker `10.100.225.1`, and second-rail addresses `10.100.224.2` / `10.100.224.1`. These are private example addresses, not public API endpoints. The socket interface is `enP2p1s0f0np0`; the RDMA HCAs are `rocep1s0f0,roceP2p1s0f0`. Interface names and direct routes must match your actual hosts. The master port is 29503. Maintain the existing paired-node firewall scope.
+- A DGX Spark with GB10 and 128 GB unified memory.
+- Docker with NVIDIA CDI and RDMA device access.
+- Working ConnectX RoCE networking between the nodes.
+- The complete checkpoint at revision `51f24153ae9b27653a823074c631dfa941fdb536`.
+- The pinned runtime image below.
+- Enough free memory for a 104 GiB container cap, with no competing large-model deployment.
+
+Follow [eugr's networking guide](https://github.com/eugr/spark-vllm-docker/blob/main/docs/NETWORKING.md) for link configuration and verification.
+
+The qualified example uses:
+
+| Node | Rank | Primary CX7 address | Second-rail address |
+| --- | ---: | --- | --- |
+| Head | `0` | `10.100.225.2` | `10.100.224.2` |
+| Worker | `1` | `10.100.225.1` | `10.100.224.1` |
+
+The tested socket interface was `enP2p1s0f0np0`; the RDMA HCAs were `rocep1s0f0,roceP2p1s0f0`. Replace these values with the addresses and device names on each host.
+
+The rendezvous port defaults to `29503`. Distributed traffic must be able to pass between the paired nodes. The head API binds to localhost by default.
+
+### Pinned inputs
+
+| Input | Value |
+| --- | --- |
+| Checkpoint | `DevelopingDad/Qwen3.8-Flash-Next-FP4-Local-Abliterated` |
+| Checkpoint revision | `51f24153ae9b27653a823074c631dfa941fdb536` |
+| Runtime image | `eugr/spark-vllm-b12x@sha256:03a956544e9f9b4b7ba91690469fbe7848bdbef29a7d2e0f5788368467bb3595` |
+
+These inputs identify the measured deployment. Current upstream documentation may have newer revisions.
 
 ## Recipe variables
+
+Set these variables in the shell that creates the container:
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
@@ -17,70 +51,238 @@ The qualified example topology uses head `10.100.225.2`, worker `10.100.225.1`, 
 | `MASTER_ADDR` | `10.100.225.2` | Head's direct address; same value on both nodes |
 | `MASTER_PORT` | `29503` | Distributed rendezvous port |
 | `SOCKET_IFNAME` | `enP2p1s0f0np0` | NCCL/Gloo/TP bootstrap interface |
-| `IB_HCAS` | `rocep1s0f0,roceP2p1s0f0` | RDMA HCA list |
-| `CONTAINER_NAME` | `qwen-flash-next-tp2-v2` | Docker name; use the same name on both hosts |
+| `IB_HCAS` | `rocep1s0f0,roceP2p1s0f0` | Local RDMA HCA list |
+| `CONTAINER_NAME` | `qwen-flash-next-tp2-v2` | Docker container name on each host |
 | `PORT` | `18383` | Head API port |
 | `HOST` | `127.0.0.1` | Head API bind address |
-| `CACHE_DIR` | `~/.cache/qwen-flash-next-tp2` | Per-node persistent compilation/autotune caches |
-| `MTP_TOKENS` | `4` | Qualified speculation count; changing it requires new evaluation |
+| `CACHE_DIR` | `~/.cache/qwen-flash-next-tp2` | Node-local compilation and autotune caches |
+| `MTP_TOKENS` | `4` | Speculative draft tokens |
 
-`serve-tp2.sh /absolute/checkpoint/path` creates a container but does not start it. It uses TP=2, PP=1, two native multiprocessing ranks, BF16 KV via auto dtype, disk PLE/io_uring, utilization 0.8, and a 104 GiB container memory cap. Weights are mounted read-only. Container restart policy is `unless-stopped`.
+The launcher creates a container; it does not start it. Weights are mounted read-only, and the restart policy is `unless-stopped`.
 
-Final observed KV capacity was 3,281,415 tokens, about 12.52 full 262K-context equivalents. The 16-slot scheduler does not promise sixteen simultaneous full-length contexts.
+Environment changes apply when the container is created. Running `docker start` on an existing container retains its original settings.
+
+The published profile uses TP=2, PP=1, BF16 KV cache, disk-backed PLE, MTP4, a 4096-token batch budget, 16 active sequences, and 262,144-token context. Performance or topology changes need their own validation.
+
+Final observed KV cache capacity was **3,281,415 tokens**, approximately **12.52 full 262K contexts**. Sixteen active sequences do not imply sixteen simultaneous maximum-length requests.
 
 ## Start, inspect, and stop
 
-Use the README's worker-first creation/start commands. For containers that already exist, run `docker start qwen-flash-next-tp2-v2` on the worker, then on the head. Do not rerun `docker create` against an existing name.
+Follow the README's [worker-first setup](../README.md#quick-start) when creating the deployment.
 
-On either host:
+For existing containers, run this on the **worker first**, then on the **head**:
 
-```sh
-docker inspect -f '{{.State.Status}} {{.State.OOMKilled}} {{.RestartCount}}' qwen-flash-next-tp2-v2
+```bash
+docker start qwen-flash-next-tp2-v2
+```
+
+First startup compiles and autotunes kernels and can take several minutes. Keep each node's cache for later starts.
+
+### Inspect either node
+
+```bash
+docker inspect \
+  -f 'status={{.State.Status}} oom={{.State.OOMKilled}} restarts={{.RestartCount}}' \
+  qwen-flash-next-tp2-v2
+
 docker logs --tail 120 qwen-flash-next-tp2-v2
 ```
 
-On the head after startup:
+Use the container name chosen at creation if it differs from the default.
 
-```sh
+### Verify the head
+
+```bash
 curl --fail http://127.0.0.1:18383/health
 curl --fail http://127.0.0.1:18383/v1/models
 ```
 
-The catalog should contain only `Qwen3.8-Flash-Next`, context 262144. First startup compiles/autotunes kernels and can take several minutes. Keep the node-local caches for later starts. `/metrics` provides running/waiting requests, preemptions, speculative acceptance, and cache telemetry.
+The catalog should contain `Qwen3.8-Flash-Next`, with maximum context `262144`.
 
-To stop the pair, run `docker stop -t 90 qwen-flash-next-tp2-v2` on the head and then the worker. Clients should point to the head's API through their own SSH tunnel or authenticated proxy. A model catalog proves discovery; also run actual inference through every route used by your clients.
+Then run the README's [inference example](../README.md#6-send-a-request). A healthy catalog establishes discovery; a completed request establishes that the inference path works.
+
+For clients on another machine, use an SSH tunnel or authenticated proxy to the head.
+
+| Consumer | Base URL on the head |
+| --- | --- |
+| OpenAI-compatible client | `http://127.0.0.1:18383/v1` |
+| Evaluation scripts' `--base` | `http://127.0.0.1:18383` |
+| Health check | `http://127.0.0.1:18383/health` |
+| Runtime metrics | `http://127.0.0.1:18383/metrics` |
+
+The evaluation scripts append their own endpoint paths. Their `--base` value should not include `/v1`.
+
+### Stop the pair
+
+Run this on the **head first**, then on the **worker**:
+
+```bash
+docker stop -t 90 qwen-flash-next-tp2-v2
+```
+
+### Troubleshooting
+
+| Symptom | First checks |
+| --- | --- |
+| Container name already exists | Start the existing container, or choose a separate name for a new experiment |
+| Nodes do not connect | Check rank, head address, rendezvous port, local interface/HCA names, and logs on both nodes |
+| Health check fails during startup | Check whether both containers are running and whether compilation or model loading is still in progress |
+| A remote client cannot connect | Confirm head-local inference first, then inspect the client's tunnel or proxy, base URL, and model ID |
+| Requests exceed capacity | Check total input/output length, active requests, KV usage, and preemptions |
+
+`/metrics` exposes running and waiting requests, preemptions, speculative acceptance, and cache telemetry.
 
 ## Rollback
 
-Before an experiment, keep the last passing containers, controller scripts, and cache directories. The original reference here used eight active sequences, FP8 KV, disk PLE, and MTP4; its creation recipe is [recipes/baseline-tp2.sh](../recipes/baseline-tp2.sh).
+Before an experiment, retain the last passing containers and their caches. Give candidate containers and caches separate names so the passing deployment remains available.
 
-On both hosts, disable restart for the candidate and stop it. Restore the preserved controller scripts for your deployment. Set the preserved reference container's restart policy to `unless-stopped`, then start reference worker before reference head. Confirm health, canonical model name, context, actual route inference, and memory headroom. Preserve failed logs before changing a candidate.
+The example below assumes:
 
-The machine-specific rollback helpers and dashboard/client backups remain in the original local bundle and are intentionally excluded from the public repository. They depend on that installation's named containers, SSH configuration, and dashboard credentials; they are not clean-machine installers.
+- Preserved passing pair: `qwen-flash-next-tp2-v2`.
+- Candidate pair: `qwen-flash-next-tp2-test`.
+- The passing pair is stopped while the candidate runs.
+
+Substitute the names used on your hosts.
+
+### 1. Preserve candidate logs
+
+On each node, save logs to a new file before changing the candidate:
+
+```bash
+docker logs --timestamps qwen-flash-next-tp2-test \
+  > qwen-flash-next-tp2-test.log 2>&1
+```
+
+### 2. Stop the candidate
+
+Run these commands on the **head first**, then on the **worker**:
+
+```bash
+docker update --restart=no qwen-flash-next-tp2-test
+docker stop -t 90 qwen-flash-next-tp2-test
+```
+
+### 3. Restore the passing pair
+
+Run these commands on the **worker first**, then on the **head**:
+
+```bash
+docker update --restart=unless-stopped qwen-flash-next-tp2-v2
+docker start qwen-flash-next-tp2-v2
+```
+
+### 4. Verify recovery
+
+Check health, model ID, context, actual inference, memory headroom, and any client routes used by the deployment.
+
+If the preserved containers are unavailable, recreate the published profile using the pinned inputs and [README setup](../README.md#quick-start).
+
+The historical eight-sequence FP8-KV reference is retained in [`recipes/baseline-tp2.sh`](../recipes/baseline-tp2.sh). Its machine-specific defaults are described in the [recipe index](../recipes/README.md).
+
+Original dashboard/controller backups are installation-specific and are not dependencies of this recovery procedure.
 
 ## Repeat evaluations
 
-Harnesses use Python's standard library. Run on an otherwise idle endpoint and use a new output directory for every treatment. The extended code-execution harness uses Linux resource limits; run it on Linux. Execute these from the repository root on the head, or substitute your tunnel's base URL.
+Run from the repository root on the head against an otherwise idle endpoint. The harnesses use Python's standard library.
 
-```sh
-python3 scripts/evaluate.py --base http://127.0.0.1:18383 --label v2-repeat \
-  --output /tmp/qwen-v2-repeat --mode all \
-  --concurrency 1 4 8 16 --repeats 2 --tokens 256
-python3 scripts/evaluate.py --base http://127.0.0.1:18383 --label v2-long-repeat \
-  --output /tmp/qwen-v2-long-repeat --mode performance \
-  --concurrency 1 4 16 --repeats 1 --tokens 128 --context-records 300
-python3 scripts/quality_extended.py --base http://127.0.0.1:18383 \
-  --label v2-extended-repeat --output /tmp/qwen-v2-extended-repeat \
-  --fixtures evidence/invoice-fixtures.json
-python3 scripts/near_context_control.py --base http://127.0.0.1:18383 \
-  --label v2-context-repeat --output /tmp/qwen-v2-context-repeat \
-  --samples 10 --require-strict
-python3 scripts/repeat_control.py --base http://127.0.0.1:18383 \
-  --label v2-word-count-repeat --output /tmp/qwen-v2-word-count-repeat --samples 100
-python3 scripts/audit_target.py --base http://127.0.0.1:18383 \
-  --label v2-audit-repeat --output /tmp/qwen-v2-audit-repeat
+Each command writes `<output-directory>/results.json`. Use a new output directory for every run.
+
+**Inspect the JSON results even when a command exits successfully.** Several scripts record failed checks without returning a failing process status. `complete: true` means the script finished; it does not mean every check passed.
+
+### Short-prompt performance and core quality
+
+```bash
+python3 scripts/evaluate.py \
+  --base http://127.0.0.1:18383 \
+  --label v2-repeat \
+  --output /tmp/qwen-v2-repeat \
+  --mode all \
+  --concurrency 1 4 8 16 \
+  --repeats 2 \
+  --tokens 256
 ```
 
-The near-context test must not label a cache state as cold unless that state has actually been established. The `quality_extended.initial.py` snapshot preserves an initial inconsistent duration prompt; use corrected `quality_extended.py` for new qualification.
+Inspect `quality_summary`, individual quality cases, performance summaries, and request waves. The recorded selected profile passed 13/13 core checks.
 
-Match weights, image, prompts, warmups, concurrency, output length, sampling, and cache policy when comparing configurations. Inspect contaminated waves, per-fixture regressions, preemptions, startup reliability, and host memory rather than relying only on aggregate speed. The [protocol](../evidence/protocol.json) preserves the evolving design: its initial fixed FP8 setting is superseded for the final BF16 treatment by the [selected profile](../evidence/profile.json).
+Review external-completion flags and preemptions before comparing performance. Contaminated waves are retained in the output but excluded from the reported clean-wave summary.
+
+### Long-prefill performance
+
+```bash
+python3 scripts/evaluate.py \
+  --base http://127.0.0.1:18383 \
+  --label v2-long-repeat \
+  --output /tmp/qwen-v2-long-repeat \
+  --mode performance \
+  --concurrency 1 4 16 \
+  --repeats 1 \
+  --tokens 128 \
+  --context-records 300
+```
+
+This adds a synthetic document of approximately 8K input tokens. Inspect actual token counts, first-token latency, completion latency, and aggregate throughput.
+
+### Extended code, OCR, and retrieval
+
+```bash
+python3 scripts/quality_extended.py \
+  --base http://127.0.0.1:18383 \
+  --label v2-extended-repeat \
+  --output /tmp/qwen-v2-extended-repeat \
+  --fixtures evidence/invoice-fixtures.json
+```
+
+This executes generated pure-Python functions locally under the harness's AST checks and resource limits, then checks synthetic invoice OCR and near-context retrieval. Run it on Linux.
+
+The recorded result was **7/8 total checks**, retaining all seven baseline passes. The remaining failure was the existing no-import instruction violation in `sliding_max`. Compare individual cases; a different set of seven passes is not equivalent.
+
+Use the corrected `quality_extended.py`. The retained `quality_extended.initial.py` contains an inconsistent duration prompt and is historical.
+
+### Strict near-context formatting
+
+```bash
+python3 scripts/near_context_control.py \
+  --base http://127.0.0.1:18383 \
+  --label v2-context-repeat \
+  --output /tmp/qwen-v2-context-repeat \
+  --samples 10 \
+  --require-strict \
+  --initial-cache-state unspecified
+```
+
+This checks strict JSON, semantic retrieval after removing a possible code fence, and a separate JSON-schema control at exactly 261,623 input tokens.
+
+With `--require-strict`, strict-format or schema failure produces a failing exit status. Inspect `summary` for the pass counts and cache-state label.
+
+Identical requests exercise prefix reuse. The cache-state flag records a label; it does not clear the cache. Label a run `cold` only when that state has been established.
+
+### Word-count repeatability
+
+```bash
+python3 scripts/repeat_control.py \
+  --base http://127.0.0.1:18383 \
+  --label v2-word-count-repeat \
+  --output /tmp/qwen-v2-word-count-repeat \
+  --samples 100
+```
+
+Inspect `quality_summary` and the individual responses. The recorded selected result was 100/100 on one repeated prompt, compared with 95/100 for the reference. This is a repeatability check, not 100 independent questions.
+
+### Returned target-token audit
+
+```bash
+python3 scripts/audit_target.py \
+  --base http://127.0.0.1:18383 \
+  --label v2-audit-repeat \
+  --output /tmp/qwen-v2-audit-repeat
+```
+
+Inspect `greedy_target_audit` and the quality entries, including the thinking-on check. The recorded audit had zero mismatches over 384 returned tokens.
+
+This compares emitted greedy tokens with returned target top-1 log probabilities. It is not a full-vocabulary distribution-equivalence test.
+
+### Comparing runs
+
+Match checkpoint, runtime image, prompts, output lengths, concurrency, sampling, warmups, and cache policy. Inspect per-fixture regressions, contaminated waves, startup reliability, preemptions, and host memory alongside aggregate speed.
+
+[`protocol.json`](../evidence/protocol.json) preserves the evolving experiment. Its initial fixed FP8-KV setting was superseded by the final BF16 treatment. Use [`profile.json`](../evidence/profile.json) for the selected configuration and [RESULTS.md](RESULTS.md) for interpretation.
