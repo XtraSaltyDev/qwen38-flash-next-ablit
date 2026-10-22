@@ -37,10 +37,20 @@ The root [MIT license](../LICENSE) grants rights in original code and documentat
 - **External runtime:** libraries and the Docker image keep their own distribution terms.
 - **Original harnesses and documentation:** MIT, subject to the exceptions above. Measurements and synthetic fixture outputs include provenance in `evidence/`.
 
-The README's Hugging Face-style license metadata describes the checkpoint; it does not label the weights MIT licensed. No endorsement by upstream authors is implied.
+The repository's MIT grant covers its original contributions; the checkpoint retains the upstream terms identified above. No endorsement by upstream authors is implied.
 
 ## Public evidence and local archive
 
 Public evidence retains measurements, synthetic fixtures, experimental failures, and tensor metadata. Personal client backups, tunnel/SSH registrations, full Docker inspections, dashboard source snapshots, and original local copy manifests are excluded from Git. They remain in the complete local working bundle.
 
 Published logs replace local usernames, management endpoints, and host labels. The report omits personal connections and detailed runtime commands/environment; measured values remain unchanged. `evidence/PUBLICATION.json` records original/published hashes and transformations. `SHA256SUMS` verifies tracked publication files, excluding itself.
+
+## Recipe presentation references
+
+The README layout was informed by MiaAI-Lab's practical Spark recipes: a short description, measured performance, requirements, launch commands, configuration, checks, and credits. Wording is original; no MiaAI-Lab launch code, patches, or benchmark numbers were copied.
+
+- [Qwen3.8-Flash-Next on two DGX Sparks](https://github.com/MiaAI-Lab/Qwen3.8-Flash-Next-Dual-DGX-Sparks)
+- [Qwen3.8-Flash-Next on one Spark with TensorFold](https://github.com/MiaAI-Lab/Qwen3.8-Flash-Next-Single-DGX-Spark-TensorFold)
+- [DeepSeek V4 Flash DSpark on two DGX Sparks](https://github.com/MiaAI-Lab/DeepSeek-v4-Flash-DSpark-2x-DGX-Spark)
+
+These are presentation references, not dependencies or sources of this recipe's measured results.
