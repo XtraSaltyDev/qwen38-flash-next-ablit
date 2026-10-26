@@ -122,6 +122,28 @@ The disk/FP8 intermediate isolated the formatting issue from shared-memory place
 
 Failed attempts, corrected fixture records, and rejected results remain available for review.
 
+## Latency-v3 follow-up: archived
+
+On **October 26, 2026**, the later latency-v3 study was assigned to the local
+archive, with no candidate promoted. The published selection remains
+`bf16kv-seq16`: BF16 KV, sixteen sequences, batch budget 4096, and MTP4.
+
+The tested scheduler and batch-budget candidates failed performance gates.
+The additive near-tail/MTP3 candidate improved warm document-extension latency,
+but two matched cold 8K serial coding controls lost **5.85% and 7.37%** aggregate
+output throughput, exceeding the study's 5% regression floor. Its full quality
+checks were not run after that rejection. The adaptive successor failed startup;
+CPU policy checks and GPU state-copy probes did not establish serving readiness.
+No v3 candidate completed all performance, quality, capacity, restart, and route
+gates. These findings do not extend or replace the v2 qualification above.
+
+The results, experimental harnesses, patches, provenance, and license notices are
+preserved with checksums in the maintainer's Git-ignored local archive at
+`.local/archive/latency-v3/`, alongside the original installation bundle. The
+staged v3 `PUBLICATION.json` is retained there as a historical file manifest; it
+does not indicate that v3 was published. Archiving changed repository packaging
+only and did not inspect or alter the live deployment.
+
 ## Capacity and checkpoint review
 
 Final observed KV cache capacity was **3,281,415 tokens**, approximately **12.52 full 262K-context equivalents**, with 16 active-sequence slots. The original capacity floor of eight full-context equivalents was retained.

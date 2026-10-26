@@ -225,6 +225,8 @@ These are bounded diagnostics and deployment checks, not a general capability be
 
 Full results, rejected experiments, and known limitations are in [RESULTS.md](docs/RESULTS.md), the [protocol](evidence/protocol.json), and [qualification record](evidence/qualification.json).
 
+The later latency-v3 study was [archived without promotion](docs/RESULTS.md#latency-v3-follow-up-archived); this recipe retains the qualified v2 profile.
+
 ## Reproduce the results
 
 Run from the repository root on the head against an otherwise idle deployment. The harness uses Python's standard library.

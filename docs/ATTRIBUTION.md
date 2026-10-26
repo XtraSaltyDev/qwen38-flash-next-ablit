@@ -84,6 +84,11 @@ Public evidence includes measurements, synthetic fixtures, experimental failures
 
 Personal client backups, SSH/tunnel registrations, dashboard source snapshots, full Docker inspections, and original local copy manifests are excluded from Git. They remain part of the original installation's local archive and are not required for the public setup instructions.
 
+The separate [latency-v3 follow-up](RESULTS.md#latency-v3-follow-up-archived) is also
+excluded from the publication. Its local archive retains the experimental
+harnesses, modified vLLM sources, source manifests, Diffbot attribution, and Apache
+2.0 license. Those patches are not used by the published launcher.
+
 Published logs replace local usernames, management endpoints, and host labels. The report omits personal connections and detailed runtime commands/environment; measured values remain unchanged.
 
 - [`evidence/PUBLICATION.json`](../evidence/PUBLICATION.json) records original and published hashes and transformations for the archived evidence.
